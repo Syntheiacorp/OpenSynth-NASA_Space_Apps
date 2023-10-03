@@ -1,2 +1,6 @@
 hi this is new text
+<<<<<<< HEAD
 i am  inevitable
+=======
+new line
+>>>>>>> 03814004479a5efb3ec87979eeed9c84d9f1455d
