@@ -1,0 +1,111 @@
+-- Users Table: Store user authentication information
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Username VARCHAR(255) NOT NULL UNIQUE,
+    Email VARCHAR(255) NOT NULL UNIQUE,
+    PasswordHash VARCHAR(255) NOT NULL,
+    TwoFactorEnabled BOOLEAN DEFAULT FALSE
+);
+
+-- UserData Table: Store additional user data
+CREATE TABLE UserData (
+    UserID INT PRIMARY KEY,
+    FullName VARCHAR(255),
+    ProfileInfo TEXT,
+    -- Add other user-related fields (e.g., date of birth, location, etc.)
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+-- Projects Table: Store project information
+CREATE TABLE Projects (
+    ProjectID INT PRIMARY KEY AUTO_INCREMENT,
+    Title VARCHAR(255) NOT NULL,
+    Description TEXT,
+    CreatorUserID INT NOT NULL,
+    IsPublic BOOLEAN DEFAULT TRUE,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    -- Add other project-related fields (e.g., project tags)
+    FOREIGN KEY (CreatorUserID) REFERENCES Users(UserID)
+);
+
+-- ProjectContributors Table: Store project contributor relationships
+CREATE TABLE ProjectContributors (
+    ContributionID INT PRIMARY KEY AUTO_INCREMENT,
+    ProjectID INT NOT NULL,
+    ContributorUserID INT NOT NULL,
+    IsPullRequest BOOLEAN DEFAULT FALSE,
+    ContributionStatus ENUM('Pending', 'Accepted', 'Rejected') DEFAULT 'Pending',
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    -- Add fields for contribution details
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID),
+    FOREIGN KEY (ContributorUserID) REFERENCES Users(UserID)
+);
+
+-- ProjectRatings Table: Store project ratings (upvotes/downvotes)
+CREATE TABLE ProjectRatings (
+    RatingID INT PRIMARY KEY AUTO_INCREMENT,
+    ProjectID INT NOT NULL,
+    UserID INT NOT NULL,
+    Rating INT NOT NULL, -- 1 for upvote, -1 for downvote
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+-- ProjectTags Table: Store project tags
+CREATE TABLE ProjectTags (
+    TagID INT PRIMARY KEY AUTO_INCREMENT,
+    ProjectID INT NOT NULL,
+    TagName VARCHAR(50) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
+
+-- UserTags Table: Store user tags (e.g., skills, achievements)
+CREATE TABLE UserTags (
+    TagID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT NOT NULL,
+    TagName VARCHAR(50) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+-- Messages Table: Store user-to-user and group chat messages
+CREATE TABLE Messages (
+    MessageID INT PRIMARY KEY AUTO_INCREMENT,
+    SenderUserID INT NOT NULL,
+    ReceiverUserID INT,
+    ProjectID INT,
+    Content TEXT NOT NULL,
+    SentAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    IsGroupMessage BOOLEAN DEFAULT FALSE,
+    -- Add fields to distinguish between P2P and group chats
+    FOREIGN KEY (SenderUserID) REFERENCES Users(UserID),
+    FOREIGN KEY (ReceiverUserID) REFERENCES Users(UserID),
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
+
+-- Follows Table: Store user-to-project and user-to-user follows
+CREATE TABLE Follows (
+    FollowID INT PRIMARY KEY AUTO_INCREMENT,
+    FollowerUserID INT NOT NULL,
+    FollowedUserID INT,
+    FollowedProjectID INT,
+    IsUserFollow BOOLEAN DEFAULT FALSE,
+    IsProjectFollow BOOLEAN DEFAULT FALSE,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (FollowerUserID) REFERENCES Users(UserID),
+    FOREIGN KEY (FollowedUserID) REFERENCES Users(UserID),
+    FOREIGN KEY (FollowedProjectID) REFERENCES Projects(ProjectID)
+);
+
+-- Reports Table: Store generated reports
+CREATE TABLE Reports (
+    ReportID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT NOT NULL,
+    ProjectID INT NOT NULL,
+    ReportContent TEXT,
+    GeneratedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
