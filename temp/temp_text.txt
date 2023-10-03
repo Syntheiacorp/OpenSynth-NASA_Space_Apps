@@ -1,0 +1,72 @@
+1. Login & Signup
+2. Add project(Host)
+3. Request contribution
+4. In apps messaging (p2P & group)
+5. Ranking (projects & users) - voting
+6. 2FA
+7. Tags(project & users) - skill list
+8. Contributors list in project
+9. Creator contributor pairing
+10. Report generation
+11.Search and Filter
+12.Follow
+
+//...............devadethan
+1. Login & Signup and 2FA
+2. Add new project for collaborators to contribute(Host)
+3. contribution - contributers can 1. contribute directly on public projects 2. can ask like a pull request for protected projects
+4. In apps messaging - p2p messaging for users and create group chat for contributers
+5. Ranking (projects & users) - upvoting , downvote , star project 
+7. Tags (project & users) - skill list , languages , acheivements etc can be used to tag people and projects 
+8. Contributors list in project - show list of contributers (avatars or usernames) who have contributed into specif projects 
+9. Creator contributor pairing - recommand contributers to projects with same tags and interests , show contributers with specific skill set to creators of the project
+10. Report generation - generate reports for creators of the project . 
+11.Search and Filter - search and filtering for projects , tags , contributers , creators etc.
+12.Follow other - follow projects for future contribuitions , follow users each other
+
+this is the features listed for new app called OpenSynth . 
+OpenSynth is meant as a " Market place for Open Science projects"
+Where users can host ,collab and contribute on projects
+
+//......................gpt 
+1.Login & Signup and 2FA:
+Implement user registration and authentication using a secure authentication system. You can consider using Auth0 or other authentication providers.
+Enable two-factor authentication (2FA) for added security.
+
+2.Add New Project for Collaborators to Contribute (Host):
+Develop a project creation form where users can provide project details, objectives, and requirements.
+Allow users to invite collaborators to their projects.
+
+3.Contribution:
+Implement a contribution system where contributors can directly contribute to public projects.
+For protected projects, enable contributors to submit contributions as pull requests.
+
+4.In-App Messaging:
+Create a messaging system that supports one-on-one (P2P) messaging between users.
+Implement group chat functionality for project collaborators.
+
+5.Ranking (Projects & Users):
+Add a rating system where users can upvote, downvote, or star projects.
+Implement algorithms to calculate project and user rankings based on these interactions.
+
+6.Tags (Project & Users):
+Allow users to add tags to their profiles to represent their skills, languages, and achievements.
+Implement a tagging system for projects.
+
+7.Contributors List in Project:
+Display a list of project contributors, which can include avatars or usernames.
+Include contribution statistics for each contributor.
+
+8.Creator-Contributor Pairing:
+Use tags and interests to suggest potential contributors to project creators.
+Provide project creators with a list of potential contributors based on required skill sets.
+
+9.Report Generation:
+Develop a feature to generate reports for project creators, summarizing project statistics, contributions, and other relevant data.
+
+10.Search and Filter:
+Implement a robust search and filtering system for projects, tags, contributors, and creators.
+
+11.Follow Other:
+Allow users to follow projects they are interested in for future contributions.
+Enable users to follow other users to stay updated on their activity.
