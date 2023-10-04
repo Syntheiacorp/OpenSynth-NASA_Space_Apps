@@ -12,11 +12,10 @@ CREATE TABLE UserData (
     UserID INT PRIMARY KEY,
     FullName VARCHAR(255),
     ProfileInfo TEXT,
-    -- Add other user-related fields (e.g., date of birth, location, etc.)
+    PreferedJob VARCHAR(255),
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
--- Projects Table: Store project information
 CREATE TABLE Projects (
     ProjectID INT PRIMARY KEY AUTO_INCREMENT,
     Title VARCHAR(255) NOT NULL,
@@ -24,8 +23,26 @@ CREATE TABLE Projects (
     CreatorUserID INT NOT NULL,
     IsPublic BOOLEAN DEFAULT TRUE,
     CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    -- Add other project-related fields (e.g., project tags)
+    -- Add other project-related fields
     FOREIGN KEY (CreatorUserID) REFERENCES Users(UserID)
+);
+
+-- ProjectTags Table: Store project tags
+CREATE TABLE ProjectTags (
+    TagID INT PRIMARY KEY AUTO_INCREMENT,
+    ProjectID INT NOT NULL,
+    TagName VARCHAR(50) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
+
+-- ProjectCategories Table: Store project categories
+CREATE TABLE ProjectCategories (
+    CategoryID INT PRIMARY KEY AUTO_INCREMENT,
+    ProjectID INT NOT NULL,
+    CategoryName VARCHAR(50) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
 );
 
 -- ProjectContributors Table: Store project contributor relationships
