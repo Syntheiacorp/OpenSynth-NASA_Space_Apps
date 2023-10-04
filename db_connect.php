@@ -1,4 +1,4 @@
 <?php
-    $conn = mysqli_connect("localhost","id21350417_syntheia","OOoo!@12","id21350417_opensynth")
+    $conn = mysqli_connect("opensynth.cf5avj80tekl.eu-north-1.rds.amazonaws.com","admin","OOoo1212","opensynth")
     or die("db not connected");
 ?>
