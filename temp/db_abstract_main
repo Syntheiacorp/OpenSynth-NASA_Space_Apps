@@ -36,6 +36,7 @@ CREATE TABLE ProjectTags (
     FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
 );
 
+
 -- ProjectCategories Table: Store project categories
 CREATE TABLE ProjectCategories (
     CategoryID INT PRIMARY KEY AUTO_INCREMENT,
@@ -69,14 +70,7 @@ CREATE TABLE ProjectRatings (
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
--- ProjectTags Table: Store project tags
-CREATE TABLE ProjectTags (
-    TagID INT PRIMARY KEY AUTO_INCREMENT,
-    ProjectID INT NOT NULL,
-    TagName VARCHAR(50) NOT NULL,
-    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
-);
+
 
 -- UserTags Table: Store user tags (e.g., skills, achievements)
 CREATE TABLE UserTags (
