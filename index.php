@@ -1,5 +1,14 @@
+<?php
+  session_start();
+  
+  // The following is the session used to display and hide login/register & user profile accordingly if the user is signed in
+  // $_SESSION['userId'] = 100; 
+  // session_destroy();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Basic metas
     ======================================== -->
@@ -14,7 +23,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Icon fonts
-	======================================== -->
+  ======================================== -->
   <link rel="stylesheet" href="fonts/remixicon.css" />
 
   <!-- links for favicon
@@ -22,7 +31,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon.ico" />
 
   <!-- CSS
-	======================================== -->
+  ======================================== -->
   <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
   <link rel="stylesheet" href="css/vendor/slick.css">
   <link rel="stylesheet" href="css/vendor/slick-theme.css">
@@ -62,58 +71,16 @@
                 <a class="active" href="index.html">Home</a>
               </li>
 
-              <li class="has-dropdown has-menu-child-item">
-                <a href="#">Explore</a>
-                <ul class="submenu">
+              <li class=" has-menu-child-item">
+                <a href="#explore-section">Explore</a>
+                <!-- <ul class="submenu">
                   <li>
                     <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
                   </li>
-                </ul>
+                </ul> -->
               </li>
               <li><a href="activity.html">Activity</a></li>
-              <li class="has-dropdown has-menu-child-item">
-                <a href="#">Community</a>
-                <ul class="submenu">
-                  <li>
-                    <a href="blog.html">Blog</a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html">Blog Details</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="has-dropdown has-menu-child-item">
-                <a href="#">Pages</a>
-                <ul class="submenu">
-                  <li>
-                    <a href="product-details.html">Item Details</a>
-                  </li>
-                  <li>
-                    <a href="authors.html">Authors</a>
-                  </li>
-                  <li>
-                    <a href="author-profile.html">Author Profile</a>
-                  </li>
-                  <li>
-                    <a href="create.html">Create Item</a>
-                  </li>
-                  <li>
-                    <a href="notification.html">Notification</a>
-                  </li>
-                  <li>
-                    <a href="auth/signin/">Sign In</a>
-                  </li>
-                  <li>
-                    <a href="auth/forgot-password/">Forgot Password</a>
-                  </li>
-                  <li>
-                    <a href="auth/signup/">SignUp</a>
-                  </li>
-                  <li>
-                    <a href="404.html">404</a>
-                  </li>
-                </ul>
-              </li>
+
               <li><a href="contact.html">Contact</a></li>
             </ul>
             <!-- End Mainmanu Nav -->
@@ -124,12 +91,12 @@
 
       <div class="header-right d-flex align-items-center">
         <ul class="header-right-inner">
-          <li class=" d-none d-lg-block">
+          <!-- <li class=" d-none d-lg-block">
             <form action="#" class="search-bar">
               <input type="text" name="search" placeholder="Collection, item or user" id="search">
               <button class="search-btn" type="submit"> <i class="ri-search-line"></i></button>
             </form>
-          </li>
+          </li> -->
           <!-- End .search-bar -->
 
           <li class="setting-option d-block  d-lg-none ">
@@ -142,9 +109,23 @@
             </form>
           </li>
           <!-- End .search-mobile-icon -->
+          <?php 
+            if(!isset($_SESSION['userId'])) {
 
-          <li class="wallet-button"> <a href="wallet.html" class="btn btn-gradient btn-small">
-              <span><i class="ri-wallet-3-line"></i>Connect</span></a></li>
+          ?>
+            <li class="wallet-button"> 
+              <a href="auth/signin" class="btn btn-gradient btn-small">
+                <span><i class="ri-wallet-3-line"></i>Login</span>
+              </a>
+            </li>
+            <li class="wallet-button"> 
+              <a href="auth/signup" class="btn btn-gradient btn-small">
+                <span><i class="ri-wallet-3-line"></i>Signup</span>
+              </a>
+            </li>
+          <?php 
+            }
+          ?>
           <!-- End .wallet-button -->
 
           <li class="setting-option mobile-menu-bar d-block d-xl-none">
@@ -153,14 +134,22 @@
             </button>
           </li>
           <!-- End .mobile-menu-bar -->
-          <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
-            <ul class="submenu">
-              <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
-              <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
-              <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
-              <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
-            </ul>
-          </li>
+
+          <?php 
+            if(isset($_SESSION['userId'])) {
+
+          ?>
+            <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
+              <ul class="submenu">
+                <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
+                <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
+                <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
+                <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
+              </ul>
+            </li>
+          <?php 
+            }
+          ?>
           <!-- End .avatar-info -->
 
           <li>
@@ -526,7 +515,7 @@
   <!-- End nft gallery area -->
 
   <!-- Start Explore -->
-  <section class="pt-120 pb-90 masonary-wrapper-activation">
+  <section id="explore-section" class="pt-120 pb-90 masonary-wrapper-activation">
     <div class="container">
       <div class="d-flex-between flex-wrap">
         <div class="section-title">
@@ -1996,4 +1985,5 @@
 
 
 <!-- Mirrored from banu.ibthemespro.com/index.html?storefront=envato-elements by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Oct 2023 06:27:17 GMT -->
+
 </html>

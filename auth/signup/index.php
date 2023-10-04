@@ -1,6 +1,12 @@
+<?php 
+  session_start();
+  require_once(__DIR__ . '/../../config/dbConfig.php');
+  error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 
 <head>
   <!-- Basic metas
@@ -16,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Icon fonts
-	======================================== -->
+  ======================================== -->
   <link rel="stylesheet" href="../../fonts/remixicon.css" />
 
   <!-- links for favicon
@@ -24,13 +30,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon/favicon.ico" />
 
   <!-- CSS
-	======================================== -->
+  ======================================== -->
   <link rel="stylesheet" href="../../css/vendor/bootstrap.min.css" />
   <link rel="stylesheet" href="../../css/vendor/slick.css">
   <link rel="stylesheet" href="../../css/vendor/slick-theme.css">
 
   <!-- Style css -->
   <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    .hidden {
+      display: none !important;
+    }  
+  </style>
 </head>
 
 <body>
@@ -59,59 +70,9 @@
           <nav id="sideNav" class="mainmenu-nav d-none d-xl-block">
             <!-- Start Mainmanu Nav -->
             <ul class="mainmenu">
-              <li class="">
-                <a href="../../index.html">Home</a>
-                <ul class="submenu">
-                  <li>
-                    <a href="index.html">Home Style One </a>
-                  </li>
-                  <li>
-                    <a href="index-2.html">Home Style Two</a>
-                  </li>
-                  <li>
-                    <a href="index-3.html">Home Style Three</a>
-                  </li>
-                  <li>
-                    <a href="index-4.html">Home Style Four </a>
-                  </li>
-                  <li>
-                    <a href="index-5.html">Home Style Five</a>
-                  </li>
-                  <li>
-                    <a href="index-6.html">Home Style Six</a>
-                  </li>
-                  <li>
-                    <a href="index-7.html">Home Style Seven<span class="new">(New)</span></a>
-                  </li>
-                </ul>
-              </li>
 
-              <li class="has-dropdown has-menu-child-item">
-                <a href="#">Explore</a>
-                <ul class="submenu">
-                  <li>
-                    <a href="explore-filter.html">Explore Filter</a>
-                  </li>
-                  <li>
-                    <a href="explore-isotop.html">Explore Isotop</a>
-                  </li>
-                  <li>
-                    <a href="explore-carousel.html">Explore Carousel</a>
-                  </li>
-                  <li>
-                    <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
-                  </li>
-                  <li>
-                    <a href="live-auction-1.html">Live Auction 1</a>
-                  </li>
-                  <li>
-                    <a href="live-auction-2.html">Live Auction 2</a>
-                  </li>
-                  <li>
-                    <a href="live-auction-3.html">Live Auction 3</a>
-                  </li>
-                </ul>
-              </li>
+
+
               <li><a href="activity.html">Activity</a></li>
               <li class="has-dropdown has-menu-child-item">
                 <a href="#">Community</a>
@@ -416,20 +377,31 @@
         </div>
         <div class="col-xl-6 mb-6">
           <div class="signup-wrapper signup d-flex justify-content-center flex-column">
-            <form action="#">
+            <form action="#" method="POST">
               <div class="row">
+
+                <div class="col-md-12 mb-4">
+                  <div class="field-box">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="text" placeholder="mail@domain.com" required>
+                  
+                  </div>
+                  <p class="hidden email-error" style="color: red; margin-top: 10px; margin-bottom: 3px;font-size: 16px;">Invalid email format</p>
+
+                </div>
+
                 <div class="col-md-6 mb-4">
                   <div class="field-box">
                     <label for="name" class="form-label">Name</label>
-                    <input id="name" type="text" placeholder="Name" required>
+                    <input id="name" name="name" type="text" placeholder="Name" required>
                   </div>
                 </div>
                 <!-- End .col -->
 
                 <div class="col-md-6 mb-4">
                   <div class="field-box">
-                    <label for="mail" class="form-label">Email</label>
-                    <input id="mail" type="text" placeholder="Enter your email" required>
+                    <label for="username" class="form-label">Username</label>
+                    <input id="username" name="username" type="text" placeholder="Username" required>
                   </div>
                 </div>
                 <!-- End .col -->
@@ -437,7 +409,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="field-box">
                     <label for="password" class="form-label">Password</label>
-                    <input id="password" type="password" placeholder="Password" required>
+                    <input id="password" name="password" type="password" placeholder="Password" required>
                   </div>
                 </div>
                 <!-- End .col -->
@@ -445,7 +417,7 @@
                 <div class="col-md-6 mb-4">
                   <div class="field-box">
                     <label for="re-password" class="form-label">Re Password</label>
-                    <input id="re-password" type="password" placeholder="Password" required>
+                    <input id="re-password" name="confirm-password" type="password" placeholder="Password" required>
                   </div>
                 </div>
                 <!-- End .col -->
@@ -462,7 +434,7 @@
 
                 <div class="col-md-12 mb-4">
                   <div class="field-box">
-                    <button class="btn btn-gradient w-100 justify-content-center btn-medium {
+                    <button name="submit" class="btn btn-gradient w-100 justify-content-center btn-medium {
                         " type="submit"><span>Sign
                         Up</span></button>
                   </div>
@@ -471,33 +443,7 @@
               </div>
             </form>
 
-            <div class="row justify-content-center text-center">
-              <div class="col-lg-12 mb-3">
-                <span>OR</span>
-              </div>
-              <!-- End .col -->
 
-              <div class="col-lg-6 mb-4">
-                <a href="#" class="d-flex-center register-with metamask-btn">
-                  <i><img src="../../images/icon/metamask.svg" alt="metamask"></i>
-                  <span>Sign in with Metamask</span>
-                </a>
-              </div>
-              <!-- End .col -->
-
-              <div class="col-lg-6 mb-4">
-                <a href="#" class="d-flex-center register-with google-btn">
-                  <i class="ri-google-fill"></i>
-                  <span>SignUp with Google</span>
-                </a>
-              </div>
-              <!-- End .col -->
-
-              <div class="col-lg-12">
-                Already have an account? <a href="signin.html" class="color-primary">Sign in</a>
-              </div>
-              <!-- End .col -->
-            </div>
           </div>
 
         </div>
@@ -603,7 +549,34 @@
 
   <!-- main JS -->
   <script src="../../js/main.js"></script>
+  <script>
+
+  </script>
 </body>
-
-
 </html>
+<?php 
+
+  if(isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $name = $_POST['name'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirm-password'];   
+
+    // echo "working";
+    // echo $email , $name , $username , $password , $confirmPassword;
+
+    // $query = "INSERT INTO Users(`Username`, `Email`, `PasswordHash`, `TwoFactorEnabled`) VALUES ('$username', '$email', '$password', '0')";
+
+
+    // Test code
+    $query = "SELECT * FROM `opensynth_db`.users"; // Permission denied for user 
+
+    $res = mysqli_query($conn, $query);
+    // echo "hello";
+    // print_r($res);
+
+    // echo $query;
+  }
+
+?>
