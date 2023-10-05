@@ -562,24 +562,12 @@ ini_set('display_errors', 1);
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm-password'];   
 
-    // echo "working";
-    // echo $email , $name , $username , $password , $confirmPassword;
-
     $query = "INSERT INTO Users(`Username`, `Email`, `PasswordHash`, `TwoFactorEnabled`) VALUES ('$username', '$email', '$password', '0')";
 
     $res = mysqli_query($conn, $query);
     if (!$res) {
       die("Insert failed: " . mysqli_error($conn));
-}
-
-    // Test code
-    // $query = "SELECT * FROM Users"; // Permission denied for user 
-
-    // $res = mysqli_query($conn, $query);
-    // echo "hello";
-    // print_r($res);
-
-    // echo $query;
+    }
     
   }
 
