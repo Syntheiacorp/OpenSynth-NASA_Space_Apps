@@ -13,7 +13,7 @@
   <!-- Basic metas
     ======================================== -->
   <meta charset="utf-8" />
-  <title>Home </title>
+  <title>Home</title>
   <meta name="robots" content="noindex, follow" />
   <meta name="description" content="" />
 
@@ -58,8 +58,8 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="index.html" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a>
-          <a href="index.html" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a>
+          <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a>
+          <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a>
         </div>
         <!-- End .logo-wrapper -->
 
@@ -68,7 +68,7 @@
             <!-- Start Mainmanu Nav -->
             <ul class="mainmenu">
               <li class="">
-                <a class="active" href="index.html">Home</a>
+                <a class="active" href="">Home</a>
               </li>
 
               <li class=" has-menu-child-item">
@@ -187,124 +187,16 @@
       <nav>
         <!-- Start Mainmanu Nav -->
         <ul class="mainmenu">
-          <li class="has-dropdown has-menu-child-item">
+          <li class="">
             <a class="active" href="index-2.html">Home</a>
-            <ul class="submenu">
-              <li>
-                <a href="index.html" class="active">Home Style One </a>
-              </li>
-              <li>
-                <a href="index-2.html">Home Style Two</a>
-              </li>
-              <li>
-                <a href="index-3.html">Home Style Three</a>
-              </li>
-              <li>
-                <a href="index-4.html">Home Style Four </a>
-              </li>
-              <li>
-                <a href="index-5.html">Home Style Five</a>
-              </li>
-              <li>
-                <a href="index-6.html">Home Style Six</a>
-              </li>
-              <li>
-                <a href="index-7.html">Home Style Seven<span class="new">(New)</span></a>
-              </li>
-            </ul>
           </li>
 
-          <li class="has-dropdown has-menu-child-item">
+          <li class="">
             <a href="#">Explore</a>
-            <ul class="submenu">
-              <li>
-                <a href="explore-filter.html">Explore Filter</a>
-              </li>
-              <li>
-                <a href="explore-isotop.html">Explore Isotop</a>
-              </li>
-              <li>
-                <a href="explore-carousel.html">Explore Carousel</a>
-              </li>
-              <li>
-                <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
-              </li>
-              <li>
-                <a href="live-auction-1.html">Live Auction 1</a>
-              </li>
-              <li>
-                <a href="live-auction-2.html">Live Auction 2</a>
-              </li>
-              <li>
-                <a href="live-auction-3.html">Live Auction 3</a>
-              </li>
-            </ul>
           </li>
 
           <li><a href="activity.html">Activity</a></li>
 
-          <li class="has-dropdown has-menu-child-item">
-            <a href="#">Community</a>
-            <ul class="submenu">
-              <li>
-                <a href="blog.html">Blog</a>
-              </li>
-              <li>
-                <a href="blog-details.html">Blog Details</a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="has-dropdown has-menu-child-item">
-            <a href="#">Pages</a>
-            <ul class="submenu">
-              <li>
-                <a href="product-details.html">Item Details</a>
-              </li>
-              <li>
-                <a href="authors.html">Authors</a>
-              </li>
-              <li>
-                <a href="author-profile.html">Author Profile</a>
-              </li>
-              <li>
-                <a href="all-sellers.html">All Sellers</a>
-              </li>
-              <li>
-                <a href="all-sellers-2.html">All Sellers 2</a>
-              </li>
-              <li>
-                <a href="popular-collections.html">Popular Collections</a>
-              </li>
-              <li>
-                <a href="popular-collections-2.html">Popular Collections-2</a>
-              </li>
-              <li>
-                <a href="wallet.html">Wallet Connect</a>
-              </li>
-              <li>
-                <a href="create.html">Create Item</a>
-              </li>
-              <li>
-                <a href="notification.html">Notification</a>
-              </li>
-              <li>
-                <a href="signin.html">Sign In</a>
-              </li>
-              <li>
-                <a href="signin-2.html">Sign In 2</a>
-              </li>
-              <li>
-                <a href="forgot-password.html">Forgot Password</a>
-              </li>
-              <li>
-                <a href="signup.html">SignUp</a>
-              </li>
-              <li>
-                <a href="404.html">404</a>
-              </li>
-            </ul>
-          </li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <!-- End Mainmanu Nav -->
@@ -1569,147 +1461,6 @@
     <!-- End .slick-activation-01 -->
   </section>
   <!-- End Live Auction -->
-
-  <!-- Start Popular Collection -->
-  <section class="section-bg-separation-2 ptb-120">
-    <div class="container">
-      <div class="section-title">
-        <span class="subtitle">Browse by category</span>
-        <h2>Popular Collections</h2>
-      </div>
-      <!-- End .section-title -->
-      <div class="slider popular-collection-active slick-gutter-15 slick-arrow-betwee">
-        <div class="popular-collection-style-one">
-          <a href="popular-collections.html">
-            <div class="large-thumbnail"> <img src="images/popular/3.jpg" alt="popular collection"></div>
-            <!-- End .large-thumbnail -->
-            <div class="small-thumb-group">
-              <img src="images/popular/small/1.png" alt="popular collection">
-              <img src="images/popular/small/2.png" alt="popular collection">
-              <img src="images/popular/small/3.png" alt="popular collection">
-            </div>
-            <!-- End .small-thumb-group -->
-          </a>
-          <div class="content d-flex-between pt-3">
-            <div class="inner">
-              <h4 class="title "><a href="popular-collections.html">Trading Cards</a></h4>
-              <span><a href="explore-filter-sidebar.html">538 Items</a></span>
-            </div>
-            <button class="reaction-btn position-static "><i class="ri-heart-fill"></i><span>32</span></button>
-          </div>
-        </div>
-        <!-- End .popular-collection-style-one -->
-
-        <div class="popular-collection-style-one">
-          <a href="popular-collections.html">
-            <div class="large-thumbnail"> <img src="images/popular/11.jpg" alt="popular collection"></div>
-            <!-- End .large-thumbnail -->
-            <div class="small-thumb-group">
-              <img src="images/popular/small/10.png" alt="popular collection">
-              <img src="images/popular/small/11.png" alt="popular collection">
-              <img src="images/popular/small/12.png" alt="popular collection">
-            </div>
-            <!-- End .small-thumb-group -->
-          </a>
-          <div class="content d-flex-between pt-3">
-            <div class="inner">
-              <h4 class="title "><a href="popular-collections.html">Virtual worlds</a></h4>
-              <span><a href="explore-filter-sidebar.html">1039 Items</a></span>
-            </div>
-            <button class="reaction-btn position-static "><i class="ri-heart-fill"></i><span>41</span></button>
-          </div>
-        </div>
-        <!-- End .popular-collection-style-one -->
-
-        <div class="popular-collection-style-one">
-          <a href="popular-collections.html">
-            <div class="large-thumbnail"> <img src="images/popular/12.jpg" alt="popular collection"></div>
-            <!-- End .large-thumbnail -->
-            <div class="small-thumb-group">
-              <img src="images/popular/small/13.png" alt="popular collection">
-              <img src="images/popular/small/7.png" alt="popular collection">
-              <img src="images/popular/small/14.png" alt="popular collection">
-            </div>
-            <!-- End .small-thumb-group -->
-          </a>
-          <div class="content d-flex-between pt-3">
-            <div class="inner">
-              <h4 class="title "><a href="popular-collections.html">Collectibles</a></h4>
-              <span><a href="explore-filter-sidebar.html">3654 Items</a></span>
-            </div>
-            <button class="reaction-btn position-static "><i class="ri-heart-fill"></i><span>25</span></button>
-          </div>
-        </div>
-        <!-- End .popular-collection-style-one -->
-
-        <div class="popular-collection-style-one">
-          <a href="popular-collections.html">
-            <div class="large-thumbnail"> <img src="images/popular/10.jpg" alt="popular collection"></div>
-            <!-- End .large-thumbnail -->
-            <div class="small-thumb-group">
-              <img src="images/popular/small/7.png" alt="popular collection">
-              <img src="images/popular/small/8.png" alt="popular collection">
-              <img src="images/popular/small/9.png" alt="popular collection">
-            </div>
-            <!-- End .small-thumb-group -->
-          </a>
-          <div class="content d-flex-between pt-3">
-            <div class="inner">
-              <h4 class="title "><a href="popular-collections.html">Collectibles</a></h4>
-              <span><a href="explore-filter-sidebar.html">3654 Items</a></span>
-            </div>
-            <button class="reaction-btn position-static "><i class="ri-heart-fill"></i><span>25</span></button>
-          </div>
-        </div>
-        <!-- End .popular-collection-style-one -->
-
-        <div class="popular-collection-style-one">
-          <a href="popular-collections.html">
-            <div class="large-thumbnail"> <img src="images/popular/1.jpg" alt="popular collection"></div>
-            <!-- End .large-thumbnail -->
-            <div class="small-thumb-group">
-              <img src="images/popular/small/1.png" alt="popular collection">
-              <img src="images/popular/small/2.png" alt="popular collection">
-              <img src="images/popular/small/3.png" alt="popular collection">
-            </div>
-            <!-- End .small-thumb-group -->
-          </a>
-          <div class="content d-flex-between pt-3">
-            <div class="inner">
-              <h4 class="title "><a href="popular-collections.html">Trading Cards</a></h4>
-              <span><a href="explore-filter-sidebar.html">538 Items</a></span>
-            </div>
-            <button class="reaction-btn position-static "><i class="ri-heart-fill"></i><span>32</span></button>
-          </div>
-        </div>
-        <!-- End .popular-collection-style-one -->
-
-        <div class="popular-collection-style-one">
-          <a href="popular-collections.html">
-            <div class="large-thumbnail"> <img src="images/popular/2.jpg" alt="popular collection"></div>
-            <!-- End .large-thumbnail -->
-            <div class="small-thumb-group">
-              <img src="images/popular/small/4.png" alt="popular collection">
-              <img src="images/popular/small/5.png" alt="popular collection">
-              <img src="images/popular/small/6.png" alt="popular collection">
-            </div>
-            <!-- End .small-thumb-group -->
-          </a>
-          <div class="content d-flex-between pt-3">
-            <div class="inner">
-              <h4 class="title "><a href="popular-collections.html">Virtual worlds</a></h4>
-              <span><a href="explore-filter-sidebar.html">1039 Items</a></span>
-            </div>
-            <button class="reaction-btn position-static "><i class="ri-heart-fill"></i><span>41</span></button>
-          </div>
-        </div>
-        <!-- End .popular-collection-style-one -->
-      </div>
-      <!-- End .popular-collection-active -->
-    </div>
-    <!-- End .container -->
-  </section>
-  <!-- End Popular Collection -->
 
   <!-- Start Setup Wallet -->
   <section class="wallet-setup ptb-120">
