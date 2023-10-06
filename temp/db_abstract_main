@@ -120,3 +120,6 @@ CREATE TABLE Reports (
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
 );
+
+
+lemme try changing 
