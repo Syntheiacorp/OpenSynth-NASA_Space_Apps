@@ -367,9 +367,8 @@ ini_set('display_errors', 1);
   <section class="pt-120 pb-90">
     <div class="container">
       <div class="mb-6 sign-wrapeer">
-        <h2 class="mb-2">Sigup To NFTs</h2>
-        <p class="medium">Adipisicing elit. Nam est laudantium libero
-          suscipit sapiente.</p>
+        <h2 class="mb-2">Sigup To OpenSynth</h2>
+        <p class="medium">A MarketPlace for Free and OpenScience projects.</p>
       </div>
       <div class="row ali">
         <div class="col-lg-6 mb-6">
@@ -377,7 +376,7 @@ ini_set('display_errors', 1);
         </div>
         <div class="col-xl-6 mb-6">
           <div class="signup-wrapper signup d-flex justify-content-center flex-column">
-            <form action="#" method="POST">
+            <form action="#" method="POST" class = "needs-validation" novalidate>
               <div class="row">
 
                 <div class="col-md-12 mb-4">
