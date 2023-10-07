@@ -358,7 +358,7 @@ echo $time_ago;
           <!-- End comment-box-wrapper -->
 <div class="col-xl-4 mb-6">
           <aside class="sidebar">
-            <div class="single-widget widget_categories" style='transform: translate(0px, 30px);'>
+            <div class="single-widget widget_categories" style='transform: translate(-30px, 30px);'>
               <h3 class="title">Categories</h3>
               <div class="inner">
                 <ul class="category-list ">
@@ -405,7 +405,7 @@ echo $time_ago;
             </div> -->
 
 
-            <div class="single-widget widget-tag mt-8" style="transform: translate(500px, -500px);">
+            <div class="single-widget widget-tag mt-8" style="transform: translate(440px, -500px);">
               <h3 class="title">Tags</h3>
               <div class="inner mt-4">
                 <div class="filter-group">
@@ -424,7 +424,7 @@ echo $time_ago;
           </aside>
         </div>
           <div class="styler-1 contact-form-wrapper" style='margin-top: -260px;'>
-            <h3 class="mb-1">Leave a Reply</h3>
+            <h3 class="mb-1">Leave a Comment</h3>
             <p>Your email address will not be published.</p>
             <div class="form-inner">
               <form action="#">
