@@ -212,12 +212,11 @@
         <div class="row align-items-center">
           <div class="col-xxl-8 col-xl-7 col-lg-7">
             <div class="banner-content">
-              <h1 class="mb-6 title" data-aos="fade-up">Collect your <br>
-                <span>digital art NFTs</span>
+              <h1 class="mb-6 title" data-aos="fade-up">Where Innovation <br>
+                <span>Meets Collaboration</span>
               </h1>
-              <p data-aos="fade-up" data-aos-delay="100">Marketplace for monster character
-                collections <br>
-                non fungible token NFTs.</p>
+              <p data-aos="fade-up" data-aos-delay="100">Explore the future of technology  <br>
+                in our open source marketplace</p>
               <div class="group-btn mt-8" data-aos="fade-up" data-aos-delay="200">
                 <a href="explore-filter-sidebar.html" class="btn btn-gradient"><span><i class="ri-rocket-line"></i>
                     Explore</span></a>
@@ -229,6 +228,7 @@
               <img src="images/shape/3-light.png" alt="shape" class="shape shape-3 light rotate-360">
             </div>
             <!-- End banner-content -->
+            
 
           </div>
           <!-- End .col -->
@@ -271,7 +271,7 @@
   <section class="ptb-120 section-bg-separation-2">
     <div class="section-title text-center">
       <span class="subtitle">Exclusive Assets</span>
-      <h2>NFT Gallery</h2>
+      <h2>Gallery</h2>
     </div>
     <!-- End .section-title -->
     <div class="nft-gallery-activation slider slick-pagination-50">
@@ -652,7 +652,7 @@
             </div>
             <!-- End .content -->
           </div>
-        </div>
+         </div>
 
         <!-- End .explore-style-one -->
         <div class="grid-item cat--4">
@@ -817,41 +817,48 @@
     <div class="container">
       <div class="section-title">
         <span class="subtitle">HOW IT WORKS</span>
-        <h2>Create & sell your NFTs</h2>
+        <h2>Explore,Contribute,Transform</h2>
       </div>
       <!-- End .section-title -->
       <div class=" slider wallet-activation slick-arrow-between slick-gutter-15">
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/1.png" alt="wallet">
-          <h3 class="title mb-3">set up your wallet</h3>
-          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
-            personalized banner. To upload yours, press the pencil icon in the top right.</p>
+          <h3 class="title mb-3">Start Your Journey</h3>
+          <p>Begin by signing up on our open source marketplace website. Create your open source project, 
+            define its goals, and set the stage for collaboration. Utilize our user-friendly project creation tools to make your vision a reality. 
+            Join the vibrant community of developers, designers, and enthusiasts to shape the future of your project.</p>
         </div>
         <!-- End .card-block-style-one -->
 
 
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/2.png" alt="wallet">
-          <h3 class="title mb-3">Create your collection</h3>
-          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
-            personalized banner. To upload yours, press the pencil icon in the top right.</p>
+          <h3 class="title mb-3">Embrace Teamwork</h3>
+          <p>Invite collaborators to your project with ease and foster a diverse and inclusive team. 
+            Utilize version control and issue tracking to streamline development and maintain transparency
+             Leverage pull requests and code reviews for high-quality contributions. Experience the power of collective innovation as your project evolves and grows
+
+          </p>
         </div>
         <!-- End .card-block-style-one -->
 
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/3.png" alt="wallet">
-          <h3 class="title mb-3">List them for sale</h3>
-          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
-            personalized banner. To upload yours, press the pencil icon in the top right.</p>
+          <h3 class="title mb-3">Join the Conversation</h3>
+          <p>Explore our lively forum where members discuss projects, share insights, and seek help. 
+            Find solutions to challenges, get feedback on your work, and connect with like-minded individuals.
+             Contribute your expertise to discussions or initiate new topics to spark valuable conversations.
+             The forum is your space to learn, grow, and collaborate beyond project boundaries</p>
         </div>
 
         <!-- End .card-block-style-one -->
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/3.png" alt="wallet">
-          <h3 class="title mb-3">List them for sale</h3>
-          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
-            personalized banner. To upload yours, press the pencil icon in the top right.</p>
-        </div>
+          <h3 class="title mb-3">Achieve Recognition</h3>
+          <p>Stand out in the community by actively participating in projects, discussions, and contributions. 
+        Earn reputation points and badges as you consistently contribute to open source projects. Climb the leaderboard and gain recognition as a top contributor in your area of expertise.
+         Showcase your skills and dedication, fostering collaboration and mentorship opportunities</p>
+      </div>
         <!-- End .card-block-style-one -->
       </div>
       <!-- End .row -->
