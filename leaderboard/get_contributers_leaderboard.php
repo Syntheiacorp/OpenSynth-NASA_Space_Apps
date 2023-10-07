@@ -1,7 +1,8 @@
 <?php
 // Establish a MySQL database connection here if not already established
 // Include database connection code here
-
+session_start();
+include_once('../config/dbConfig.php');
 // MySQL Query for Ranking Contributors
 $query = "
     SELECT
@@ -20,6 +21,7 @@ $query = "
 ";
 
 $result = mysqli_query($connection, $query);
+echo $result;
 
 $data = array();
 

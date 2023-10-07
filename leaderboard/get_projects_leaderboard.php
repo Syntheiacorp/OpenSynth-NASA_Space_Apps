@@ -1,7 +1,8 @@
 <?php
 // Establish a MySQL database connection here if not already established
 // Include database connection code here
-
+session_start();
+include_once('../config/dbConfig.php');
 // MySQL Query for Ranking Projects
 $query = "
     SELECT
@@ -35,5 +36,8 @@ if ($result) {
     $data[] = array("Rank" => "Error fetching data", "Name" => "", "Score" => "");
 }
 
-echo json_encode(array('data' => $data));
+// JSON response
+$response = array('data' => $data);
+
+echo json_encode($response);
 ?>
