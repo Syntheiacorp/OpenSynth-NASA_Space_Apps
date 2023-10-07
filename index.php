@@ -68,7 +68,7 @@
             <!-- Start Mainmanu Nav -->
             <ul class="mainmenu">
               <li class="">
-                <a class="active" href="">Home</a>
+                <a class="active" href="#">Home</a>
               </li>
 
               <li class=" has-menu-child-item">
@@ -308,7 +308,7 @@
 
         <div
           class="button-group default-tab-list isotop-filter flex-wrap filters-button-group d-flex justify-content-start justify-content-lg-end mb-6 ">
-          <button data-filter="*" class="is-checked"><span class="filter-text">All NFTs</span></button>
+          <button data-filter="*" class="is-checked"><a href="projects"><span class="filter-text">All NFTs</span></a></button>
           <button data-filter=".cat--1"><span class="filter-text">Art</span></button>
           <button data-filter=".cat--2"><span class="filter-text">Collectibles</span></button>
           <button data-filter=".cat--3"><span class="filter-text">Virtual Worlds</span></button>
