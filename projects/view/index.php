@@ -189,7 +189,6 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
   $row = mysqli_fetch_assoc($result)
 
-
 ?>
   <!-- Start banner area -->
   <section style="position:static;top:1;padding-top:21px"class="inner-page-banner bg-2 bg-image">
@@ -291,25 +290,6 @@ if (mysqli_num_rows($result) > 0) {
               </div>
             </div>
 
-            <!-- <div class="single-widget recent-post mt-8">
-              <h3 class="title">Recent Posts</h3>
-              <div class="inner">
-                <ul>
-                  <li><a class="d-block" href="blog-details.html">Announcing a contract upgrade </a><span
-                      class="cate small">Development</span>
-                  </li>
-                  <li><a class="d-block " href="blog-details.html">Important updates for listing </a><span
-                      class="cate small">UX
-                      Design</span>
-                  </li>
-                  <li><a class="d-block" href="blog-details.html">Introducing the NFT Security Group </a><span
-                      class="cate small">Development</span></li>
-                  <li><a class="d-block" href="blog-details.html">A historic NFT collection web 3.0</a><span
-                      class="cate small">Marketing</span></li>
-                </ul>
-              </div>
-            </div> -->
-
 
             <div class="single-widget widget-tag mt-8" style="transform: translate(440px, -500px);">
               <h3 class="title">Tags</h3>
@@ -367,43 +347,49 @@ if (mysqli_num_rows($result) > 0) {
 
         </div>
         <?php 
-          $cmt_fetch_query = "SELECT
-          pc.CommentID,
-          pc.UserID,
-          u.Username AS CommenterUsername,
-          pc.CommentText
-      FROM
-          ProjectComments pc
-      INNER JOIN
-          Users u ON pc.UserID = u.UserID
-      WHERE
-          pc.ProjectID = ProjectID='".$_GET['id']."'
-      ORDER BY
-          pc.CommentID DESC;";
+$cmt_fetch_query = "SELECT
+    pc.CommentID,
+    pc.UserID,
+    u.Username AS CommenterUsername,
+    pc.CommentText
+FROM
+    ProjectComments pc
+INNER JOIN
+    Users u ON pc.UserID = u.UserID
+WHERE
+    pc.ProjectID = ProjectID='".$_GET['id']."'
+ORDER BY
+    pc.CommentID DESC;";
 
-          $cmt_fetch_res = mysqli_query($conn,$cmt_fetch_query);
-        ?>
-        <div class="comment-box-wrapper styler-1">
-            <h2 class="mb-8">3 Comments</h2>
-            <ul class="comment-box-inner">
-            <?php while($row = mysqli_fetch_array($cmt_fetch_res)){ ?>
-              <li class="single-comment-box d-flex-between ">
+$cmt_fetch_res = mysqli_query($conn, $cmt_fetch_query);
+?>
+
+<div class="comment-box-wrapper styler-1">
+    <h2 class="mb-8">3 Comments</h2>
+    <ul class="comment-box-inner">
+        <?php while ($row = mysqli_fetch_assoc($cmt_fetch_res)) { ?>
+            <li class="single-comment-box d-flex-between">
                 <div class="inner d-flex-start">
-                  <a href="#" class="avatar">
-                    <img src="images/blog-details/avatar/1.png" alt="author">
-                  </a>
-                  <!-- End .avatar -->
-                  <div class="content">
-                    <h5 class="title"><a href="#"><?php echo $row['CommenterUsername']?> <?php echo "flag"?></a><span class="date-post">Feb 8,2022</span></h5>
-                    <p>The names "John Doe" is used as placeholder true
-                      identity is must be withheld in discussion.</p>
-                  </div>
+                    <a href="#" class="avatar">
+                        <img src="images/blog-details/avatar/1.png" alt="author">
+                    </a>
+                    <!-- End .avatar -->
+                    <div class="content">
+                        <h5 class="title">
+                            <a href="#"><?php echo $row['CommenterUsername']; ?> <?php echo "flag" ?></a>
+                            <span class="date-post">Feb 8, 2022</span>
+                        </h5>
+                        <p><?php echo $row['CommentText']; ?></p>
+                    </div>
                 </div>
                 <!-- End .inner -->
                 <div class="reply"><i class="ri-arrow-right-line"></i></div>
                 <!-- End reply -->
-              </li>
-              <?php }?>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
+
               <!-- End .single-comment-box -->
             </ul>
           </div>
