@@ -4,7 +4,7 @@
   <!-- Basic metas
   ======================================== -->
   <meta charset="utf-8" />
-  <title>Create || Banu - NFT Marketplace Template</title>
+  <title>Host Projects</title>
   <meta name="robots" content="noindex, follow" />
   <meta name="description" content="" />
 
