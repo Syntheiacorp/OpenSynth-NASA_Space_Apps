@@ -3,8 +3,8 @@
     include_once("../../config/dbConfig.php");
 
     $email = $_POST['email'];
-    $passHash = hash('sha256', $_POST['remember']);
-    $remember = $_POST['remember'];
+    $passHash = hash('sha256', $_POST['password']);
+    // $remember = $_POST['remember'];
 
     $query = "SELECT * FROM `Users` WHERE Email = '$email' AND PasswordHash = '$passHash'";
 

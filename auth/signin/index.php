@@ -56,6 +56,14 @@
 
           <!-- End logo -->
           <h2>Sign in NFTs</h2>
+          <?php 
+            if(isset($_GET['login'])) {
+              if($_GET['login'] == 'error') { 
+                  echo "<p style='color: red; margin-top: 10px; margin-bottom: 5px; font-size: 16px'>Invalid email id or password</p>";
+              }
+            }
+          ?>
+          
         </div>
         <!-- End signin-header -->
         <div class="row">
@@ -76,12 +84,12 @@
           <!-- End .col -->
 
           <div class="col-md-6 col-sm-6 col-6 mb-2">
-            <div class="field-box">
+            <!-- <div class="field-box">
               <label class="checkbox">
-                <input class="form-check-input me-1" name="remember" type="checkbox" value="" required>
+                <input class="form-check-input me-1" name="remember" type="checkbox" value="">
                 Remember
               </label>
-            </div>
+            </div> -->
           </div>
           <!-- End .col -->
 
