@@ -22,21 +22,21 @@ session_start();
 
   <!-- Icon fonts
 	======================================== -->
-  <link rel="stylesheet" href="../fonts/remixicon.css" />
+  <link rel="stylesheet" href="../../fonts/remixicon.css" />
 
 
   <!-- links for favicon
     ======================================== -->
-  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon/favicon.ico" />
 
   <!-- CSS
 	======================================== -->
-  <link rel="stylesheet" href="../css/vendor/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/vendor/slick.css">
-  <link rel="stylesheet" href="../css/vendor/slick-theme.css">
+  <link rel="stylesheet" href="../../css/vendor/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../css/vendor/slick.css">
+  <link rel="stylesheet" href="../../css/vendor/slick-theme.css">
 
   <!-- Style css -->
-  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../../css/style.css" />
 </head>
 
 <body>
@@ -44,7 +44,7 @@ session_start();
   <div id="preloader">
     <div id="ctn-preloader" class="ctn-preloader">
       <div class="animation-preloader">
-        <div class="icon"><img src="images/logo-preloader.png" alt="logo" class="m-auto d-block"> <span></span>
+        <div class="icon"><img src="../../images/logo-preloader.png" alt="logo" class="m-auto d-block"> <span></span>
         </div>
       </div>
     </div>
@@ -180,7 +180,7 @@ session_start();
   <!-- End mobile menu area -->
   <?php
 // Include the database configuration file
-require("../config/dbConfig.php");
+require("../../config/dbConfig.php");
 
 // Write your SQL query and fetch data here
 $sql = "SELECT * FROM Projects where ProjectID='".$_GET['id']."' ";
@@ -572,21 +572,21 @@ if (mysqli_num_rows($result) > 0) {
 
 
   <!-- JS ============================================ -->
-  <script src="../js/vendor/jquery.js"></script>
-  <script src="../js/vendor/jquery.nice-select.min.js"></script>
-  <script src="../js/vendor/modernizer.min.js"></script>
-  <script src="../js/vendor/slick.min.js"></script>
-  <script src="../js/vendor/bootstrap.min.js"></script>
-  <script src="j../s/vendor/waypoint.js"></script>
-  <script src="../js/vendor/js.cookie.js"></script>
-  <script src="../js/vendor/count-down.js"></script>
-  <script src="../js/vendor/counter-up.js"></script>
-  <script src="../js/vendor/isotop.js"></script>
-  <script src="../js/vendor/imageloaded.js"></script>
-  <script src="../js/vendor/jquery.custom-file-input.js"></script>
+  <script src="../../js/vendor/jquery.js"></script>
+  <script src="../../js/vendor/jquery.nice-select.min.js"></script>
+  <script src="../../js/vendor/modernizer.min.js"></script>
+  <script src="../../js/vendor/slick.min.js"></script>
+  <script src="../../js/vendor/bootstrap.min.js"></script>
+  <script src="../../js/vendor/waypoint.js"></script>
+  <script src="../../js/vendor/js.cookie.js"></script>
+  <script src="../../js/vendor/count-down.js"></script>
+  <script src="../../js/vendor/counter-up.js"></script>
+  <script src="../../js/vendor/isotop.js"></script>
+  <script src="../../js/vendor/imageloaded.js"></script>
+  <script src="../../js/vendor/jquery.custom-file-input.js"></script>
 
   <!-- main JS -->
-  <script src="../js/main.js"></script>
+  <script src="../../js/main.js"></script>
 </body>
 
 
