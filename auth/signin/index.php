@@ -55,7 +55,7 @@
           </div>
 
           <!-- End logo -->
-          <h2>Sign in OpenSynth</h2>
+          <h2>Sign in NFTs</h2>
         </div>
         <!-- End signin-header -->
         <div class="row">
@@ -78,7 +78,7 @@
           <div class="col-md-6 col-sm-6 col-6 mb-2">
             <div class="field-box">
               <label class="checkbox">
-                <input class="form-check-input me-1" name="remember" type="checkbox" value="">
+                <input class="form-check-input me-1" name="remember" type="checkbox" value="" required>
                 Remember
               </label>
             </div>
@@ -107,19 +107,19 @@
             </div>
             <!-- End .col -->
 
-            <!-- <div class="col-lg-12 mb-4">
+            <div class="col-lg-12 mb-4">
               <a href="#" class="d-flex-center register-with metamask-btn">
                 <i><img src="../../images/icon/metamask.svg" alt="metamask"></i>
                 <span>Sign in with Metamask</span>
               </a>
-            </div> -->
+            </div>
             <!-- End .col -->
-            <!-- <div class="col-lg-12 mb-4">
+            <div class="col-lg-12 mb-4">
               <a href="#" class="d-flex-center register-with google-btn">
                 <i class="ri-google-fill"></i>
                 <span>Sign in with Google</span>
               </a>
-            </div> -->
+            </div>
             <!-- End .col -->
 
             <div class="col-lg-12">

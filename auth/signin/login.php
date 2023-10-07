@@ -3,10 +3,10 @@
     include_once("../../config/dbConfig.php");
 
     $email = $_POST['email'];
-    $passHash = hash('sha256', $_POST['remember']);
-    $remember = $_POST['$remember'];
+    $passHash = hash('sha256', $_POST['password']);
+    // $remember = $_POST['remember'];
 
-    $query = "SELECT * FROM Users WHERE email = '$email' AND password = '$passHash'";
+    $query = "SELECT * FROM `Users` WHERE Email = '$email' AND PasswordHash = '$passHash'";
 
     $res = mysqli_query($conn, $query);
 
@@ -15,9 +15,9 @@
 
         $_SESSION['userId'] = $data['UserID'];
 
-        echo "<script> window.location.href='../../dashboard'</script>";
+        echo "<script> window.location.href='../../'</script>";
     }
     else {
-        echo "<script> window.location.href='/?login=error'</script>";
+        echo "<script> window.location.href='../signin?login=error'</script>";
     }   
 ?>
