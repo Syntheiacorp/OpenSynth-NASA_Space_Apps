@@ -11,7 +11,7 @@ session_start();
   <!-- Basic metas
   ======================================== -->
   <meta charset="utf-8" />
-  <title>Blog Details</title>
+  <title>Project Details</title>
   <meta name="robots" content="noindex, follow" />
   <meta name="description" content="" />
 
@@ -70,16 +70,16 @@ session_start();
               </li>
 
               <li class=" has-menu-child-item">
-                <a href="#explore-section">Explore</a>
+                <!-- <a href="#explore-section">Explore</a> -->
                 <!-- <ul class="submenu">
                   <li>
                     <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
                   </li>
                 </ul> -->
               </li>
-              <li><a href="activity.html">Activity</a></li>
+              <!-- <li><a href="activity.html">Activity</a></li> -->
 
-              <li><a href="contact.html">Contact</a></li>
+              <!-- <li><a href="contact.html">Contact</a></li> -->
             </ul>
             <!-- End Mainmanu Nav -->
           </nav>
@@ -107,8 +107,8 @@ session_start();
             </form>
           </li>
           <!-- End .search-mobile-icon -->
-          <?php 
-            if(!isset($_SESSION['userId'])) {
+          <!-- <?php 
+            // if(!isset($_SESSION['userId'])) {
 
           ?>
             <li class="wallet-button"> 
@@ -122,8 +122,8 @@ session_start();
               </a>
             </li>
           <?php 
-            }
-          ?>
+            // }
+          ?> -->
           <!-- End .wallet-button -->
 
           <li class="setting-option mobile-menu-bar d-block d-xl-none">
@@ -202,31 +202,14 @@ session_start();
     </div>
   </div>
   <!-- End mobile menu area -->
-
-  <!-- Start banner area -->
-  <section class="inner-page-banner bg-2 bg-image">
-    <div class="container">
-      <div class="inner text-center">
-        <h1 class="title">Project  Details</h1>
-        <nav class="mt-4">
-          <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Community</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Project Details</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-    <!-- End .container -->
-  </section>
-  <!-- End banner area -->
-<?php
+  <?php
 // Include the database configuration file
 require("../config/dbConfig.php");
 
 // Write your SQL query and fetch data here
 $sql = "SELECT * FROM Projects where ProjectID='".$_GET['id']."' ";
 $result = mysqli_query($conn, $sql);
+// echo $sql;
 
 // Rest of your code to fetch and display data
 
@@ -242,6 +225,24 @@ if (mysqli_num_rows($result) > 0) {
 
 
 ?>
+  <!-- Start banner area -->
+  <section style="position:static;top:1;padding-top:21px"class="inner-page-banner bg-2 bg-image">
+    <div class="container">
+      <div class="inner text-center">
+        <h1 class="title"><?php echo $row['Title'];?></h1>
+        <nav class="mt-4">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Community</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Project Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- End .container -->
+  </section>
+  <!-- End banner area -->
+
   <!-- Start Blog Details area -->
   <section class="pt-120 pb-90 blog-details-wrapper">
     <div class="container">
@@ -255,9 +256,38 @@ if (mysqli_num_rows($result) > 0) {
             <h2 class="mb-2"><?php echo $row['Title'];?></h2>
             
             <ul class="meta">
-              <li>27 April</li>
-              <li><a href="#">Development</a></li>
-              <li class="date"><i class="ri-time-line"></i>4 Hour Ago</li>
+              
+              <li>
+                <?php 
+                echo $row['CreatedAt'];
+                ?> 
+              
+
+              </li>  
+              <!-- <li><a href="#">Development</a></li> -->
+              <li class="date"><i class="ri-time-line"></i><?php
+// Assuming $row['CreatedAt'] contains your timestamp from the database
+
+$timestamp = strtotime($row['CreatedAt']);
+$current_time = time(); // Current timestamp
+
+$time_diff = $current_time - $timestamp;
+
+if ($time_diff < 60) {
+    $time_ago = $time_diff . " seconds ago";
+} elseif ($time_diff < 3600) {
+    $minutes = floor($time_diff / 60);
+    $time_ago = $minutes . " minutes ago";
+} elseif ($time_diff < 86400) {
+    $hours = floor($time_diff / 3600);
+    $time_ago = $hours . " hours ago";
+} else {
+    $days = floor($time_diff / 86400);
+    $time_ago = $days . " days ago";
+}
+
+echo $time_ago;
+?></li>
             </ul>
             <p><?php echo $row['Description'];?> </p>
             <!-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
@@ -311,7 +341,7 @@ if (mysqli_num_rows($result) > 0) {
               lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus. Usu
               id
               iriure tritani.</p> -->
-            <div class="d-flex-center post-share justify-content-start justify-content-md-end mt-12 mb-6">
+            <!-- <div class="d-flex-center post-share justify-content-start justify-content-md-end mt-12 mb-6">
               <div class="title pr-4 text-white h5 mb-2">Share:</div>
               <div class="social pl-0 mb-0 mb-2">
                 <a class="icon-facebook" href="#"><i class="ri-facebook-line"></i></a>
@@ -319,12 +349,119 @@ if (mysqli_num_rows($result) > 0) {
                 <a class="icon-instagram" href="#"><i class="ri-instagram-line"></i></a>
                 <a class="icon-linkedin" href="#"><i class="ri-linkedin-line"></i></a>
               </div>
-            </div>
+            </div> -->
             <!-- End post-share -->
           </div>
           <hr>
 
-          <div class="comment-box-wrapper styler-1">
+        
+          <!-- End comment-box-wrapper -->
+<div class="col-xl-4 mb-6">
+          <aside class="sidebar">
+            <div class="single-widget widget_categories" style='transform: translate(0px, 30px);'>
+              <h3 class="title">Categories</h3>
+              <div class="inner">
+                <ul class="category-list ">
+                  <li><a href="blog-details.html"><span class="left-content">Development</span><span
+                        class="count-text">24</span></a>
+                  </li>
+                  <li><a href="blog-details.html"><span class="left-content">Company</span><span
+                        class="count-text">25</span></a></li>
+                  <li><a href="blog-details.html"><span class="left-content">Marketing</span><span
+                        class="count-text">18</span></a>
+                  </li>
+                  <li><a href="blog-details.html"><span class="left-content">UX
+                        Design</span><span class="count-text">56</span></a></li>
+                  <li><a href="blog-details.html"><span class="left-content">Business</span><span
+                        class="count-text">27</span></a></li>
+                  <li><a href="blog-details.html"><span class="left-content">App
+                        Development</span><span class="count-text">47</span></a></li>
+                  <li><a href="blog-details.html"><span class="left-content">Application</span><span
+                        class="count-text">23</span></a>
+                  </li>
+                  <li><a href="blog-details.html"><span class="left-content">Art</span><span
+                        class="count-text">35</span></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- <div class="single-widget recent-post mt-8">
+              <h3 class="title">Recent Posts</h3>
+              <div class="inner">
+                <ul>
+                  <li><a class="d-block" href="blog-details.html">Announcing a contract upgrade </a><span
+                      class="cate small">Development</span>
+                  </li>
+                  <li><a class="d-block " href="blog-details.html">Important updates for listing </a><span
+                      class="cate small">UX
+                      Design</span>
+                  </li>
+                  <li><a class="d-block" href="blog-details.html">Introducing the NFT Security Group </a><span
+                      class="cate small">Development</span></li>
+                  <li><a class="d-block" href="blog-details.html">A historic NFT collection web 3.0</a><span
+                      class="cate small">Marketing</span></li>
+                </ul>
+              </div>
+            </div> -->
+
+
+            <div class="single-widget widget-tag mt-8" style="transform: translate(500px, -500px);">
+              <h3 class="title">Tags</h3>
+              <div class="inner mt-4">
+                <div class="filter-group">
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Art</span></a>
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Nft</span></a>
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Cryto</span></a>
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Creative</span></a>
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Minimal</span></a>
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Landing</span></a>
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Trending</span></a>
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Development</span></a>
+                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Business</span></a>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+          <div class="styler-1 contact-form-wrapper" style='margin-top: -260px;'>
+            <h3 class="mb-1">Leave a Reply</h3>
+            <p>Your email address will not be published.</p>
+            <div class="form-inner">
+              <form action="#">
+                <div class="row">
+                  <div class="col-lg-6 mb-4">
+                    <div class="input-wrapper">
+                      <input type="text" name="name" id="name" placeholder="Name *">
+                    </div>
+                  </div>
+                  <!-- End .col -->
+
+                  <div class="col-lg-6 mb-4">
+                    <input type="text" name="email" id="email" placeholder="Email *">
+                  </div>
+                  <!-- End .col -->
+
+                  <div class="col-lg-12 mb-4">
+                    <textarea name="message" id="message" cols="20" rows="6" placeholder="Message *"></textarea>
+                  </div>
+                  <!-- End .col -->
+
+                  <div class="col-lg-12">
+                    <button class="btn btn-gradient btn btn-medium" type="submit"><span>Submit</span></button>
+                  </div>
+                  <!-- End .col -->
+
+                </div>
+                <!-- End .row -->
+              </form>
+              <!-- End form -->
+            </div>
+            <!-- End .form-inner -->
+          </div>
+
+        </div>
+        
+        <div class="comment-box-wrapper styler-1">
             <h2 class="mb-8">3 Comments</h2>
             <ul class="comment-box-inner">
               <li class="single-comment-box d-flex-between ">
@@ -383,113 +520,8 @@ if (mysqli_num_rows($result) > 0) {
 
             </ul>
           </div>
-          <!-- End comment-box-wrapper -->
-
-          <div class="styler-1 contact-form-wrapper">
-            <h3 class="mb-1">Leave a Reply</h3>
-            <p>Your email address will not be published.</p>
-            <div class="form-inner">
-              <form action="#">
-                <div class="row">
-                  <div class="col-lg-6 mb-4">
-                    <div class="input-wrapper">
-                      <input type="text" name="name" id="name" placeholder="Name *">
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-lg-6 mb-4">
-                    <input type="text" name="email" id="email" placeholder="Email *">
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-lg-12 mb-4">
-                    <textarea name="message" id="message" cols="20" rows="6" placeholder="Message *"></textarea>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-lg-12">
-                    <button class="btn btn-gradient btn btn-medium" type="submit"><span>Submit</span></button>
-                  </div>
-                  <!-- End .col -->
-
-                </div>
-                <!-- End .row -->
-              </form>
-              <!-- End form -->
-            </div>
-            <!-- End .form-inner -->
-          </div>
-
-        </div>
         <!-- End .col -->
-        <div class="col-xl-4 mb-6">
-          <aside class="sidebar">
-            <div class="single-widget widget_categories">
-              <h3 class="title">Categories</h3>
-              <div class="inner">
-                <ul class="category-list ">
-                  <li><a href="blog-details.html"><span class="left-content">Development</span><span
-                        class="count-text">24</span></a>
-                  </li>
-                  <li><a href="blog-details.html"><span class="left-content">Company</span><span
-                        class="count-text">25</span></a></li>
-                  <li><a href="blog-details.html"><span class="left-content">Marketing</span><span
-                        class="count-text">18</span></a>
-                  </li>
-                  <li><a href="blog-details.html"><span class="left-content">UX
-                        Design</span><span class="count-text">56</span></a></li>
-                  <li><a href="blog-details.html"><span class="left-content">Business</span><span
-                        class="count-text">27</span></a></li>
-                  <li><a href="blog-details.html"><span class="left-content">App
-                        Development</span><span class="count-text">47</span></a></li>
-                  <li><a href="blog-details.html"><span class="left-content">Application</span><span
-                        class="count-text">23</span></a>
-                  </li>
-                  <li><a href="blog-details.html"><span class="left-content">Art</span><span
-                        class="count-text">35</span></a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="single-widget recent-post mt-8">
-              <h3 class="title">Recent Posts</h3>
-              <div class="inner">
-                <ul>
-                  <li><a class="d-block" href="blog-details.html">Announcing a contract upgrade </a><span
-                      class="cate small">Development</span>
-                  </li>
-                  <li><a class="d-block " href="blog-details.html">Important updates for listing </a><span
-                      class="cate small">UX
-                      Design</span>
-                  </li>
-                  <li><a class="d-block" href="blog-details.html">Introducing the NFT Security Group </a><span
-                      class="cate small">Development</span></li>
-                  <li><a class="d-block" href="blog-details.html">A historic NFT collection web 3.0</a><span
-                      class="cate small">Marketing</span></li>
-                </ul>
-              </div>
-            </div>
-
-
-            <div class="single-widget widget-tag mt-8">
-              <h3 class="title">Tags</h3>
-              <div class="inner mt-4">
-                <div class="filter-group">
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Art</span></a>
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Nft</span></a>
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Cryto</span></a>
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Creative</span></a>
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Minimal</span></a>
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Landing</span></a>
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Trending</span></a>
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Development</span></a>
-                  <a href="#" class="btn btn-outline btn-small radius-3"><span>Business</span></a>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
+        
       </div>
     </div>
   </section>
