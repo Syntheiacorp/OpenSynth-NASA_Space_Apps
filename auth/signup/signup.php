@@ -6,14 +6,14 @@
     $username = $_POST['username'];
     $password = hash('sha256', $_POST['password']);
 
-    $query = "INSERT INTO Users (username, email, password) VALUES ('$username', '$email', '$password')";
+    $query = "INSERT INTO `Users`(`Username`, `Email`, `PasswordHash`) VALUES ('$username','$email','$password')";
 
     $res = mysqli_query($conn, $query);
 
     if($res) {
         $lastInsertId = mysqli_insert_id($conn);
 
-        $secondQuery = "INSERT INTO UserData (UserID, FullName) VALUES ('$lastInsertId', '$name')";
+        $secondQuery = "INSERT INTO `UserData`(`UserID`, `FullName`, `ProfileInfo`, `PreferedJob`) VALUES ('$lastInsertId','$name','','')";
 
         $result2 = mysqli_query($conn, $secondQuery);
 
@@ -22,7 +22,7 @@
 
         }
         else {
-            echo "<script> window.location.href='?signup=failed'</script>";
+            echo "<script> window.location.href='../signup/?signup=failed'</script>";
 
         }
     }
