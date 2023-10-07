@@ -175,7 +175,7 @@ session_start();
         </ul>
         <!-- End Mainmanu Nav -->
       </nav>
-    </div>
+    </div>  
   </div>
   <!-- End mobile menu area -->
   <?php
@@ -291,6 +291,7 @@ if (mysqli_num_rows($result) > 0) {
             </div>
 
 
+
             <div class="single-widget widget-tag mt-8" style="transform: translate(440px, -500px);">
               <h3 class="title">Tags</h3>
               <div class="inner mt-4">
@@ -347,49 +348,52 @@ if (mysqli_num_rows($result) > 0) {
 
         </div>
         <?php 
-$cmt_fetch_query = "SELECT
-    pc.CommentID,
-    pc.UserID,
-    u.Username AS CommenterUsername,
-    pc.CommentText
-FROM
-    ProjectComments pc
-INNER JOIN
-    Users u ON pc.UserID = u.UserID
-WHERE
-    pc.ProjectID = ProjectID='".$_GET['id']."'
-ORDER BY
-    pc.CommentID DESC;";
+        $projectID = 1;
 
-$cmt_fetch_res = mysqli_query($conn, $cmt_fetch_query);
-?>
+        // Execute the SQL query to fetch comments
+        $query = "SELECT
+            pc.CommentID,
+            pc.UserID,
+            u.Username AS CommenterUsername,
+            pc.CommentText
+        FROM
+            ProjectComments pc
+        INNER JOIN
+            Users u ON pc.UserID = u.UserID
+        WHERE
+            pc.ProjectID = ?
+        ORDER BY
+            pc.CommentID DESC";
 
-<div class="comment-box-wrapper styler-1">
-    <h2 class="mb-8">3 Comments</h2>
-    <ul class="comment-box-inner">
-        <?php while ($row = mysqli_fetch_assoc($cmt_fetch_res)) { ?>
-            <li class="single-comment-box d-flex-between">
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "i", $projectID);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        ?>
+        <div class="comment-box-wrapper styler-1">
+            <h2 class="mb-8">3 Comments</h2>
+            <ul class="comment-box-inner">
+            <?php if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) { ?>
+              <li class="single-comment-box d-flex-between ">
                 <div class="inner d-flex-start">
-                    <a href="#" class="avatar">
-                        <img src="images/blog-details/avatar/1.png" alt="author">
-                    </a>
-                    <!-- End .avatar -->
-                    <div class="content">
-                        <h5 class="title">
-                            <a href="#"><?php echo $row['CommenterUsername']; ?> <?php echo "flag" ?></a>
-                            <span class="date-post">Feb 8, 2022</span>
-                        </h5>
-                        <p><?php echo $row['CommentText']; ?></p>
-                    </div>
+                  <a href="#" class="avatar">
+                    <img src="images/blog-details/avatar/1.png" alt="author">
+                  </a>
+                  <!-- End .avatar -->
+                  <div class="content">
+                    <h5 class="title"><a href="#"><?php echo '<strong>' . $row['CommenterUsername'] . '</strong>';?> <?php echo "flag"?></a><span class="date-post">Feb 8,2022</span></h5>
+                    <p><?php echo '<p>' . $row['CommentText'] . '</p>'; ?></p>
+                  </div>
                 </div>
                 <!-- End .inner -->
                 <div class="reply"><i class="ri-arrow-right-line"></i></div>
                 <!-- End reply -->
-            </li>
-        <?php } ?>
-    </ul>
-</div>
-
+              </li>
+              <?php } }else {
+              echo 'No comments available for this project.';
+            }?>
               <!-- End .single-comment-box -->
             </ul>
           </div>
