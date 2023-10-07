@@ -70,12 +70,7 @@ session_start();
               </li>
 
               <li class=" has-menu-child-item">
-                <!-- <a href="#explore-section">Explore</a> -->
-                <!-- <ul class="submenu">
-                  <li>
-                    <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
-                  </li>
-                </ul> -->
+                
               </li>
               <!-- <li><a href="activity.html">Activity</a></li> -->
 
@@ -229,7 +224,7 @@ if (mysqli_num_rows($result) > 0) {
               
 
               </li>  
-              <!-- <li><a href="#">Development</a></li> -->
+
               <li class="date"><i class="ri-time-line"></i><?php
 // Assuming $row['CreatedAt'] contains your timestamp from the database
 
