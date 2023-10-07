@@ -89,13 +89,7 @@ session_start();
 
       <div class="header-right d-flex align-items-center">
         <ul class="header-right-inner">
-          <!-- <li class=" d-none d-lg-block">
-            <form action="#" class="search-bar">
-              <input type="text" name="search" placeholder="Collection, item or user" id="search">
-              <button class="search-btn" type="submit"> <i class="ri-search-line"></i></button>
-            </form>
-          </li> -->
-          <!-- End .search-bar -->
+
 
           <li class="setting-option d-block  d-lg-none ">
             <div class="icon-box search-mobile-icon">
@@ -107,24 +101,6 @@ session_start();
             </form>
           </li>
           <!-- End .search-mobile-icon -->
-          <!-- <?php 
-            // if(!isset($_SESSION['userId'])) {
-
-          ?>
-            <li class="wallet-button"> 
-              <a href="auth/signin" class="btn btn-gradient btn-small">
-                <span><i class="ri-wallet-3-line"></i>Login</span>
-              </a>
-            </li>
-            <li class="wallet-button"> 
-              <a href="auth/signup" class="btn btn-gradient btn-small">
-                <span><i class="ri-wallet-3-line"></i>Signup</span>
-              </a>
-            </li>
-          <?php 
-            // }
-          ?> -->
-          <!-- End .wallet-button -->
 
           <li class="setting-option mobile-menu-bar d-block d-xl-none">
             <button class="hamberger-button">
@@ -209,19 +185,9 @@ require("../config/dbConfig.php");
 // Write your SQL query and fetch data here
 $sql = "SELECT * FROM Projects where ProjectID='".$_GET['id']."' ";
 $result = mysqli_query($conn, $sql);
-// echo $sql;
 
-// Rest of your code to fetch and display data
-
-// $sql = "SELECT * FROM Projects";
-// $result = mysqli_query($connection, $sql);
 if (mysqli_num_rows($result) > 0) {
   $row = mysqli_fetch_assoc($result)
-  // while ($row = mysqli_fetch_assoc($result)) {
-      // echo "<div>";
-      // echo "<h2>" . $row["Title"] . "</h2>";
-      // echo "<p>" . $row["Description"] . "</p>";
-      // echo "</div>";
 
 
 ?>
@@ -268,95 +234,35 @@ if (mysqli_num_rows($result) > 0) {
               <li class="date"><i class="ri-time-line"></i><?php
 // Assuming $row['CreatedAt'] contains your timestamp from the database
 
-$timestamp = strtotime($row['CreatedAt']);
-$current_time = time(); // Current timestamp
+            $timestamp = strtotime($row['CreatedAt']);
+            $current_time = time(); // Current timestamp
 
-$time_diff = $current_time - $timestamp;
+            $time_diff = $current_time - $timestamp;
 
-if ($time_diff < 60) {
-    $time_ago = $time_diff . " seconds ago";
-} elseif ($time_diff < 3600) {
-    $minutes = floor($time_diff / 60);
-    $time_ago = $minutes . " minutes ago";
-} elseif ($time_diff < 86400) {
-    $hours = floor($time_diff / 3600);
-    $time_ago = $hours . " hours ago";
-} else {
-    $days = floor($time_diff / 86400);
-    $time_ago = $days . " days ago";
-}
+            if ($time_diff < 60) {
+                $time_ago = $time_diff . " seconds ago";
+            } elseif ($time_diff < 3600) {
+                $minutes = floor($time_diff / 60);
+                $time_ago = $minutes . " minutes ago";
+            } elseif ($time_diff < 86400) {
+                $hours = floor($time_diff / 3600);
+                $time_ago = $hours . " hours ago";
+            } else {
+                $days = floor($time_diff / 86400);
+                $time_ago = $days . " days ago";
+            }
 
-echo $time_ago;
-?></li>
+            echo $time_ago;
+            ?></li>
             </ul>
             <p><?php echo $row['Description'];?> </p>
-            <!-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-              Latin literature from 45 BC, making it over 2000 years old. </p>
-
-            <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
-              lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus.
-            </p>
-            <blockquote>
-              If you’ve been waiting for an invitation, this calligraphy is it. Commissioned by Facebook, this is a
-              hand-lettered design for a poster. Quote is Facebook Building 8 VP’s Regina Dugan—and mine.
-            </blockquote>
-            <p>Nullam blandit constituto eam ne, te nam ignota vituperatoribus. Malis cetero ius ex, quem everti
-              sadipscing ei est, pro ut hendrerit voluptaria. Per fabellas consequuntur at, eu mea unum placerat
-              consequat. Eu pro tritani graecis voluptatibus. Vix te vide adhuc, nostrud conclusionemque per ex. Mea
-              nobis
-              mandamus deseruisse et, tritani assentior ne vis, nibh salutatus ad quo.</p>
-            <h3>What is branding ?</h3>
-            <p>Nullam blandit constituto eam ne, te nam ignota vituperatoribus. Malis cetero ius ex, quem everti
-              sadipscing ei est, pro ut hendrerit voluptaria. Per fabellas consequuntur at, eu mea unum placerat
-              consequat. Eu pro tritani graecis voluptatibus. Vix te vide adhuc, nostrud conclusionemque per ex. Mea
-              nobis
-              mandamus deseruisse et, tritani assentior ne vis, nibh salutatus ad quo.</p> -->
-            <!-- <div class="row">
-              <div class="col-lg-6 col-md-6">
-                <img class="img-fluid" src="images/popular/10.jpg" alt="blog-details">
-              </div> -->
-              <!-- End col-lg-6 -->
-              <!-- <div class="col-lg-6 col-md-6">
-                <img class="img-fluid" src="images/popular/12.jpg" alt="blog-details">
-              </div> -->
-              <!-- End col-lg-6 -->
             </div>
-            <!-- <ul>
-              <li>Email is a crucial channel in any marketing.</li>
-              <li>Curious what to say? How to say it?</li>
-              <li>Whether you’re kicking off a new campaign.</li>
-              <li>Habitasse per feugiat aliquam luctus accumsan curae</li>
-            </ul> -->
-            <!-- <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
-              lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus. Usu
-              id
-              iriure tritani, vel quis fierent abhorreant id. </p> -->
-
-
-            <!-- <h3>NFTs useful things ?</h3>
-            <p>Nullam blandit constituto eam ne, te nam ignota vituperatoribus. Malis cetero ius ex, quem everti
-              sadipscing ei est, pro ut hendrerit voluptaria. Per fabellas consequuntur at, eu mea unum placerat
-              consequat. Eu pro tritani graecis voluptatibus. </p>
-            <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
-              lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus. Usu
-              id
-              iriure tritani.</p> -->
-            <!-- <div class="d-flex-center post-share justify-content-start justify-content-md-end mt-12 mb-6">
-              <div class="title pr-4 text-white h5 mb-2">Share:</div>
-              <div class="social pl-0 mb-0 mb-2">
-                <a class="icon-facebook" href="#"><i class="ri-facebook-line"></i></a>
-                <a class="icon-twitter" href="#"><i class="ri-twitter-line"></i></a>
-                <a class="icon-instagram" href="#"><i class="ri-instagram-line"></i></a>
-                <a class="icon-linkedin" href="#"><i class="ri-linkedin-line"></i></a>
-              </div>
-            </div> -->
-            <!-- End post-share -->
           </div>
           <hr>
 
         
           <!-- End comment-box-wrapper -->
-<div class="col-xl-4 mb-6">
+        <div class="col-xl-4 mb-6">
           <aside class="sidebar">
             <div class="single-widget widget_categories" style='transform: translate(-30px, 30px);'>
               <h3 class="title">Categories</h3>
@@ -460,10 +366,27 @@ echo $time_ago;
           </div>
 
         </div>
-        
+        <?php 
+          $cmt_fetch_query = "SELECT
+          pc.CommentID,
+          pc.UserID,
+          u.Username AS CommenterUsername,
+          pc.CommentText
+      FROM
+          ProjectComments pc
+      INNER JOIN
+          Users u ON pc.UserID = u.UserID
+      WHERE
+          pc.ProjectID = ProjectID='".$_GET['id']."'
+      ORDER BY
+          pc.CommentID DESC;";
+
+          $cmt_fetch_res = mysqli_query($conn,$cmt_fetch_query);
+        ?>
         <div class="comment-box-wrapper styler-1">
             <h2 class="mb-8">3 Comments</h2>
             <ul class="comment-box-inner">
+            <?php while($row = mysqli_fetch_array($cmt_fetch_res)){ ?>
               <li class="single-comment-box d-flex-between ">
                 <div class="inner d-flex-start">
                   <a href="#" class="avatar">
@@ -471,7 +394,7 @@ echo $time_ago;
                   </a>
                   <!-- End .avatar -->
                   <div class="content">
-                    <h5 class="title"><a href="#">Monalisa</a><span class="date-post">Feb 8,2022</span></h5>
+                    <h5 class="title"><a href="#"><?php echo $row['CommenterUsername']?> <?php echo "flag"?></a><span class="date-post">Feb 8,2022</span></h5>
                     <p>The names "John Doe" is used as placeholder true
                       identity is must be withheld in discussion.</p>
                   </div>
@@ -480,48 +403,11 @@ echo $time_ago;
                 <div class="reply"><i class="ri-arrow-right-line"></i></div>
                 <!-- End reply -->
               </li>
+              <?php }?>
               <!-- End .single-comment-box -->
-
-              <li class="single-comment-box d-flex-between ">
-                <div class="inner d-flex-start">
-                  <a href="#" class="avatar">
-                    <img src="images/blog-details/avatar/2.png" alt="author">
-                  </a>
-                  <!-- End .avatar -->
-                  <div class="content">
-                    <h5 class="title"><a href="#">Monalisa</a><span class="date-post">Feb 10,2022</span></h5>
-                    <p>The names "John Doe" is used as placeholder true
-                      identity is must be withheld in discussion.</p>
-                  </div>
-                </div>
-                <!-- End .inner -->
-                <div class="reply"><i class="ri-arrow-right-line"></i></div>
-                <!-- End reply -->
-              </li>
-              <!-- End .single-comment-box -->
-
-              <li class="single-comment-box d-flex-between ">
-                <div class="inner d-flex-start">
-                  <a href="#" class="avatar">
-                    <img src="images/blog-details/avatar/3.png" alt="author">
-                  </a>
-                  <!-- End .avatar -->
-                  <div class="content">
-                    <h5 class="title"><a href="#">Monalisa</a><span class="date-post">Feb 20,2022</span></h5>
-                    <p>The names "John Doe" is used as placeholder true
-                      identity is must be withheld in discussion.</p>
-                  </div>
-                </div>
-                <!-- End .inner -->
-                <div class="reply"><i class="ri-arrow-right-line"></i></div>
-                <!-- End reply -->
-              </li>
-              <!-- End .single-comment-box -->
-
             </ul>
           </div>
         <!-- End .col -->
-        
       </div>
     </div>
   </section>
