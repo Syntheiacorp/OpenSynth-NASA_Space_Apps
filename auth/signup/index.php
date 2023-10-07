@@ -1,7 +1,7 @@
-<?php 
-  session_start();
-  require_once(__DIR__ . '/../../config/dbConfig.php');
-  error_reporting(E_ALL);
+<?php
+session_start();
+require_once(__DIR__ . '/../../config/dbConfig.php');
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
 
@@ -76,13 +76,13 @@ ini_set('display_errors', 1);
         <div class="col-xl-6 mb-6">
           <div class="signup-wrapper signup d-flex justify-content-center flex-column">
             <form action="signup.php" method="POST" id="signupForm">
-            <?php 
-            if(isset($_GET['signup'])) {
-              if($_GET['signup'] == 'failed') { 
-                  echo "<p style='color: red; margin-top: -5px; margin-bottom: 20px; font-size: 16px'>Signup failed, please check your entries!</p>";
+            <?php
+            if (isset($_GET['signup'])) {
+              if ($_GET['signup'] == 'failed') {
+                echo "<p style='color: red; margin-top: -5px; margin-bottom: 20px; font-size: 16px'>Signup failed, please check your entries!</p>";
               }
             }
-          ?>
+            ?>
             
               <div class="row">
 
@@ -148,8 +148,8 @@ ini_set('display_errors', 1);
                         Up</span></button>
                   </div>
                   <div class="mt-3 col-lg-12">
-            Already ave an account? <a href="../signin/" class="color-primary">Sign In</a>
-            </div>
+                    Already ave an account? <a href="../signin/" class="color-primary">Sign In</a>
+                  </div>
                 </div>
                 <!-- End .col -->
               </div>
@@ -251,21 +251,21 @@ ini_set('display_errors', 1);
 
 
 
-<?php 
-  if(isset($_POST['submit'])) {
-    $email = $_POST['email'];
-    $name = $_POST['name'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirm-password'];   
+<?php
+if (isset($_POST['submit'])) {
+  $email = $_POST['email'];
+  $name = $_POST['name'];
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $confirmPassword = $_POST['confirm-password'];
 
-    $query = "INSERT INTO Users(`Username`, `Email`, `PasswordHash`, `TwoFactorEnabled`) VALUES ('$username', '$email', '$password', '0')";
+  $query = "INSERT INTO Users(`Username`, `Email`, `PasswordHash`, `TwoFactorEnabled`) VALUES ('$username', '$email', '$password', '0')";
 
-    $res = mysqli_query($conn, $query);
-    if (!$res) {
-      die("Insert failed: " . mysqli_error($conn));
-    }
-    
+  $res = mysqli_query($conn, $query);
+  if (!$res) {
+    die("Insert failed: " . mysqli_error($conn));
   }
+
+}
 
 ?>

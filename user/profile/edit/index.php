@@ -1,3 +1,11 @@
+<?php
+session_start();
+include_once("../../../config/dbConfig.php");
+if (!$_SESSION['userId'])
+  echo "<script> window.location.href='../../signin'</script>";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,21 +24,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Icon fonts
-	======================================== -->
-  <link rel="stylesheet" href="../../fonts/remixicon.css" />
+  ======================================== -->
+  <link rel="stylesheet" href="../../../fonts/remixicon.css" />
 
   <!-- links for favicon
     ======================================== -->
-  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../images/favicon/favicon.ico" />
 
   <!-- CSS
-	======================================== -->
-  <link rel="stylesheet" href="../../css/vendor/bootstrap.min.css" />
-  <link rel="stylesheet" href="../../css/vendor/slick.css">
-  <link rel="stylesheet" href="../../css/vendor/slick-theme.css">
+  ======================================== -->
+  <link rel="stylesheet" href="../../../css/vendor/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../../css/vendor/slick.css">
+  <link rel="stylesheet" href="../../../css/vendor/slick-theme.css">
 
   <!-- Style css -->
-  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body>
@@ -38,7 +47,7 @@
   <div id="preloader">
     <div id="ctn-preloader" class="ctn-preloader">
       <div class="animation-preloader">
-        <div class="icon"><img src="../../images/logo-preloader.png" alt="logo" class="m-auto d-block"> <span></span>
+        <div class="icon"><img src="../../../images/logo-preloader.png" alt="logo" class="m-auto d-block"> <span></span>
         </div>
       </div>
     </div>
@@ -50,8 +59,8 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="" class="logo logo-light"><img src="../../../images/logo-white.png" alt="brand"> </a>
+          <a href="" class="logo logo-dark"><img src="../../../images/logo-dark.png" alt="brand"> </a>
         </div>
         <!-- End .logo-wrapper -->
 
@@ -101,23 +110,8 @@
             </form>
           </li>
           <!-- End .search-mobile-icon -->
-          <?php 
-            if(!isset($_SESSION['userId'])) {
-
-          ?>
-            <li class="wallet-button"> 
-              <a href="auth/signin" class="btn btn-gradient btn-small">
-                <span><i class="ri-wallet-3-line"></i>Login</span>
-              </a>
-            </li>
-            <li class="wallet-button"> 
-              <a href="auth/signup" class="btn btn-gradient btn-small">
-                <span><i class="ri-wallet-3-line"></i>Signup</span>
-              </a>
-            </li>
-          <?php 
-            }
-          ?>
+        
+          
           <!-- End .wallet-button -->
 
           <li class="setting-option mobile-menu-bar d-block d-xl-none">
@@ -127,21 +121,16 @@
           </li>
           <!-- End .mobile-menu-bar -->
 
-          <?php 
-            if(isset($_SESSION['userId'])) {
-
-          ?>
-            <li class="avatar-info"> <a href="#"><img src="../../images/avatar/user.png" alt="user avatar"></a>
+          
+            <li class="avatar-info"> <a href="#"><img src="../../../images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
-                <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
+                <li><a href="#"><i class="ri-user-line"></i> Profile</a></li>
                 <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
                 <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
                 <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
               </ul>
             </li>
-          <?php 
-            }
-          ?>
+        
           <!-- End .avatar-info -->
 
           <li>
@@ -167,8 +156,8 @@
     <div class="inner">
       <div class="header-top">
         <div class="logo logo-custom-css">
-          <a href="index.html" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="index.html" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="index.html" class="logo logo-light"><img src="../../../images/logo-white.png" alt="brand"> </a>
+          <a href="index.html" class="logo logo-dark"><img src="../../../images/logo-dark.png" alt="brand"> </a>
         </div>
         <div class="close-menu">
           <button class="close-button">
@@ -221,16 +210,27 @@
       <div class="row">
         <div class="col-xxl-3 col-xl-4 col-lg-4 mb-6">
           <div class="single-author profile">
+            <?php
+            $userId = $_SESSION['userId'];
+
+            $userDataQuery = "SELECT * FROM `Users` WHERE UserID = '$userId'";
+            $userInfoQuery = "SELECT * FROM `UserData` WHERE UserID = '$userId'";
+
+            $userData = mysqli_fetch_assoc(mysqli_query($conn, $userDataQuery));
+            $userInfo = mysqli_fetch_assoc(mysqli_query($conn, $userInfoQuery));
+            // print_r($userData);
+            ?>
             <div class="thumb">
-              <img src="../../images/authors/1.jpg" alt="author cover photo">
+              <img src="https://source.unsplash.com/270x185/" alt="author cover photo">
             </div>
             <!-- End .thumb -->
             <div class="content">
               <a href="#" class="author-thumb">
-                <img src="../../images/authors/avatar/9.png" alt="author photo">
+                <img src="https://source.unsplash.com/300x300/" alt="author photo">
               </a>
-              <h4 class="title"><a href="#">einstein Bariya</a></h4>
-              <p><a href="#">einstein Bariya011.com</a></p>
+              <p class="mt-0">@<?php echo $userData['Username'] ?></p>
+              <h4 class="title"><a href="#"><?php echo $userInfo['FullName'] ?></a></h4>
+              <p><a href="#"><?php echo $userData['Email'] ?></a></p>
               <div class="social size-small justify-content-center mb-4">
                 <a href="#"><i class="ri-facebook-line"></i></a>
                 <a href="#"><i class="ri-twitter-line"></i></a>
@@ -240,6 +240,15 @@
               <button class="btn btn-small btn-outline">
                 <span>Follow</span>
               </button>
+              <button style="border: 0px solid white; border-radius: 50%" class="btn btn-small" style="width: 40px; height: 40px;">
+    <a href="edit">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" style="fill: white;">
+            <path d="M200-200h56l345-345-56-56-345 345v56Zm572-403L602-771l56-56q23-23 56.5-23t56.5 23l56 56q23 23 24 55.5T829-660l-57 57Zm-58 59L290-120H120v-170l424-424 170 170Zm-141-29-28-28 56 56-28-28Z"/>
+        </svg>
+    </a>
+</button>
+
             </div>
           </div>
         </div>
@@ -268,7 +277,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/19.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/19.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>49</span></button>
                         <!-- End .reaction-count -->
@@ -294,11 +303,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -325,7 +334,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/30.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/30.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>12</span></button>
                         <!-- End .reaction-count -->
@@ -351,11 +360,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -382,7 +391,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/16.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/16.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>19</span></button>
                         <!-- End .reaction-count -->
@@ -408,11 +417,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -439,7 +448,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/11.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/11.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>08</span></button>
                         <!-- End .reaction-count -->
@@ -464,11 +473,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -495,7 +504,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
+                        <a href="#"> <img src="../../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
                         <!-- End .reaction-count -->
                       </div>
@@ -519,11 +528,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -550,7 +559,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/18.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/18.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>25</span></button>
                         <!-- End .reaction-count -->
@@ -575,11 +584,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -612,7 +621,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/10.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/10.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>19</span></button>
                         <!-- End .reaction-count -->
@@ -637,11 +646,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -668,7 +677,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/11.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/11.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>08</span></button>
                         <!-- End .reaction-count -->
@@ -693,11 +702,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -724,7 +733,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
+                        <a href="#"> <img src="../../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
                         <!-- End .reaction-count -->
                       </div>
@@ -748,11 +757,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -784,7 +793,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/7.jpg" alt="nft live auction thumbnail"></a>
+                        <a href="#"> <img src="../../../images/explore/7.jpg" alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>49</span></button>
                         <!-- End .reaction-count -->
                       </div>
@@ -808,11 +817,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -839,7 +848,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/9.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/9.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>12</span></button>
                         <!-- End .reaction-count -->
@@ -864,11 +873,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -895,7 +904,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
+                        <a href="#"> <img src="../../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
                         <!-- End .reaction-count -->
                       </div>
@@ -919,11 +928,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -950,7 +959,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/16.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/16.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>25</span></button>
                         <!-- End .reaction-count -->
@@ -975,11 +984,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -1012,7 +1021,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/11.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/11.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>08</span></button>
                         <!-- End .reaction-count -->
@@ -1037,11 +1046,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -1068,7 +1077,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/15.jpg" alt="nft live auction thumbnail"></a>
+                        <a href="#"> <img src="../../../images/explore/15.jpg" alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
                         <!-- End .reaction-count -->
                       </div>
@@ -1092,11 +1101,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -1123,7 +1132,7 @@
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/6.jpg"
+                        <a href="product-details.html"><img src="../../../images/explore/6.jpg"
                             alt="nft live auction thumbnail"></a>
                         <button class="reaction-btn"><i class="ri-heart-fill"></i><span>25</span></button>
                         <!-- End .reaction-count -->
@@ -1148,11 +1157,11 @@
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                              title="Banuri Bari"><img src="../../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                              title="Mark Keni"><img src="../../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                             <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                              title="Diago Smith"><img src="../../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                             <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                           </div>
                         </div>
@@ -1197,8 +1206,8 @@
           <div class="col-lg-5 col-md-6 mb-8">
             <div class="footer-widget first-block">
               <div class="mb-4">
-                <a href="index.html" class="logo-light"><img src="../../images/logo-white.png" alt="brand"></a>
-                <a href="index.html" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+                <a href="index.html" class="logo-light"><img src="../../../images/logo-white.png" alt="brand"></a>
+                <a href="index.html" class="logo logo-dark"><img src="../../../images/logo-dark.png" alt="brand"> </a>
               </div>
               <p class="mb-5">Banu is the best NFT Marketplace Template because the we have selected the most active and
                 Creative Research.</p>
@@ -1261,21 +1270,21 @@
   <!-- End Footer -->
 
   <!-- JS ============================================ -->
-  <script src="../../js/vendor/jquery.js"></script>
-  <script src="../../js/vendor/jquery.nice-select.min.js"></script>
-  <script src="../../js/vendor/modernizer.min.js"></script>
-  <script src="../../js/vendor/slick.min.js"></script>
-  <script src="../../js/vendor/bootstrap.min.js"></script>
-  <script src="../../js/vendor/waypoint.js"></script>
-  <script src="../../js/vendor/js.cookie.js"></script>
-  <script src="../../js/vendor/count-down.js"></script>
-  <script src="../../js/vendor/counter-up.js"></script>
-  <script src="../../js/vendor/isotop.js"></script>
-  <script src="../../js/vendor/imageloaded.js"></script>
-  <script src="../../js/vendor/jquery.custom-file-input.js"></script>
+  <script src="../../../js/vendor/jquery.js"></script>
+  <script src="../../../js/vendor/jquery.nice-select.min.js"></script>
+  <script src="../../../js/vendor/modernizer.min.js"></script>
+  <script src="../../../js/vendor/slick.min.js"></script>
+  <script src="../../../js/vendor/bootstrap.min.js"></script>
+  <script src="../../../js/vendor/waypoint.js"></script>
+  <script src="../../../js/vendor/js.cookie.js"></script>
+  <script src="../../../js/vendor/count-down.js"></script>
+  <script src="../../../js/vendor/counter-up.js"></script>
+  <script src="../../../js/vendor/isotop.js"></script>
+  <script src="../../../js/vendor/imageloaded.js"></script>
+  <script src="../../../js/vendor/jquery.custom-file-input.js"></script>
 
   <!-- main JS -->
-  <script src="../../js/main.js"></script>
+  <script src="../../../js/main.js"></script>
 </body>
 
 </html>
