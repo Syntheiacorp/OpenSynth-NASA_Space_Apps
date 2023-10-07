@@ -412,7 +412,7 @@ session_start();
 require("../config/dbConfig.php");
 
 // Write your SQL query and fetch data here
-$sql = "SELECT * FROM Projects";
+$sql = "SELECT * FROM Projects where ProjectID='".$_GET['id']."' ";
 $result = mysqli_query($conn, $sql);
 
 // Rest of your code to fetch and display data
@@ -420,7 +420,7 @@ $result = mysqli_query($conn, $sql);
 // $sql = "SELECT * FROM Projects";
 // $result = mysqli_query($connection, $sql);
 if (mysqli_num_rows($result) > 0) {
-  $row = mysqli_fetch_assoc($result);
+  $row = mysqli_fetch_assoc($result)
   // while ($row = mysqli_fetch_assoc($result)) {
       // echo "<div>";
       // echo "<h2>" . $row["Title"] . "</h2>";
@@ -437,7 +437,7 @@ if (mysqli_num_rows($result) > 0) {
           <div class="blog-content">
 
 
-            <img class="img-fluid" src="images/blog-details/1.jpg" alt="blog-details">
+            <img class="img-fluid" src="images/blog-details/1.jpg" alt="project-details">
             <!-- <h2 class="mb-2">List your collection for primary sales</h2> -->
             <h2 class="mb-2"><?php echo $row['Title'];?></h2>
             
@@ -446,7 +446,9 @@ if (mysqli_num_rows($result) > 0) {
               <li><a href="#">Development</a></li>
               <li class="date"><i class="ri-time-line"></i>4 Hour Ago</li>
             </ul>
-            <?php echo $row['Description'];?>
+            <p><?php echo $row['Description'];?> </p>
+            <!-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+              Latin literature from 45 BC, making it over 2000 years old. </p>
 
             <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
               lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus.
@@ -465,37 +467,37 @@ if (mysqli_num_rows($result) > 0) {
               sadipscing ei est, pro ut hendrerit voluptaria. Per fabellas consequuntur at, eu mea unum placerat
               consequat. Eu pro tritani graecis voluptatibus. Vix te vide adhuc, nostrud conclusionemque per ex. Mea
               nobis
-              mandamus deseruisse et, tritani assentior ne vis, nibh salutatus ad quo.</p>
-            <div class="row">
+              mandamus deseruisse et, tritani assentior ne vis, nibh salutatus ad quo.</p> -->
+            <!-- <div class="row">
               <div class="col-lg-6 col-md-6">
                 <img class="img-fluid" src="images/popular/10.jpg" alt="blog-details">
-              </div>
+              </div> -->
               <!-- End col-lg-6 -->
-              <div class="col-lg-6 col-md-6">
+              <!-- <div class="col-lg-6 col-md-6">
                 <img class="img-fluid" src="images/popular/12.jpg" alt="blog-details">
-              </div>
+              </div> -->
               <!-- End col-lg-6 -->
             </div>
-            <ul>
+            <!-- <ul>
               <li>Email is a crucial channel in any marketing.</li>
               <li>Curious what to say? How to say it?</li>
               <li>Whether you’re kicking off a new campaign.</li>
               <li>Habitasse per feugiat aliquam luctus accumsan curae</li>
-            </ul>
-            <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
+            </ul> -->
+            <!-- <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
               lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus. Usu
               id
-              iriure tritani, vel quis fierent abhorreant id. </p>
+              iriure tritani, vel quis fierent abhorreant id. </p> -->
 
 
-            <h3>NFTs useful things ?</h3>
+            <!-- <h3>NFTs useful things ?</h3>
             <p>Nullam blandit constituto eam ne, te nam ignota vituperatoribus. Malis cetero ius ex, quem everti
               sadipscing ei est, pro ut hendrerit voluptaria. Per fabellas consequuntur at, eu mea unum placerat
               consequat. Eu pro tritani graecis voluptatibus. </p>
             <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
               lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus. Usu
               id
-              iriure tritani.</p>
+              iriure tritani.</p> -->
             <div class="d-flex-center post-share justify-content-start justify-content-md-end mt-12 mb-6">
               <div class="title pr-4 text-white h5 mb-2">Share:</div>
               <div class="social pl-0 mb-0 mb-2">
