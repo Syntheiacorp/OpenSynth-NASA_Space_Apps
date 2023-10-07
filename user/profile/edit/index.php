@@ -267,6 +267,7 @@ if (!$_SESSION['userId'])
         <!-- End .col -->
         <div class="col-xxl-9 col-xl-8 col-lg-8">
           <div class="author-profile-wrapper">
+          <form action="" method='POST'>
             <div id="on-sale" class="explore-style-one mb-3">
               <div class="row">
                 <!-- Email -->
@@ -284,7 +285,7 @@ if (!$_SESSION['userId'])
                 <div class="col-md-4 mb-4">
                   <div class="field-box">
                     <label for="preferredJob" class="form-label">UserName</label>
-                    <input id="preferredJob" name="preferredJob" type="text" value='<?php echo $userData["Username"] ?>'
+                    <input id="preferredJob" name="username" type="text" value='<?php echo $userData["Username"] ?>'
                       required>
                   </div>
                 </div>
@@ -299,7 +300,7 @@ if (!$_SESSION['userId'])
                 <div class="col-md-4 mb-4">
                   <div class="field-box">
                     <label for="profileInfo" class="form-label">Full Name</label>
-                    <input id="profileInfo" name="profileInfo" type="text" value='<?php echo $userInfo["FullName"] ?>'
+                    <input id="profileInfo" name="fullName" type="text" value='<?php echo $userInfo["FullName"] ?>'
                       required>
                   </div>
                 </div>
@@ -313,15 +314,65 @@ if (!$_SESSION['userId'])
                   </div>
                 </div>
               </div>
+
               <div class='row'>
                 <div class="col-md-12 mb-4">
                   <div class="field-box">
                     <label for="additionalComments" class="form-label">Profile Bio</label>
-                    <textarea id="additionalComments" name="additionalComments" rows="4"
+                    <textarea id="additionalComments" name="profileInfo" rows="4"
                       required><?php echo $userInfo["ProfileInfo"] ?></textarea>
                   </div>
                 </div>
               </div>
+              <div class="col-md-12">
+    <button type="submit"  name='submit' class="btn btn-danger">Save</button>
+  </div></form>
+
+
+    <?php
+// Include your database connection code here
+// For example, you can use mysqli_connect() to connect to your database
+
+// Check if the form has been submitted
+if (isset($_POST['submit'])) {
+  // Retrieve data from POST
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $fullName = $_POST["fullName"];
+    $profileInfo = $_POST["profileInfo"];
+    $preferredJob = $_POST["preferredJob"];
+
+    // Update the Users table (No prepared statement)
+    $updateUsersQuery = "UPDATE Users SET  Email = '$email',Username='$username' WHERE UserID = '".$_SESSION['userId']."'";
+    mysqli_query($conn, $updateUsersQuery);
+
+    if (mysqli_affected_rows($conn) > 0) {
+        echo "Email updated successfully in Users table.<br>";
+    } else {
+        echo "No records updated in Users table.<br>";
+    }
+
+    // Update the UserData table (No prepared statement)
+    // $updateUserDataQuery = "INSERT INTO UserData (FullName, ProfileInfo, PreferedJob) VALUES ('$fullName', '$profileInfo', '$preferredJob') ON DUPLICATE KEY UPDATE FullName = VALUES(FullName), ProfileInfo = VALUES(ProfileInfo), PreferedJob = VALUES(PreferedJob)";
+    $updateUserDataQuery = "UPDATE UserData SET FullName = '$fullName', ProfileInfo = '$profileInfo', PreferedJob = '$preferredJob' WHERE UserID = '".$_SESSION['userId']."'";
+    mysqli_query($conn, $updateUserDataQuery);
+
+    if (mysqli_affected_rows($conn) > 0) {
+        echo "UserData updated successfully.<br>";
+    } else {
+        echo "No records updated in UserData table.<br>";
+    }
+    echo '<script>
+    // Set location.href to the desired URL
+    location.href = "../"; // Replace with your desired URL
+</script>';
+    // Close database connection
+    // mysqli_close($connection);
+}
+?>
+
+
+  
               <ul class="nav custom-tabs author-tabs mb-5">
                 <li>
                   <a class="active btn btn-small btn-outline" data-bs-toggle="tab" href="#on-sale">On Sale</a>
