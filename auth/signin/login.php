@@ -4,9 +4,9 @@
 
     $email = $_POST['email'];
     $passHash = hash('sha256', $_POST['remember']);
-    $remember = $_POST['$remember'];
+    $remember = $_POST['remember'];
 
-    $query = "SELECT * FROM Users WHERE email = '$email' AND password = '$passHash'";
+    $query = "SELECT * FROM `Users` WHERE Email = '$email' AND PasswordHash = '$passHash'";
 
     $res = mysqli_query($conn, $query);
 
@@ -18,6 +18,6 @@
         echo "<script> window.location.href='../../dashboard'</script>";
     }
     else {
-        echo "<script> window.location.href='/?login=error'</script>";
+        echo "<script> window.location.href='../signin?login=error'</script>";
     }   
 ?>
