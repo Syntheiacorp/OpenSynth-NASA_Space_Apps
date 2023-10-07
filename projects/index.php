@@ -14,20 +14,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <!-- Icon fonts
 	======================================== -->
-    <link rel="stylesheet" href="../../fonts/remixicon.css" />
+    <link rel="stylesheet" href="../fonts/remixicon.css" />
 
 <!-- links for favicon
   ======================================== -->
-<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon.ico" />
 
 <!-- CSS
   ======================================== -->
-<link rel="stylesheet" href="../../css/vendor/bootstrap.min.css" />
-<link rel="stylesheet" href="../../css/vendor/slick.css">
-<link rel="stylesheet" href="../../css/vendor/slick-theme.css">
+<link rel="stylesheet" href="../css/vendor/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/vendor/slick.css">
+<link rel="stylesheet" href="../css/vendor/slick-theme.css">
 
 <!-- Style css -->
-<link rel="stylesheet" href="../../css/style.css" />
+<link rel="stylesheet" href="../css/style.css" />
 </head>
 
 <body>
@@ -35,7 +35,7 @@
   <div id="preloader">
     <div id="ctn-preloader" class="ctn-preloader">
       <div class="animation-preloader">
-        <div class="icon"><img src="../../images/logo-preloader.png" alt="logo" class="m-auto d-block"> <span></span>
+        <div class="icon"><img src="../images/logo-preloader.png" alt="logo" class="m-auto d-block"> <span></span>
         </div>
       </div>
     </div>
@@ -47,8 +47,8 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="" class="logo logo-light"><img src="../images/logo-white.png" alt="brand"> </a>
+          <a href="" class="logo logo-dark"><img src="../images/logo-dark.png" alt="brand"> </a>
         </div>
         <!-- End .logo-wrapper -->
 
@@ -128,7 +128,7 @@
             if(isset($_SESSION['userId'])) {
 
           ?>
-            <li class="avatar-info"> <a href="#"><img src="../../images/avatar/user.png" alt="user avatar"></a>
+            <li class="avatar-info"> <a href="#"><img src="../images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
                 <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
                 <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
@@ -164,8 +164,8 @@
     <div class="inner">
       <div class="header-top">
         <div class="logo logo-custom-css">
-          <a href="index.html" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="index.html" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="index.html" class="logo logo-light"><img src="../images/logo-white.png" alt="brand"> </a>
+          <a href="index.html" class="logo logo-dark"><img src="../images/logo-dark.png" alt="brand"> </a>
         </div>
         <div class="close-menu">
           <button class="close-button">
@@ -414,7 +414,7 @@
               <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                 <div class="explore-style-one">
                   <div class="thumb">
-                    <a href="product-details.html"><img src="../../images/explore/29.jpg"
+                    <a href="product-details.html"><img src="../images/explore/29.jpg"
                         alt="nft live auction thumbnail"></a>
                     <button class="reaction-btn"><i class="ri-heart-fill"></i><span>49</span></button>
                     <!-- End .reaction-count -->
@@ -439,11 +439,11 @@
                     <div class="product-share-wrapper">
                       <div class="profile-share d-flex-center">
                         <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                          title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                          title="Banuri Bari"><img src="../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                         <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                          title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                          title="Mark Keni"><img src="../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                         <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                          title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                          title="Diago Smith"><img src="../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                         <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                       </div>
                     </div>
@@ -471,7 +471,7 @@
               <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                 <div class="explore-style-one">
                   <div class="thumb">
-                    <a href="product-details.html"><img src="../../images/explore/30.jpg"
+                    <a href="product-details.html"><img src="../images/explore/30.jpg"
                         alt="nft live auction thumbnail"></a>
                     <button class="reaction-btn"><i class="ri-heart-fill"></i><span>12</span></button>
                     <!-- End .reaction-count -->
@@ -496,11 +496,11 @@
                     <div class="product-share-wrapper">
                       <div class="profile-share d-flex-center">
                         <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                          title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                          title="Banuri Bari"><img src="../images/explore/avatar/1.png" alt="Nft_Profile"></a>
                         <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                          title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                          title="Mark Keni"><img src="../images/explore/avatar/2.png" alt="Nft_Profile"></a>
                         <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                          title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                          title="Diago Smith"><img src="../images/explore/avatar/3.png" alt="Nft_Profile"></a>
                         <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
                       </div>
                     </div>
@@ -546,8 +546,8 @@
           <div class="col-lg-5 col-md-6 mb-8">
             <div class="footer-widget first-block">
               <div class="mb-4">
-                <a href="index.html" class="logo-light"><img src="../../images/logo-white.png" alt="brand"></a>
-                <a href="index.html" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+                <a href="index.html" class="logo-light"><img src="../images/logo-white.png" alt="brand"></a>
+                <a href="index.html" class="logo logo-dark"><img src="../images/logo-dark.png" alt="brand"> </a>
               </div>
               <p class="mb-5">Banu is the best NFT Marketplace Template because the we have selected the most active and
                 Creative Research.</p>
@@ -610,21 +610,21 @@
   <!-- End Footer -->
 
   <!-- JS ============================================ -->
-  <script src="../../js/vendor/jquery.js"></script>
-  <script src="../../js/vendor/jquery.nice-select.min.js"></script>
-  <script src="../../js/vendor/modernizer.min.js"></script>
-  <script src="../../js/vendor/slick.min.js"></script>
-  <script src="../../js/vendor/bootstrap.min.js"></script>
-  <script src="../../js/vendor/waypoint.js"></script>
-  <script src="../../js/vendor/js.cookie.js"></script>
-  <script src="../../js/vendor/count-down.js"></script>
-  <script src="../../js/vendor/counter-up.js"></script>
-  <script src="../../js/vendor/isotop.js"></script>
-  <script src="../../js/vendor/imageloaded.js"></script>
-  <script src="../../js/vendor/jquery.custom-file-input.js"></script>
+  <script src="../js/vendor/jquery.js"></script>
+  <script src="../js/vendor/jquery.nice-select.min.js"></script>
+  <script src="../js/vendor/modernizer.min.js"></script>
+  <script src="../js/vendor/slick.min.js"></script>
+  <script src="../js/vendor/bootstrap.min.js"></script>
+  <script src="../js/vendor/waypoint.js"></script>
+  <script src="../js/vendor/js.cookie.js"></script>
+  <script src="../js/vendor/count-down.js"></script>
+  <script src="../js/vendor/counter-up.js"></script>
+  <script src="../js/vendor/isotop.js"></script>
+  <script src="../js/vendor/imageloaded.js"></script>
+  <script src="../js/vendor/jquery.custom-file-input.js"></script>
 
   <!-- main JS -->
-  <script src="../../js/main.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 
 
