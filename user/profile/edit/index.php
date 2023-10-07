@@ -40,6 +40,11 @@ if (!$_SESSION['userId'])
   <!-- Style css -->
   <link rel="stylesheet" href="../../../css/style.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+       .edit-tab {
+        background-color: #
+       } 
+    </style>
 </head>
 
 <body>
@@ -240,21 +245,24 @@ if (!$_SESSION['userId'])
               <button class="btn btn-small btn-outline">
                 <span>Follow</span>
               </button>
-              <button style="border: 0px solid white; border-radius: 50%" class="btn btn-small" style="width: 40px; height: 40px;">
+              <!-- <button style="border: 0px solid white; border-radius: 50%" class="btn btn-small" style="width: 40px; height: 40px;">
     <a href="edit">
     
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" style="fill: white;">
             <path d="M200-200h56l345-345-56-56-345 345v56Zm572-403L602-771l56-56q23-23 56.5-23t56.5 23l56 56q23 23 24 55.5T829-660l-57 57Zm-58 59L290-120H120v-170l424-424 170 170Zm-141-29-28-28 56 56-28-28Z"/>
         </svg>
     </a>
-</button>
+</button> -->
 
             </div>
           </div>
         </div>
         <!-- End .col -->
         <div class="col-xxl-9 col-xl-8 col-lg-8">
-          <div class="author-profile-wrapper">
+            <div class="author-profile-wrapper">
+              <div id="on-sale" class="explore-style-one mb-3">
+                  new tab
+              </div>
             <ul class="nav custom-tabs author-tabs mb-5">
               <li>
                 <a class="active btn btn-small btn-outline" data-bs-toggle="tab" href="#on-sale">On Sale</a>
@@ -270,7 +278,7 @@ if (!$_SESSION['userId'])
               </li>
             </ul>
             <!-- End .author-tabs -->
-
+           
             <div class="tab-content author-tabs-content">
               <div id="on-sale" class="tab-pane fade show active">
                 <div class="row">
