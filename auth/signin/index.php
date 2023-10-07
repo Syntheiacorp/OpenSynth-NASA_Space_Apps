@@ -56,6 +56,22 @@
 
           <!-- End logo -->
           <h2>Sign in NFTs</h2>
+          <?php 
+            if(isset($_GET['login'])) {
+              if($_GET['login'] == 'error') { 
+                  echo "<p style='color: red; margin-top: 10px; margin-bottom: 5px; font-size: 16px'>Invalid email id or password</p>";
+              }
+            }
+          ?>
+           <?php 
+            if(isset($_GET['signup'])) {
+              if($_GET['signup'] == 'success') { 
+                  echo "<p style='color: green; margin-top: 10px; margin-bottom: 5px; font-size: 16px'>Signup successful, login to continue</p>";
+              }
+            }
+          ?>
+         
+          
         </div>
         <!-- End signin-header -->
         <div class="row">
