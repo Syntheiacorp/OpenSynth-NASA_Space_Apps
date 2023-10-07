@@ -1,3 +1,7 @@
+<php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +24,7 @@
 	======================================== -->
   <link rel="stylesheet" href="../fonts/remixicon.css" />
 
+
   <!-- links for favicon
     ======================================== -->
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon.ico" />
@@ -31,7 +36,7 @@
   <link rel="stylesheet" href="../css/vendor/slick-theme.css">
 
   <!-- Style css -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 
 <body>
@@ -389,12 +394,12 @@
   <section class="inner-page-banner bg-2 bg-image">
     <div class="container">
       <div class="inner text-center">
-        <h1 class="title">Blog Details</h1>
+        <h1 class="title">Project  Details</h1>
         <nav class="mt-4">
           <ol class="breadcrumb justify-content-center">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Community</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+            <li class="breadcrumb-item active" aria-current="page">Project Details</li>
           </ol>
         </nav>
       </div>
@@ -402,7 +407,28 @@
     <!-- End .container -->
   </section>
   <!-- End banner area -->
+<?php
+// Include the database configuration file
+require("../config/dbConfig.php");
 
+// Write your SQL query and fetch data here
+$sql = "SELECT * FROM Projects";
+$result = mysqli_query($conn, $sql);
+
+// Rest of your code to fetch and display data
+
+// $sql = "SELECT * FROM Projects";
+// $result = mysqli_query($connection, $sql);
+if (mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
+  // while ($row = mysqli_fetch_assoc($result)) {
+      // echo "<div>";
+      // echo "<h2>" . $row["Title"] . "</h2>";
+      // echo "<p>" . $row["Description"] . "</p>";
+      // echo "</div>";
+
+
+?>
   <!-- Start Blog Details area -->
   <section class="pt-120 pb-90 blog-details-wrapper">
     <div class="container">
@@ -412,18 +438,15 @@
 
 
             <img class="img-fluid" src="images/blog-details/1.jpg" alt="blog-details">
-            <h2 class="mb-2">List your collection for primary sales</h2>
+            <!-- <h2 class="mb-2">List your collection for primary sales</h2> -->
+            <h2 class="mb-2"><?php echo $row['Title'];?></h2>
+            
             <ul class="meta">
               <li>27 April</li>
               <li><a href="#">Development</a></li>
               <li class="date"><i class="ri-time-line"></i>4 Hour Ago</li>
             </ul>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-              Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-              Hampden-Sydney College in Virginia.
-              source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bipsum dolor sit amet. </p>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-              Latin literature from 45 BC, making it over 2000 years old. </p>
+            <?php echo $row['Description'];?>
 
             <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
               lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus.
@@ -656,7 +679,7 @@
     </div>
   </section>
   <!-- End Blog Details area -->
-
+<?php }?>
 
   <!-- Start Related Blog area -->
   <section class="pb-120">
