@@ -120,3 +120,12 @@ CREATE TABLE Reports (
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
 );
+CREATE TABLE ProjectComments (
+    CommentID INT PRIMARY KEY AUTO_INCREMENT,
+    ProjectID INT NOT NULL,
+    UserID INT NOT NULL,
+    CommentText TEXT NOT NULL,
+    CommentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
