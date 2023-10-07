@@ -15,7 +15,7 @@
 
         $_SESSION['userId'] = $data['UserID'];
 
-        echo "<script> window.location.href='../../dashboard'</script>";
+        echo "<script> window.location.href='../../'</script>";
     }
     else {
         echo "<script> window.location.href='../signin?login=error'</script>";

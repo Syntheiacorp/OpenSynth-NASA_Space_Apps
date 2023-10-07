@@ -76,6 +76,14 @@ ini_set('display_errors', 1);
         <div class="col-xl-6 mb-6">
           <div class="signup-wrapper signup d-flex justify-content-center flex-column">
             <form action="signup.php" method="POST" id="signupForm">
+            <?php 
+            if(isset($_GET['signup'])) {
+              if($_GET['signup'] == 'failed') { 
+                  echo "<p style='color: red; margin-top: -5px; margin-bottom: 20px; font-size: 16px'>Signup failed, please check your entries!</p>";
+              }
+            }
+          ?>
+            
               <div class="row">
 
                 <div class="col-md-12 mb-4">
@@ -139,6 +147,9 @@ ini_set('display_errors', 1);
                         " type="submit"><span>Sign
                         Up</span></button>
                   </div>
+                  <div class="mt-3 col-lg-12">
+            Already ave an account? <a href="../signin/" class="color-primary">Sign In</a>
+            </div>
                 </div>
                 <!-- End .col -->
               </div>

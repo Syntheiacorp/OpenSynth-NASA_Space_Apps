@@ -63,6 +63,14 @@
               }
             }
           ?>
+           <?php 
+            if(isset($_GET['signup'])) {
+              if($_GET['signup'] == 'success') { 
+                  echo "<p style='color: green; margin-top: 10px; margin-bottom: 5px; font-size: 16px'>Signup successful, login to continue</p>";
+              }
+            }
+          ?>
+         
           
         </div>
         <!-- End signin-header -->
