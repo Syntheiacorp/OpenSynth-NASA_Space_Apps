@@ -56,8 +56,8 @@ session_start();
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="index.html" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a>
-          <a href="index.html" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a>
+          <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a>
+          <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a>
         </div>
         <!-- End .logo-wrapper -->
 
@@ -65,121 +65,20 @@ session_start();
           <nav id="sideNav" class="mainmenu-nav d-none d-xl-block">
             <!-- Start Mainmanu Nav -->
             <ul class="mainmenu">
-              <li class="has-dropdown has-menu-child-item">
-                <a href="index-2.html">Home</a>
-                <ul class="submenu">
-                  <li>
-                    <a href="index.html">Home Style One </a>
-                  </li>
-                  <li>
-                    <a href="index-2.html">Home Style Two</a>
-                  </li>
-                  <li>
-                    <a href="index-3.html">Home Style Three</a>
-                  </li>
-                  <li>
-                    <a href="index-4.html">Home Style Four </a>
-                  </li>
-                  <li>
-                    <a href="index-5.html">Home Style Five</a>
-                  </li>
-                  <li>
-                    <a href="index-6.html">Home Style Six</a>
-                  </li>
-                  <li>
-                    <a href="index-7.html">Home Style Seven<span class="new">(New)</span></a>
-                  </li>
-                </ul>
+              <li class="">
+                <a class="active" href="">Home</a>
               </li>
 
-              <li class="has-dropdown has-menu-child-item">
-                <a href="#">Explore</a>
-                <ul class="submenu">
-                  <li>
-                    <a href="explore-filter.html">Explore Filter</a>
-                  </li>
-                  <li>
-                    <a href="explore-isotop.html">Explore Isotop</a>
-                  </li>
-                  <li>
-                    <a href="explore-carousel.html">Explore Carousel</a>
-                  </li>
+              <li class=" has-menu-child-item">
+                <a href="#explore-section">Explore</a>
+                <!-- <ul class="submenu">
                   <li>
                     <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
                   </li>
-                  <li>
-                    <a href="live-auction-1.html">Live Auction 1</a>
-                  </li>
-                  <li>
-                    <a href="live-auction-2.html">Live Auction 2</a>
-                  </li>
-                  <li>
-                    <a href="live-auction-3.html">Live Auction 3</a>
-                  </li>
-                </ul>
+                </ul> -->
               </li>
               <li><a href="activity.html">Activity</a></li>
-              <li class="has-dropdown has-menu-child-item">
-                <a class="active" href="#">Community</a>
-                <ul class="submenu">
-                  <li>
-                    <a href="blog.html">Blog</a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html" class="active">Blog Details</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="has-dropdown has-menu-child-item">
-                <a href="#">Pages</a>
-                <ul class="submenu">
-                  <li>
-                    <a href="product-details.html">Item Details</a>
-                  </li>
-                  <li>
-                    <a href="authors.html">Authors</a>
-                  </li>
-                  <li>
-                    <a href="author-profile.html">Author Profile</a>
-                  </li>
-                  <li>
-                    <a href="all-sellers.html">All Sellers</a>
-                  </li>
-                  <li>
-                    <a href="all-sellers-2.html">All Sellers 2</a>
-                  </li>
-                  <li>
-                    <a href="popular-collections.html">Popular Collections</a>
-                  </li>
-                  <li>
-                    <a href="popular-collections-2.html">Popular Collections-2</a>
-                  </li>
-                  <li>
-                    <a href="wallet.html">Wallet Connect</a>
-                  </li>
-                  <li>
-                    <a href="create.html">Create Item</a>
-                  </li>
-                  <li>
-                    <a href="notification.html">Notification</a>
-                  </li>
-                  <li>
-                    <a href="signin.html">Sign In</a>
-                  </li>
-                  <li>
-                    <a href="signin-2.html">Sign In 2</a>
-                  </li>
-                  <li>
-                    <a href="forgot-password.html">Forgot Password</a>
-                  </li>
-                  <li>
-                    <a href="signup.html">SignUp</a>
-                  </li>
-                  <li>
-                    <a href="404.html">404</a>
-                  </li>
-                </ul>
-              </li>
+
               <li><a href="contact.html">Contact</a></li>
             </ul>
             <!-- End Mainmanu Nav -->
@@ -190,12 +89,12 @@ session_start();
 
       <div class="header-right d-flex align-items-center">
         <ul class="header-right-inner">
-          <li class=" d-none d-lg-block">
+          <!-- <li class=" d-none d-lg-block">
             <form action="#" class="search-bar">
               <input type="text" name="search" placeholder="Collection, item or user" id="search">
               <button class="search-btn" type="submit"> <i class="ri-search-line"></i></button>
             </form>
-          </li>
+          </li> -->
           <!-- End .search-bar -->
 
           <li class="setting-option d-block  d-lg-none ">
@@ -208,9 +107,23 @@ session_start();
             </form>
           </li>
           <!-- End .search-mobile-icon -->
+          <?php 
+            if(!isset($_SESSION['userId'])) {
 
-          <li class="wallet-button"> <a href="wallet.html" class="btn btn-gradient btn-small">
-              <span><i class="ri-wallet-3-line"></i>Connect</span></a></li>
+          ?>
+            <li class="wallet-button"> 
+              <a href="auth/signin" class="btn btn-gradient btn-small">
+                <span><i class="ri-wallet-3-line"></i>Login</span>
+              </a>
+            </li>
+            <li class="wallet-button"> 
+              <a href="auth/signup" class="btn btn-gradient btn-small">
+                <span><i class="ri-wallet-3-line"></i>Signup</span>
+              </a>
+            </li>
+          <?php 
+            }
+          ?>
           <!-- End .wallet-button -->
 
           <li class="setting-option mobile-menu-bar d-block d-xl-none">
@@ -219,14 +132,22 @@ session_start();
             </button>
           </li>
           <!-- End .mobile-menu-bar -->
-          <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
-            <ul class="submenu">
-              <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
-              <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
-              <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
-              <li><a href="signin.html"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
-            </ul>
-          </li>
+
+          <?php 
+            if(isset($_SESSION['userId'])) {
+
+          ?>
+            <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
+              <ul class="submenu">
+                <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
+                <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
+                <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
+                <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
+              </ul>
+            </li>
+          <?php 
+            }
+          ?>
           <!-- End .avatar-info -->
 
           <li>
@@ -264,124 +185,16 @@ session_start();
       <nav>
         <!-- Start Mainmanu Nav -->
         <ul class="mainmenu">
-          <li class="has-dropdown has-menu-child-item">
-            <a href="index-2.html">Home</a>
-            <ul class="submenu">
-              <li>
-                <a href="index.html">Home Style One </a>
-              </li>
-              <li>
-                <a href="index-2.html">Home Style Two</a>
-              </li>
-              <li>
-                <a href="index-3.html">Home Style Three</a>
-              </li>
-              <li>
-                <a href="index-4.html">Home Style Four </a>
-              </li>
-              <li>
-                <a href="index-5.html">Home Style Five</a>
-              </li>
-              <li>
-                <a href="index-6.html">Home Style Six</a>
-              </li>
-              <li>
-                <a href="index-7.html">Home Style Seven<span class="new">(New)</span></a>
-              </li>
-            </ul>
+          <li class="">
+            <a class="active" href="index-2.html">Home</a>
           </li>
 
-          <li class="has-dropdown has-menu-child-item">
+          <li class="">
             <a href="#">Explore</a>
-            <ul class="submenu">
-              <li>
-                <a href="explore-filter.html">Explore Filter</a>
-              </li>
-              <li>
-                <a href="explore-isotop.html">Explore Isotop</a>
-              </li>
-              <li>
-                <a href="explore-carousel.html">Explore Carousel</a>
-              </li>
-              <li>
-                <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
-              </li>
-              <li>
-                <a href="live-auction-1.html">Live Auction 1</a>
-              </li>
-              <li>
-                <a href="live-auction-2.html">Live Auction 2</a>
-              </li>
-              <li>
-                <a href="live-auction-3.html">Live Auction 3</a>
-              </li>
-            </ul>
           </li>
 
           <li><a href="activity.html">Activity</a></li>
 
-          <li class="has-dropdown has-menu-child-item">
-            <a class="active" href="#">Community</a>
-            <ul class="submenu">
-              <li>
-                <a href="blog.html">Blog</a>
-              </li>
-              <li>
-                <a href="blog-details.html" class="active">Blog Details</a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="has-dropdown has-menu-child-item">
-            <a href="#">Pages</a>
-            <ul class="submenu">
-              <li>
-                <a href="product-details.html">Item Details</a>
-              </li>
-              <li>
-                <a href="authors.html">Authors</a>
-              </li>
-              <li>
-                <a href="author-profile.html">Author Profile</a>
-              </li>
-              <li>
-                <a href="all-sellers.html">All Sellers</a>
-              </li>
-              <li>
-                <a href="all-sellers-2.html">All Sellers 2</a>
-              </li>
-              <li>
-                <a href="popular-collections.html">Popular Collections</a>
-              </li>
-              <li>
-                <a href="popular-collections-2.html">Popular Collections-2</a>
-              </li>
-              <li>
-                <a href="wallet.html">Wallet Connect</a>
-              </li>
-              <li>
-                <a href="create.html">Create Item</a>
-              </li>
-              <li>
-                <a href="notification.html">Notification</a>
-              </li>
-              <li>
-                <a href="signin.html">Sign In</a>
-              </li>
-              <li>
-                <a href="signin-2.html">Sign In 2</a>
-              </li>
-              <li>
-                <a href="forgot-password.html">Forgot Password</a>
-              </li>
-              <li>
-                <a href="signup.html">SignUp</a>
-              </li>
-              <li>
-                <a href="404.html">404</a>
-              </li>
-            </ul>
-          </li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <!-- End Mainmanu Nav -->
@@ -412,7 +225,7 @@ session_start();
 require("../config/dbConfig.php");
 
 // Write your SQL query and fetch data here
-$sql = "SELECT * FROM Projects";
+$sql = "SELECT * FROM Projects where ProjectID='".$_GET['id']."' ";
 $result = mysqli_query($conn, $sql);
 
 // Rest of your code to fetch and display data
@@ -420,7 +233,7 @@ $result = mysqli_query($conn, $sql);
 // $sql = "SELECT * FROM Projects";
 // $result = mysqli_query($connection, $sql);
 if (mysqli_num_rows($result) > 0) {
-  $row = mysqli_fetch_assoc($result);
+  $row = mysqli_fetch_assoc($result)
   // while ($row = mysqli_fetch_assoc($result)) {
       // echo "<div>";
       // echo "<h2>" . $row["Title"] . "</h2>";
@@ -437,7 +250,7 @@ if (mysqli_num_rows($result) > 0) {
           <div class="blog-content">
 
 
-            <img class="img-fluid" src="images/blog-details/1.jpg" alt="blog-details">
+            <img class="img-fluid" src="images/blog-details/1.jpg" alt="project-details">
             <!-- <h2 class="mb-2">List your collection for primary sales</h2> -->
             <h2 class="mb-2"><?php echo $row['Title'];?></h2>
             
@@ -446,7 +259,9 @@ if (mysqli_num_rows($result) > 0) {
               <li><a href="#">Development</a></li>
               <li class="date"><i class="ri-time-line"></i>4 Hour Ago</li>
             </ul>
-            <?php echo $row['Description'];?>
+            <p><?php echo $row['Description'];?> </p>
+            <!-- <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+              Latin literature from 45 BC, making it over 2000 years old. </p>
 
             <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
               lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus.
@@ -465,37 +280,37 @@ if (mysqli_num_rows($result) > 0) {
               sadipscing ei est, pro ut hendrerit voluptaria. Per fabellas consequuntur at, eu mea unum placerat
               consequat. Eu pro tritani graecis voluptatibus. Vix te vide adhuc, nostrud conclusionemque per ex. Mea
               nobis
-              mandamus deseruisse et, tritani assentior ne vis, nibh salutatus ad quo.</p>
-            <div class="row">
+              mandamus deseruisse et, tritani assentior ne vis, nibh salutatus ad quo.</p> -->
+            <!-- <div class="row">
               <div class="col-lg-6 col-md-6">
                 <img class="img-fluid" src="images/popular/10.jpg" alt="blog-details">
-              </div>
+              </div> -->
               <!-- End col-lg-6 -->
-              <div class="col-lg-6 col-md-6">
+              <!-- <div class="col-lg-6 col-md-6">
                 <img class="img-fluid" src="images/popular/12.jpg" alt="blog-details">
-              </div>
+              </div> -->
               <!-- End col-lg-6 -->
             </div>
-            <ul>
+            <!-- <ul>
               <li>Email is a crucial channel in any marketing.</li>
               <li>Curious what to say? How to say it?</li>
               <li>Whether you’re kicking off a new campaign.</li>
               <li>Habitasse per feugiat aliquam luctus accumsan curae</li>
-            </ul>
-            <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
+            </ul> -->
+            <!-- <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
               lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus. Usu
               id
-              iriure tritani, vel quis fierent abhorreant id. </p>
+              iriure tritani, vel quis fierent abhorreant id. </p> -->
 
 
-            <h3>NFTs useful things ?</h3>
+            <!-- <h3>NFTs useful things ?</h3>
             <p>Nullam blandit constituto eam ne, te nam ignota vituperatoribus. Malis cetero ius ex, quem everti
               sadipscing ei est, pro ut hendrerit voluptaria. Per fabellas consequuntur at, eu mea unum placerat
               consequat. Eu pro tritani graecis voluptatibus. </p>
             <p>Lorem ipsum dolor sit amet, nam sale civibus conclusionemque et, ad qui omnes audire eloquentiam, at vis
               lucilius expetenda. Est ad meis putant suscipiantur, cu vix vidisse pertinax, in sea exerci mandamus. Usu
               id
-              iriure tritani.</p>
+              iriure tritani.</p> -->
             <div class="d-flex-center post-share justify-content-start justify-content-md-end mt-12 mb-6">
               <div class="title pr-4 text-white h5 mb-2">Share:</div>
               <div class="social pl-0 mb-0 mb-2">
