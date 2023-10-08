@@ -709,10 +709,8 @@
                       <!-- End .product-owner -->
                       <div class="action-wrapper d-flex-between pt-4">
                         <a
-                          href="view/?projectID=<?php echo $row['ProjectID'] ?>";
-                          data-bs-toggle="modal"
-                          data-bs-target="#bid_history"
-                          class="history d-flex-center"
+                          href="view/?projectID=<?php echo $row['ProjectID'] ?>"
+                          
                           ><i class="ri-history-line"></i>View Project</a
                         >
                         <a
