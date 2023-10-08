@@ -69,20 +69,17 @@ if (!$_SESSION['userId'])
             <!-- Start Mainmanu Nav -->
             <ul class="mainmenu">
               <li class="">
-                <a class="active" href="">Home</a>
+                <a class="active" href="../../">Home</a>
               </li>
 
               <li class=" has-menu-child-item">
-                <a href="#explore-section">Explore</a>
                 <!-- <ul class="submenu">
                   <li>
                     <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
                   </li>
                 </ul> -->
               </li>
-              <li><a href="activity.html">Activity</a></li>
 
-              <li><a href="contact.html">Contact</a></li>
             </ul>
             <!-- End Mainmanu Nav -->
           </nav>

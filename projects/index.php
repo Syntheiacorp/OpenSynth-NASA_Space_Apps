@@ -87,16 +87,14 @@
                 </li>
 
                 <li class="has-menu-child-item">
-                  <a href="#explore-section">Explore</a>
+              
                   <!-- <ul class="submenu">
                   <li>
                     <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
                   </li>
                 </ul> -->
                 </li>
-                <li><a href="activity.html">Activity</a></li>
-
-                <li><a href="contact.html">Contact</a></li>
+       
               </ul>
               <!-- End Mainmanu Nav -->
             </nav>
@@ -690,7 +688,7 @@
                       <?php 
                         $id = $row['CreatorUserID'];
                         $ownerQuery = "SELECT FullName FROM `UserData` WHERE UserID = '$id'";
-                        $userNameArray = mysqli_fetch_assoc(mysqli_query($conn, $ownerQuery));
+                         $userNameArray = mysqli_fetch_assoc(mysqli_query($conn, $ownerQuery));
                         // print_r($userNameArray);
                       ?>
                       <div class="product-owner py-4 d-flex-between">
