@@ -1,5 +1,6 @@
 <?php 
   session_start();
+  include_once('../config/dbConfig.php');
 ?>
 
 <!DOCTYPE html>
@@ -108,7 +109,7 @@
             if(isset($_SESSION['userId'])) {
 
           ?>
-            <li class="avatar-info"> <a href="#"><img src="../../images/avatar/user.png" alt="user avatar"></a>
+            <li class="avatar-info"> <a href="#"><img src="../images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
                 <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
                 <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
@@ -197,23 +198,35 @@
       <div class="row">
         <div class="col-xxl-8 col-xl-8 col-lg-8 mb-6">
           <div class="activity-wrapper">
-            <h3>All</h3>
+            <h3>User Leaderboard</h3>
 
             <div class="custom-history notification-history">
 
-              <?php for($i=0;$i<=10;$i++){ ?>
+
+              <?php 
+
+              $query = "SELECT * FROM `UserData` ORDER By Karma LIMIT 15";
+              $result = mysqli_query($conn, $query);
+              while($row = mysqli_fetch_assoc($result)) {
+                $userId = $row['UserID'];
+                $userQuery = "SELECT * FROM `Users` WHERE UserID = '$userId'";
+
+                $userData = mysqli_fetch_assoc(mysqli_query($conn, $userQuery));
+                // print_r($userData);
+               ?>
               <div class="single-item-history d-flex-center">
                 <a href="author-profile.html" class="avatar align-self-start">
-                  <img src="../images/popular/small/1.png" alt="history">
+                  <img src="../images/avatar/user.png" alt="history">
                 </a>
                 <!-- end avatar -->
                 <div class="content">
-                  <h4><a href="product-details.html">Virtual Worlds</a></h4>
-                  <p>Bid placed for <span class="color-primary fw-500">14.20
-                      ETH</span> <span class="time ml-1">4 Hours Ago</span> <br> by <a class="text-white"
-                      href="author-profile.html">@Obaniya</a></p>
+                  <h4><a href="product-details.html"><?php echo $row['FullName']?></a></h4>
+                  <p>Total Karma Earned <span class="color-primary fw-500">
+                    <?php echo $row['Karma']?>
+                  </span> <span class="time ml-1"></span> <br> <a class="text-white"
+                      href="author-profile.html">@<?php echo $userData['Username']?></a></p>
                 </div>
-                <span class="reaction"><i class="ri-thumb-up-line"></i></span>
+                <!-- <span class="reaction"><i class="ri-thumb-up-line"></i></span> -->
               </div>
               <!-- End .single-item-history -->
               <?php } ?>
