@@ -80,7 +80,7 @@
                   </li>
                 </ul> -->
               </li>
-              <li><a href="hofSection">Hof</a></li>
+              <li><a href="#hofSection">HoF</a></li>
 
              
             </ul>
