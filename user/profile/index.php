@@ -59,8 +59,8 @@ if (!$_SESSION['userId'])
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="../" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
+          <a href="../" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
         </div>
         <!-- End .logo-wrapper -->
 
@@ -196,8 +196,8 @@ if (!$_SESSION['userId'])
         <h1 class="title">User Profile</h1>
         <nav class="mt-4">
           <ol class="breadcrumb justify-content-center">
-            <li class=""><a href="">Home     </a></li>
-            <li class=""><a href="">Pages      </a></li>
+            <li class=""><a href="">Home-></a></li>
+            <li class=""><a href="">Pages-></a></li>
             <li class="active" aria-current="page">Author</li>
           </ol>
         </nav>
