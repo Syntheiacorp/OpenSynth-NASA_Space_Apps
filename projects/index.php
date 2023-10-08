@@ -668,7 +668,7 @@
                       <!-- End .product-owner -->
                       <div class="action-wrapper d-flex-between pt-4">
                         <a
-                          href="view/?id=<?php echo $row['ProjectID'] ?>"
+                          href="view/?projectID=<?php echo $row['ProjectID'] ?>"
                           ><i class="ri-history-line"></i>View Project</a
                         >
                         <a

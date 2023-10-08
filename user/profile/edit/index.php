@@ -75,7 +75,7 @@ if (!$_SESSION['userId'])
             <!-- Start Mainmanu Nav -->
             <ul class="mainmenu">
               <li class="">
-                <a class="active" href="">Home</a>
+                <a class="active" href="../../../">Home</a>
               </li>
 
               <li class=" has-menu-child-item">
@@ -194,7 +194,7 @@ if (!$_SESSION['userId'])
       <div class="inner text-center">
         <h1 class="title">User Profile</h1>
         <nav class="mt-4">
-          <ol class="breadcrumb justify-content-center">
+          <ol class="breadcrumb justify-content-center gap-2">
             <li class=""><a href="">Home </a></li>
             <li class=""><a href="">Pages </a></li>
             <li class="active" aria-current="page">Author</li>
