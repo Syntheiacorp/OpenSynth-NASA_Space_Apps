@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -280,6 +284,23 @@
         <form action="#">
           <div class="row">
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-12">
+              <style>
+                .hostNewButton {
+                  width: 92%;
+                  margin-bottom: 10px;
+                  height: 3rem;
+                  border: 0px solid transparent;
+                  border-radius: 6px;
+                  background: #2563EB;
+                  color: white;
+                  font-size: 16px;
+                  font-weight: 600;
+                }
+              </style>
+              <a href="host">
+                <button type="button" class="hostNewButton">Host New</button>
+              </a>
+            
               <div class="filter-wrapper">
                 <div class="filter-custom-item">
                   <h4

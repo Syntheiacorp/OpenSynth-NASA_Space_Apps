@@ -1,5 +1,6 @@
 <?php 
   session_start();
+  include_once("../../config/dbConfig.php");
 ?>
 
 <!DOCTYPE html>
@@ -219,7 +220,7 @@
   <!-- Start create item area -->
   <section class="pt-120 pb-90">
     <div class="container">
-      <form action="#">
+      <form action="#" method="POST" enctype="multipart/form-data">
         <div class="create-item-wrapper">
           <div class="row">
             <div class="col-lg-4">
@@ -228,7 +229,7 @@
 
                 <div class="upload-formate mb-6">
                   <h5 class="title mb-1">
-                    Upload Item File
+                    Upload Project Display Picture
                   </h5>
                   <p class="formate">
                     Drag or choose your file to upload
@@ -243,17 +244,17 @@
                   <label for="file" title="No File Choosen">
                     <i class="ri-upload-cloud-line"></i>
                     <span class="text-center mb-2">Choose a File</span>
-                    <span class="file-type text-center mt--10">PNG, GIF, WEBP, MP4 or MP3. <br> Max 200Mb.</span>
+                    <span class="file-type text-center mt--10">PNG, GIF, WEBP, MP4 or MP3. <br> Max 10Mb.</span>
                   </label>
                 </div>
               </div>
               <!-- end upoad file area -->
 
-              <div class="mt-12 d-none d-lg-block">
+              <!-- <div class="mt-12 d-none d-lg-block">
                 <h5 class="mb-1"> Note: </h5>
                 <span> Service fee : <strong>1.5%</strong> </span> <br>
                 <span> You will receive : <strong>15.00 ETH $45000</strong></span>
-              </div>
+              </div> -->
 
             </div>
 
@@ -263,26 +264,25 @@
                 <div class="row">
                   <div class="col-md-12 mb-4">
                     <div class="field-box">
-                      <label for="name" class="form-label">Item Title</label>
-                      <input id="name" type="text" placeholder="e. g. `Banu Digital Art`">
+                      <label for="name" class="form-label">Project Title</label>
+                      <input id="name" name="projectName" type="text" placeholder="e. g. `Syntheia corp`">
                     </div>
                   </div>
 
                   <div class="col-md-12 mb-4">
                     <div class="field-box">
                       <label for="discription" class="form-label">Discription</label>
-                      <textarea id="discription" rows="3" placeholder="e. g. “Banu Design Gallery is...”"></textarea>
+                      <textarea id="discription" name="projectDesc" rows="3" placeholder="e. g. “Syntheia corp is...”"></textarea>
                     </div>
                   </div>
 
                   <div class="col-md-12 mb-4">
                     <div class="field-box">
-                      <label for="price" class="form-label">Price</label>
-                      <select id="price">
-                        <option selected>00.00 ETH</option>
-                        <option value="01.00 ETH">01.00 ETH</option>
-                        <option value="02.00 ETH">02.00 ETH</option>
-                        <option value="03.00 ETH">03.00 ETH</option>
+                      <label for="price" class="form-label">Visibility</label>
+                      <select id="price" name="visibility">
+                        <option selected value="1">Public</option>
+                        <option value="0">Private</option>
+                        <option value="2">Invite Only</option>
                       </select>
                     </div>
 
@@ -290,15 +290,19 @@
 
                   <div class="col-md-6 mb-4">
                     <div class="field-box">
-                      <label for="royality" class="form-label">Royality</label>
-                      <input type="text" id="royality" placeholder="e. g. `10%`">
+                      <label for="royality" class="form-label">Project URL(Optional)</label>
+                      <input type="text" name="projectUrl" id="royality" placeholder="e. g. `https://syntheia.org">
                     </div>
                   </div>
 
                   <div class="col-md-6 mb-4">
-                    <div class="field-box">
-                      <label for="sizes" class="form-label">Size</label>
-                      <input type="text" id="sizes" placeholder="e. g. `Size`">
+                  <div class="field-box">
+                      <label for="price" class="form-label">Project Type</label>
+                      <select id="price" name="projectType">
+                        <option selected value="software">Software</option>
+                        <option value="hardware">hardware</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -319,7 +323,7 @@
                 <button class="btn btn-outline btn-medium"><span>Preview</span></button>
               </div>
               <div class="input-box">
-                <button class="btn btn-gradient btn-medium justify-content-center"><span>Create Item</span></button>
+                <button name="submit" type="submit" class="btn btn-gradient btn-medium justify-content-center"><span>Host project</span></button>
               </div>
             </div>
           </div>
@@ -422,5 +426,19 @@
   <script src="../../js/main.js"></script>
 </body>
 
+<?php 
+  if(isset($_POST['submit'])) {
+    $title = $_POST['projectName'];
+    $projectDesc = $_POST['projectDesc'];
+    $visibility = $_POST['visibility'];
+    $projectType = $_POST['projectType'];
 
+    $target_dir = "../../images/projectDPs/";
+    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+        echo basename( $_FILES["file"]["name"]);
+    }
+  }
+?>
 </html>
