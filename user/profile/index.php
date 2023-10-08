@@ -274,923 +274,175 @@ if (!$_SESSION['userId'])
             </ul>
             <!-- End .author-tabs -->
 
-            <div class="tab-content author-tabs-content">
-              <div id="on-sale" class="tab-pane fade show active">
-                <div class="row">
+            <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-12">
+              <div class="row">
+
+              <!-- Project preview tab -->
+              <?php
+              include_once('../config/dbConfig.php');
+              $query = "SELECT * FROM `Projects` where CreatorUserID='".$_SESSION['userId']."'";
+
+              $data = mysqli_query($conn, $query);
+              while ($row = mysqli_fetch_assoc($data)) {
+
+                ?>
                   <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
                     <div class="explore-style-one">
                       <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/19.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>49</span></button>
+                        <a href="product-details.html"
+                          ><img
+                            height="270"
+                            width="270"
+                            src="<?php echo $row['DisplayPicture'] ?>"
+                            alt="nft live auction thumbnail"
+                        /></a>
+                        <button class="reaction-btn">
+                          <i class="ri-heart-fill"></i><span><?php echo $row['UpVotes'] ?></span>
+                        </button>
                         <!-- End .reaction-count -->
                       </div>
                       <!-- End .thumb -->
                       <div class="content">
                         <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">BruceTheGoose.Eth™</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-
-                            </ul>
-                          </div>
+                          <h3 class="title">
+                            <a href="../../projects/view/?projectID=<?php echo $row['ProjectID'] ?>"><?php echo $row['Title'] ?></a>
+                          </h3>
+                          <!-- <div class="more-dropdown">
+                          <i class="ri-more-fill" data-bs-toggle="dropdown"></i>
+                          <ul class="dropdown-menu dropdown-menu-dark">
+                            <li>
+                              <a class="dropdown-item" href="#">New bid</a>
+                            </li>
+                            <li>
+                              <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#"
+                                >Refresh Metadata</a
+                              >
+                            </li>
+                            <li><a class="dropdown-item" href="#">Share</a></li>
+                            <li>
+                              <a class="dropdown-item" href="#">Report</a>
+                            </li>
+                          </ul>
+                        </div> -->
                         </div>
                         <!-- .header -->
                         <div class="product-share-wrapper">
                           <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
+                            <a
+                              href="authors.html"
+                              class="avatar"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="Banuri Bari"
+                              ><img
+                                src="../../images/explore/avatar/1.png"
+                                alt="Nft_Profile"
+                            /></a>
+                            <a
+                              href="authors.html"
+                              class="avatar"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="Mark Keni"
+                              ><img
+                                src="../../images/explore/avatar/2.png"
+                                alt="Nft_Profile"
+                            /></a>
+                            <a
+                              href="authors.html"
+                              class="avatar"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="Diago Smith"
+                              ><img
+                                src="../../images/explore/avatar/3.png"
+                                alt="Nft_Profile"
+                            /></a>
+                            <?php
+                            $projectID = $row['ProjectID'];
+                            $projectParticipantsQuery = "SELECT * FROM `ProjectParticipants` WHERE ProjectID = '$projectID'";
+                            $participantsList = mysqli_query($conn, $projectParticipantsQuery);
+
+                            ?>
+                            <a class="more-author-text" href="#" tabindex="0"
+                              ><?php echo mysqli_num_rows($participantsList) ?>+ People are contributing</a
+                            >
                           </div>
                         </div>
                         <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Zuckerberg</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
+                        <?php
+                        $id = $row['CreatorUserID'];
+                        $ownerQuery = "SELECT FullName FROM `UserData` WHERE UserID = '$id'";
+                        $userNameArray = mysqli_fetch_assoc(mysqli_query($conn, $ownerQuery));
+                        // print_r($userNameArray);
+                        ?>
+                   
                         <!-- End .product-owner -->
+                        <style>
+                          /* Define custom class for the button */
+  .btn-custom {
+      border-color: green; /* Set the outline color to green */
+      color: green; /* Set the text color to green */
+  }
+
+  .btn-custom:hover {
+      background-color: green; /* Change the background color to green on hover */
+      color: white; /* Change the text color to white on hover */
+  }
+  .btn-custom:disabled {
+      cursor: not-allowed; /* Change cursor to "not-allowed" for disabled button */
+      opacity: 0.7; /* Reduce opacity for disabled button */
+  }
+
+                        </style>
                         <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
+                          <a
+                            href="../../projects/view/?projectID=<?php echo $row['ProjectID'] ?>"
+                          
+                            ><i class="ri-history-line"></i>View Project</a
+                          >
+                          <?php
+                          $participantId = $_SESSION['userId'];
+                          $pId = $row['ProjectID'];
+                          $participantsQuery = "SELECT * FROM `ProjectParticipants` WHERE UserID ='$participantId' AND ProjectID = '$pId'";
+                          $participantsDetails = mysqli_query($conn, $participantsQuery);
+                          // print_r(mysqli_num_rows($participantsDetails));
+                          ?>
                         </div>
+                        <script>
+                          // Get all the <a> tags with the class "btn-JoinProject"
+                          // Get all the <a> tags with the class "btn-JoinProject"
+                          // const joinProjectButtons = document.querySelectorAll('a.btn-JoinProject');
+
+                          // // Loop through the buttons and add event listeners
+                          // for (let i = 0; i < joinProjectButtons.length; i++) {
+                          //   joinProjectButtons[i].addEventListener('click', function(event) {
+                          //     // Prevent the default behavior of the link
+                          //     event.preventDefault();
+
+                          //     // Get the value of the "data-projectID" attribute
+                          //     const projectID = this.getAttribute('data-projectID');
+
+                          //     // Print the projectID to the console
+                          //     console.log(`ProjectID: ${projectID}`);
+                          //   });
+                          // }
+
+                        </script>
                         <!-- action-wrapper -->
                       </div>
                       <!-- End .content -->
                     </div>
                   </div>
-                  <!-- End .col -->
+                <?php } ?>
+                <!-- End project preview tab  -->
 
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/30.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>12</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">Dead Rover Club</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Zuckerberg</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/16.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>19</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">SudsyPanda</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Jacson Rio</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/11.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>08</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">TrapMonkie 3D</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Fuliani</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">TrapMonkie - Meditation</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Kartik</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/18.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>25</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">Illustrations</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Richardson</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-                </div>
-                <!-- End .row -->
+                <!-- End .col -->
               </div>
-              <!-- End on sale product -->
-
-              <div id="owned" class="tab-pane fade">
-                <div class="row">
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/10.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>19</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">SudsyPanda</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Jacson Rio</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/11.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>08</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">TrapMonkie 3D</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Fuliani</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">TrapMonkie - Meditation</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Kartik</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-                </div>
-              </div>
-              <!-- End owned product -->
-
-              <div id="created" class="tab-pane fade">
-                <div class="row">
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/7.jpg" alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>49</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">BruceTheGoose.Eth™</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Zuckerberg</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/9.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>12</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">Dead Rover Club</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Zuckerberg</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/5.jpg" alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">TrapMonkie - Meditation</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Kartik</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/16.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>25</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">Illustrations</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Richardson</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-                </div>
-                <!-- End .row -->
-              </div>
-              <!-- End created product -->
-
-              <div id="liked" class="tab-pane fade">
-                <div class="row">
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/11.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>08</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">TrapMonkie 3D</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Fuliani</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="#"> <img src="../../images/explore/15.jpg" alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">TrapMonkie - Meditation</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Kartik</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"><img src="../../images/explore/6.jpg"
-                            alt="nft live auction thumbnail"></a>
-                        <button class="reaction-btn"><i class="ri-heart-fill"></i><span>25</span></button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title"><a href="product-details.html">Illustrations</a></h3>
-                          <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                              <li><a class="dropdown-item" href="#">New bid</a></li>
-                              <li>
-                                <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
-                              <li><a class="dropdown-item" href="#">Share</a></li>
-                              <li><a class="dropdown-item" href="#">Report</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Banuri Bari"><img src="../../images/explore/avatar/1.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Mark Keni"><img src="../../images/explore/avatar/2.png" alt="Nft_Profile"></a>
-                            <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
-                              title="Diago Smith"><img src="../../images/explore/avatar/3.png" alt="Nft_Profile"></a>
-                            <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
-                          </div>
-                        </div>
-                        <!-- End product-share-wrapper -->
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner">Owned By <strong><a href="#">Richardson</a></strong></span>
-                          <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
-                        </div>
-                        <!-- End .product-owner -->
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history"
-                            class="history d-flex-center"><i class="ri-history-line"></i>View History</a>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                            class="btn  btn-outline btn-small"><span><i class="ri-shopping-bag-line"></i> Place
-                              Bid</span></a>
-                        </div>
-                        <!-- action-wrapper -->
-                      </div>
-                      <!-- End .content -->
-                    </div>
-                  </div>
-                  <!-- End .col -->
-                </div>
-                <!-- End .row -->
-              </div>
-              <!-- End liked product -->
+              <!-- End .row -->
             </div>
 
           </div>
