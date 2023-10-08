@@ -1,6 +1,9 @@
 <?php 
   session_start();
   include_once("../../config/dbConfig.php");
+  if(!isset($_SESSION['userId'])) 
+    echo "<script> window.location.href='../../auth/signin'</script>";
+  
 ?>
 
 <!DOCTYPE html>
@@ -322,7 +325,13 @@
                 <button class="btn btn-gradient btn-medium mr-3"><span>Cancel</span></button>
                 <button class="btn btn-outline btn-medium"><span>Preview</span></button>
               </div>
-              <div class="input-box">
+              <style>
+                .hidden {
+                  display: none;
+                }
+              </style>
+              <div class="input-box" style="display: flex; flex-direction: row;align-items: center">
+                <p style="color: green; margin-bottom: 5px;margin-right: 20px" class="hidden hosting-res">Project Hosted successfully, Redirecting!</p>
                 <button name="submit" type="submit" class="btn btn-gradient btn-medium justify-content-center"><span>Host project</span></button>
               </div>
             </div>
@@ -433,11 +442,19 @@
     $visibility = $_POST['visibility'];
     $projectType = $_POST['projectType'];
 
-    $target_dir = "../../images/projectDPs/";
+    $target_dir = "Dps/";
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
 
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        echo basename( $_FILES["file"]["name"]);
+    // if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+    //     echo basename( $_FILES["file"]["name"]);
+    // }
+    $userId = $_SESSION['userId'];
+    $query = "INSERT INTO `Projects`(`Title`, `Description`, `CreatorUserID`,`IsPublic`, `ProjectType`) VALUES ('$title','$projectDesc','$userId', '$visibility', '$projectType')";
+    $result = mysqli_query($conn, $query);
+    if($result) {
+      $lastInsertId = mysqli_insert_id($conn);
+      
+      echo "<script> window.location.href='../view/?projectID=$lastInsertId'</script>";
     }
   }
 ?>
