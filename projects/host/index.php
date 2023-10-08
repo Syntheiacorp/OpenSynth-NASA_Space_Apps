@@ -65,20 +65,17 @@
             <!-- Start Mainmanu Nav -->
             <ul class="mainmenu">
               <li class="">
-                <a class="active" href="">Home</a>
+                <a class="active" href="../../">Home</a>
               </li>
 
               <li class=" has-menu-child-item">
-                <a href="#explore-section">Explore</a>
                 <!-- <ul class="submenu">
                   <li>
                     <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
                   </li>
                 </ul> -->
               </li>
-              <li><a href="activity.html">Activity</a></li>
-
-              <li><a href="contact.html">Contact</a></li>
+          
             </ul>
             <!-- End Mainmanu Nav -->
           </nav>
@@ -138,15 +135,14 @@
           ?>
             <li class="avatar-info"> <a href="#"><img src="../../images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
-                <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
-                <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
-                <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
-                <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
+                <li><a href="../"><i class="ri-user-line"></i> Profile</a></li>
+                <li><a href="../../../projects/host"><i class="ri-edit-line"></i> Host New Project</a></li>
+                <li><a href="../../../leaderboard"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
+                <li><a href="../../../auth/signout/"><i class="ri-logout-box-r-line"></i>Sign Out</a></li>
               </ul>
             </li>
           <?php 
-            }
-          ?>
+            }?>
           <!-- End .avatar-info -->
 
           <li>

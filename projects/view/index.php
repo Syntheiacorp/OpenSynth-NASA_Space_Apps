@@ -89,8 +89,8 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a>
-          <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a>
+          <a href="" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
+          <a href="" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
         </div>
         <!-- End .logo-wrapper -->
 
@@ -135,7 +135,7 @@
             if(isset($_SESSION['userId'])) {
 
           ?>
-            <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
+            <li class="avatar-info"> <a href="#"><img src="../../images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
                 <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
                 <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
@@ -311,8 +311,8 @@ if (mysqli_num_rows($result) > 0) {
             <div class="modal fade custom-modal" id="project_chat_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog custom-modal-xl modal-dialog-scrollable"> <!-- Use custom classes for modal size -->
                 <div class="modal-content">
-                  <div class="modal-header" style="background-color: #eee;">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Chats and Discussions </h1>
+                  <div class="modal-header" style="background-color: #0b0a0a;">
+                  <h1 class="modal-title fs-5"  id="staticBackdropLabel">Chats and Discussions</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -328,7 +328,7 @@ if (mysqli_num_rows($result) > 0) {
                               <li class="p-2 border-bottom" style="border-bottom: 1px solid rgba(255,255,255,.3) !important;">
                                 <a href="#!" class="d-flex justify-content-between link-light">
                                   <div class="d-flex flex-row">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp" alt="avatar"
+                                    <img src="../../images/avatar/user.png" alt="avatar"
                                       class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
                                     <div class="pt-1">
                                       <p class="fw-bold mb-0">John Doe</p>
@@ -344,7 +344,7 @@ if (mysqli_num_rows($result) > 0) {
                       <div class="col-md-6 col-lg-7 col-xl-7">
                         <ul class="list-unstyled text-white">
                           <li class="d-flex justify-content-between mb-4">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+                            <img src="../../images/avatar/user.png" alt="avatar"
                               class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                             <div class="card mask-custom">
                               <div class="card-header d-flex justify-content-between p-3"
@@ -374,11 +374,11 @@ if (mysqli_num_rows($result) > 0) {
                                 </p>
                               </div>
                             </div>
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+                            <img src="../../images/avatar/user.png" alt="avatar"
                               class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
                           </li>
                           <li class="d-flex justify-content-between mb-4">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+                            <img src="../../images/avatar/user.png" alt="avatar"
                               class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                             <div class="card mask-custom">
                               <div class="card-header d-flex justify-content-between p-3"style="border-bottom: 1px solid rgba(255,255,255,.3);">
@@ -402,8 +402,7 @@ if (mysqli_num_rows($result) > 0) {
                   <div class="modal-footer">
                   <li class="mb-3">
                     <div class="form-outline form-white">
-                      <textarea class="form-control" id="textAreaExample3" rows="3"></textarea>
-                      <label class="form-label" for="textAreaExample3">Message</label>
+                    <input type="text" name="msg" id="textAreaExample3" placeholder="Message">
                     </div>
                   </li>
                     <button type="button" class="btn btn-gradient btn btn-primary">Send</button>
@@ -426,8 +425,8 @@ if (mysqli_num_rows($result) > 0) {
                   <a href="#" class="btn btn-outline btn-small radius-3"><span>Development</span></a>
                   <a href="#" class="btn btn-outline btn-small radius-3"><span>Business</span></a>
                 </div>
-              </div>
-              highlefhjab
+              </div><br>
+              Send message
             <!-- Button trigger chat modal -->
             <button type="button" class="btn btn-gradient btn btn-primary" data-bs-toggle="modal" data-bs-target="#project_chat_modal">
               Chat About This Topic ?
