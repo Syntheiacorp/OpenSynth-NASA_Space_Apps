@@ -52,8 +52,8 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="" class="logo logo-light"><img src="../images/logo-white.png" alt="brand"> </a>
+          <a href="" class="logo logo-dark"><img src="../images/logo-dark.png" alt="brand"> </a>
         </div>
         <!-- End .logo-wrapper -->
 
@@ -108,7 +108,7 @@
             if(isset($_SESSION['userId'])) {
 
           ?>
-            <li class="avatar-info"> <a href="#"><img src="../../images/avatar/user.png" alt="user avatar"></a>
+            <li class="avatar-info"> <a href="#"><img src="../images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
                 <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
                 <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
@@ -144,8 +144,8 @@
     <div class="inner">
       <div class="header-top">
         <div class="logo logo-custom-css">
-          <a href="index.html" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="index.html" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="index.html" class="logo logo-light"><img src="../images/logo-white.png" alt="brand"> </a>
+          <a href="index.html" class="logo logo-dark"><img src="../images/logo-dark.png" alt="brand"> </a>
         </div>
         <div class="close-menu">
           <button class="close-button">
