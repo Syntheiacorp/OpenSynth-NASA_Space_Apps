@@ -71,7 +71,7 @@
               <li class="">
                 <a class="active" href="#">Home</a>
               </li>
-
+              <li><a href="#hofSection">Hall of Fame</a></li>
               <li class=" has-menu-child-item">
                 <a href="#explore-section">Explore</a>
                 <!-- <ul class="submenu">
@@ -80,7 +80,7 @@
                   </li>
                 </ul> -->
               </li>
-              <li><a href="#hofSection">HoF</a></li>
+              
 
              
             </ul>
