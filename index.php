@@ -71,7 +71,8 @@
               <li class="">
                 <a class="active" href="#">Home</a>
               </li>
-
+              <li><a href="#hofSection">Hall of Fame</a></li>
+              <li><a href="leaderboard"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
               <li class=" has-menu-child-item">
                 <a href="#explore-section">Explore</a>
                 <!-- <ul class="submenu">
@@ -80,7 +81,7 @@
                   </li>
                 </ul> -->
               </li>
-              <li><a href="hofSection">Hof</a></li>
+              
 
              
             </ul>
@@ -270,7 +271,7 @@
         </div>
         <!-- End .section-title -->
         <div class="text-large">
-          <a href="all-sellers-2.html">See Leader board</a>
+          <a href="leaderboard/">See Leader board</a>
         </div>
       </div>
       <!-- End .d-flex-between -->

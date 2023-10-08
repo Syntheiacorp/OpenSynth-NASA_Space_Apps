@@ -53,13 +53,18 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="" class="logo logo-light"><img src="../images/logo-white.png" alt="brand"> </a>
+          <a href="" class="logo logo-dark"><img src="../images/logo-dark.png" alt="brand"> </a>
         </div>
         <!-- End .logo-wrapper -->
 
         <div class="mainmenu-wrapper">
           <nav id="sideNav" class="mainmenu-nav d-none d-xl-block">
+          <ul class="mainmenu">
+              <li class="">
+                <a class="active" href="../">Home</a>
+              </li>
+</ul>
             <!-- End Mainmanu Nav -->
           </nav>
         </div>
@@ -80,18 +85,16 @@
           </li>
           <!-- End .search-mobile-icon -->
           <?php 
-            if(!isset($_SESSION['userId'])) {
+            if(isset($_SESSION['userId'])) {
 
           ?>
-            <li class="wallet-button"> 
-              <a href="auth/signin" class="btn btn-gradient btn-small">
-                <span><i class="ri-wallet-3-line"></i>Login</span>
-              </a>
-            </li>
-            <li class="wallet-button"> 
-              <a href="auth/signup" class="btn btn-gradient btn-small">
-                <span><i class="ri-wallet-3-line"></i>Signup</span>
-              </a>
+            <li class="avatar-info"> <a href="#"><img src="../images/avatar/user.png" alt="user avatar"></a>
+              <ul class="submenu">
+                <li><a href="../user/profile"><i class="ri-user-line"></i> Profile</a></li>
+                <li><a href="../projects/host"><i class="ri-edit-line"></i> Host New Project</a></li>
+                <li><a href="../leaderboard"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
+                <li><a href="../auth/signout/"><i class="ri-logout-box-r-line"></i>Sign Out</a></li>
+              </ul>
             </li>
           <?php 
             }
@@ -105,21 +108,7 @@
           </li>
           <!-- End .mobile-menu-bar -->
 
-          <?php 
-            if(isset($_SESSION['userId'])) {
-
-          ?>
-            <li class="avatar-info"> <a href="#"><img src="../images/avatar/user.png" alt="user avatar"></a>
-              <ul class="submenu">
-                <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
-                <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
-                <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
-                <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
-              </ul>
-            </li>
-          <?php 
-            }
-          ?>
+       
           <!-- End .avatar-info -->
 
           <li>
@@ -145,8 +134,8 @@
     <div class="inner">
       <div class="header-top">
         <div class="logo logo-custom-css">
-          <a href="index.html" class="logo logo-light"><img src="../../images/logo-white.png" alt="brand"> </a>
-          <a href="index.html" class="logo logo-dark"><img src="../../images/logo-dark.png" alt="brand"> </a>
+          <a href="index.html" class="logo logo-light"><img src="../images/logo-white.png" alt="brand"> </a>
+          <a href="index.html" class="logo logo-dark"><img src="../images/logo-dark.png" alt="brand"> </a>
         </div>
         <div class="close-menu">
           <button class="close-button">

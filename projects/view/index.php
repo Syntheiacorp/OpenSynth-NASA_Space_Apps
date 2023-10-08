@@ -37,6 +37,39 @@
 
   <!-- Style css -->
   <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    .custom-modal {
+  /* Add your custom styles here */
+      }
+
+      .custom-modal-xl {
+        max-width: 60%; /* Adjust as needed for XL size */
+      }
+
+      .custom-modal-scrollable {
+        overflow-y: auto;
+        max-height: 80vh; /* Adjust as needed for scrollable height */
+      }
+      .gradient-custom {
+    /* fallback for old browsers */
+    background: #fccb90;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom right, rgba(252, 203, 144, 1), rgba(213, 126, 235, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgba(252, 203, 144, 1), rgba(213, 126, 235, 1))
+    }
+
+    .mask-custom {
+    background: rgba(24, 24, 16, .2);
+    border-radius: 2em;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+    }
+  </style>
 </head>
 
 <body>
@@ -203,20 +236,15 @@ if (mysqli_num_rows($result) > 0) {
       <div class="row">
         <div class="col-xl-8 mb-6">
           <div class="blog-content">
-
-
             <img class="img-fluid" src="images/blog-details/1.jpg" alt="project-details">
             <!-- <h2 class="mb-2">List your collection for primary sales</h2> -->
             <h2 class="mb-2"><?php echo $row['Title'];?></h2>
             
             <ul class="meta">
-              
               <li>
                 <?php 
                 echo $row['CreatedAt'];
                 ?> 
-              
-
               </li>  
               <!-- <li><a href="#">Development</a></li> -->
               <li class="date"><i class="ri-time-line"></i><?php
@@ -279,8 +307,111 @@ if (mysqli_num_rows($result) > 0) {
               </div>
             </div>
 
+            <!-- Modal for chat -->
+            <div class="modal fade custom-modal" id="project_chat_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog custom-modal-xl modal-dialog-scrollable"> <!-- Use custom classes for modal size -->
+                <div class="modal-content">
+                  <div class="modal-header" style="background-color: #eee;">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Chats and Discussions </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                  <section class="gradient-custom">
+                  <div class="container py-5">
 
+                    <div class="row">
+                      <div class="col-md-6 col-lg-5 col-xl-5 mb-4 mb-md-0">
+                        <h5 class="font-weight-bold mb-3 text-center text-white">Members</h5>
+                        <div class="card mask-custom">
+                          <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                              <li class="p-2 border-bottom" style="border-bottom: 1px solid rgba(255,255,255,.3) !important;">
+                                <a href="#!" class="d-flex justify-content-between link-light">
+                                  <div class="d-flex flex-row">
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp" alt="avatar"
+                                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
+                                    <div class="pt-1">
+                                      <p class="fw-bold mb-0">John Doe</p>
+                                    </div>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
 
+                      <div class="col-md-6 col-lg-7 col-xl-7">
+                        <ul class="list-unstyled text-white">
+                          <li class="d-flex justify-content-between mb-4">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+                              class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                            <div class="card mask-custom">
+                              <div class="card-header d-flex justify-content-between p-3"
+                                style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                                <p class="fw-bold mb-0">Brad Pitt</p>
+                                <p class="text-light small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
+                              </div>
+                              <div class="card-body">
+                                <p class="mb-0">
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                  labore et dolore magna aliqua.
+                                </p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="d-flex justify-content-between mb-4">
+                            <div class="card mask-custom w-100">
+                              <div class="card-header d-flex justify-content-between p-3"
+                                style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                                <p class="fw-bold mb-0">Lara Croft</p>
+                                <p class="text-light small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
+                              </div>
+                              <div class="card-body">
+                                <p class="mb-0">
+                                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                  laudantium.
+                                </p>
+                              </div>
+                            </div>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+                              class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                          </li>
+                          <li class="d-flex justify-content-between mb-4">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+                              class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                            <div class="card mask-custom">
+                              <div class="card-header d-flex justify-content-between p-3"style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                                <p class="fw-bold mb-0">Brad Pitt</p>
+                                <p class="text-light small mb-0"><i class="far fa-clock"></i> 10 mins ago</p>
+                              </div>
+                            <div class="card-body">
+                              <p class="mb-0">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                  labore et dolore magna aliqua.
+                              </p>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+                  </div>
+                  <div class="modal-footer">
+                  <li class="mb-3">
+                    <div class="form-outline form-white">
+                      <textarea class="form-control" id="textAreaExample3" rows="3"></textarea>
+                      <label class="form-label" for="textAreaExample3">Message</label>
+                    </div>
+                  </li>
+                    <button type="button" class="btn btn-gradient btn btn-primary">Send</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="single-widget widget-tag mt-8" style="transform: translate(440px, -500px);">
               <h3 class="title">Tags</h3>
               <div class="inner mt-4">
@@ -296,6 +427,11 @@ if (mysqli_num_rows($result) > 0) {
                   <a href="#" class="btn btn-outline btn-small radius-3"><span>Business</span></a>
                 </div>
               </div>
+              highlefhjab
+            <!-- Button trigger chat modal -->
+            <button type="button" class="btn btn-gradient btn btn-primary" data-bs-toggle="modal" data-bs-target="#project_chat_modal">
+              Chat About This Topic ?
+            </button>
             </div>
           </aside>
         </div>
