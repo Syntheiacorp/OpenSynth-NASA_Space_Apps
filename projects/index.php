@@ -747,7 +747,9 @@ session_start();
                           } else {
 
                             ?>
-                              <a href="#"  class="btn btn-custom btn-small" disabled>
+                              <a 
+                                href="leaveProject.php?projectId=<?php echo $pId ?>&userId=<?php echo $participantId ?>"
+                                class="btn btn-custom btn-small" disabled>
                                 <span><i class="ri-add-line"></i> Joined</span>
                             </a>
                           <?php } ?>
