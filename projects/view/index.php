@@ -574,25 +574,6 @@ if (mysqli_num_rows($result) > 0) {
           <!-- End .col -->
 
           <div class="col-lg-2 col-md-6 mb-8">
-            <div class="footer-widget">
-              <h4>Marketplace</h4>
-              <ul class="footer-list-widget">
-                <li><a href="create.html">Create</a></li>
-                <li><a href="explore-carousel.html">Explore</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- End .col -->
-
-          <div class="col-lg-2 col-md-6 mb-8">
-            <div class="footer-widget">
-              <h4>Community</h4>
-              <ul class="footer-list-widget">
-                <!-- <li><a href="blog.html">Blog</a></li> -->
-                <li><a href="signin.html">Signin</a></li>
-                <li><a href="signup.html">SignUp</a></li>
-              </ul>
-            </div>
           </div>
           <!-- End .col -->
 

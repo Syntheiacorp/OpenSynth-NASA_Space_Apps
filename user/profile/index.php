@@ -476,32 +476,10 @@ if (!$_SESSION['userId'])
           <!-- End .col -->
 
           <div class="col-lg-2 col-md-6 mb-8">
-            <div class="footer-widget">
-              <h4>Marketplace</h4>
-              <ul class="footer-list-widget">
-                <li><a href="authors.html">Authors</a></li>
-                <li><a href="author-profile.html">Author Profile</a></li>
-                <li><a href="create.html">Create</a></li>
-                <li><a href="explore-carousel.html">Explore</a></li>
-                <li><a href="wallet.html">Wallet Connect</a></li>
-              </ul>
-            </div>
+
           </div>
           <!-- End .col -->
 
-          <div class="col-lg-2 col-md-6 mb-8">
-            <div class="footer-widget">
-              <h4>Community</h4>
-              <ul class="footer-list-widget">
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="activity.html">Activity</a></li>
-                <li><a href="popular-collections-2.html">Collections</a></li>
-                <li><a href="signin.html">Signin</a></li>
-                <li><a href="signup.html">SignUp</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- End .col -->
 
           <div class="col-lg-3 col-md-6 mb-8">
             <div class="footer-widget">
