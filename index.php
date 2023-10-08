@@ -72,7 +72,7 @@
                 <a class="active" href="#">Home</a>
               </li>
               <li><a href="#hofSection">Hall of Fame</a></li>
-              <li><a href="leaderboard"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
+              <li><a href="leaderboard">Leaderboard</a></li>
               <li class=" has-menu-child-item">
                 <a href="#explore-section">Explore</a>
                 <!-- <ul class="submenu">
