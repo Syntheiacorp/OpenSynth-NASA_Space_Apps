@@ -1,12 +1,12 @@
-<php 
+
+<?php
   session_start();
-  $master = $_GET['project_ID'];
+  $master = $_GET['projectID'];
+  $_SESSION['projectID'] = $master;
+  // $master = 1 //testing  
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from banu.ibthemespro.com/blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Oct 2023 06:27:47 GMT -->
 <head>
   <!-- Basic metas
   ======================================== -->
@@ -70,22 +70,11 @@
               </li>
 
               <li class=" has-menu-child-item">
-                <!-- <a href="#explore-section">Explore</a> -->
-                <!-- <ul class="submenu">
-                  <li>
-                    <a href="explore-filter-sidebar.html">Explore Filter Sidebar</a>
-                  </li>
-                </ul> -->
               </li>
-              <!-- <li><a href="activity.html">Activity</a></li> -->
-
-              <!-- <li><a href="contact.html">Contact</a></li> -->
             </ul>
-            <!-- End Mainmanu Nav -->
           </nav>
         </div>
       </div>
-      <!-- End .header-left -->
 
       <div class="header-right d-flex align-items-center">
         <ul class="header-right-inner">
@@ -182,8 +171,8 @@
 // Include the database configuration file
 require("../../config/dbConfig.php");
 
-// Write your SQL query and fetch data here
-$sql = "SELECT * FROM Projects where ProjectID='".$_GET['id']."' ";
+
+$sql = "SELECT * FROM Projects WHERE ProjectID = 2";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -194,7 +183,7 @@ if (mysqli_num_rows($result) > 0) {
   <section style="position:static;top:1;padding-top:21px"class="inner-page-banner bg-2 bg-image">
     <div class="container">
       <div class="inner text-center">
-        <h1 class="title"><?php echo $row['Title'];?></h1>
+        <h1 class="title"><?php echo $row['Title'];?> </h1>
         <nav class="mt-4">
           <ol class="breadcrumb justify-content-center">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -310,6 +299,7 @@ if (mysqli_num_rows($result) > 0) {
             </div>
           </aside>
         </div>
+        <?php if(isset($_SESSION['userId'])) { ?>
           <div class="styler-1 contact-form-wrapper" style='margin-top: -260px;'>
             <h3 class="mb-1">Leave a Comment</h3>
             <p>Your email address will not be published.</p>
@@ -344,34 +334,31 @@ if (mysqli_num_rows($result) > 0) {
             </div>
             <!-- End .form-inner -->
           </div>
-
+          <?php } ?>
         </div>
         <?php 
-          
-        ?>
-        <?php 
-        $projectID = 1;
+          $projectID = $master;
 
-        // Execute the SQL query to fetch comments
-        $query = "SELECT
-            pc.CommentID,
-            pc.UserID,
-            u.Username AS CommenterUsername,
-            pc.CommentText
-        FROM
-            ProjectComments pc
-        INNER JOIN
-            Users u ON pc.UserID = u.UserID
-        WHERE
-            pc.ProjectID = ?
-        ORDER BY
-            pc.CommentID DESC";
+          // Execute the SQL query to fetch comments
+          $query = "SELECT
+              pc.CommentID,
+              pc.UserID,
+              u.Username AS CommenterUsername,
+              pc.CommentText
+          FROM
+              ProjectComments pc
+          INNER JOIN
+              Users u ON pc.UserID = u.UserID
+          WHERE
+              pc.ProjectID = ?
+          ORDER BY
+              pc.CommentID DESC";
 
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "i", $projectID);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        $total_comnt = mysqli_num_rows($result);
+          $stmt = mysqli_prepare($conn, $query);
+          mysqli_stmt_bind_param($stmt, "i", $projectID);
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
+          $total_comnt = mysqli_num_rows($result);
         ?>
         <div class="comment-box-wrapper styler-1">
             <h4 class="mb-8"><?php echo $total_comnt." " ?>Comments</h4>
@@ -416,7 +403,6 @@ if (mysqli_num_rows($result) > 0) {
       <!-- End .section-title -->
 
       <div class="slider related-blog-activation  slick-arrow-between slick-gutter-15">
-
         <div class="single-blog">
           <a href="blog-details.html" class="thumb">
             <img src="images/blog/1.jpg" alt="nft blog">
@@ -431,55 +417,6 @@ if (mysqli_num_rows($result) > 0) {
                 say beside you</a></h4>
           </div>
         </div>
-        <!-- End .single-blog -->
-
-        <div class="single-blog">
-          <a href="blog-details.html" class="thumb">
-            <img src="images/blog/2.jpg" alt="nft blog">
-          </a>
-          <div class="content">
-            <ul class="meta">
-              <li>27 March</li>
-              <li><a href="#">Crypto</a></li>
-              <li class="date"><i class="ri-time-line"></i>7 Hour Ago</li>
-            </ul>
-            <h4 class="title"><a href="blog-details.html">Save Thousands Of Lives
-                Through This NFT</a></h4>
-          </div>
-        </div>
-        <!-- End .single-blog -->
-
-        <div class="single-blog">
-          <a href="blog-details.html" class="thumb">
-            <img src="images/blog/3.jpg" alt="nft blog">
-          </a>
-          <div class="content">
-            <ul class="meta">
-              <li>14 Feb</li>
-              <li><a href="#">Digital Art</a></li>
-              <li class="date"><i class="ri-time-line"></i>4 Hour Ago</li>
-            </ul>
-            <h4 class="title"><a href="blog-details.html">The NFT Know digital marketing for you</a></h4>
-          </div>
-        </div>
-        <!-- End .single-blog -->
-
-        <div class="single-blog">
-          <a href="blog-details.html" class="thumb">
-            <img src="images/blog/4.jpg" alt="nft blog">
-          </a>
-          <div class="content">
-            <ul class="meta">
-              <li>14 February</li>
-              <li><a href="#">Web NFT</a></li>
-              <li class="date"><i class="ri-time-line"></i>2 Hour Ago</li>
-            </ul>
-            <h4 class="title"><a href="blog-details.html">How to safely purchase
-                NFTs on Banu</a></h4>
-          </div>
-        </div>
-        <!-- End .single-blog -->
-
       </div>
     </div>
   </section>
@@ -496,14 +433,7 @@ if (mysqli_num_rows($result) > 0) {
                 <a href="index.html" class="logo-light"><img src="images/logo-white.png" alt="brand"></a>
                 <a href="index.html" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a>
               </div>
-              <p class="mb-5">Banu is the best NFT Marketplace Template because the we have selected the most active and
-                Creative Research.</p>
-              <div class="social">
-                <a class="icon-facebook" href="#"><i class="ri-facebook-line"></i></a>
-                <a class="icon-twitter" href="#"><i class="ri-twitter-line"></i></a>
-                <a class="icon-instagram" href="#"><i class="ri-instagram-line"></i></a>
-                <a class="icon-linkedin" href="#"><i class="ri-linkedin-line"></i></a>
-              </div>
+              <p class="mb-5">OpenSynth.</p>
             </div>
           </div>
           <!-- End .col -->
@@ -512,11 +442,8 @@ if (mysqli_num_rows($result) > 0) {
             <div class="footer-widget">
               <h4>Marketplace</h4>
               <ul class="footer-list-widget">
-                <li><a href="authors.html">Authors</a></li>
-                <li><a href="author-profile.html">Author Profile</a></li>
                 <li><a href="create.html">Create</a></li>
                 <li><a href="explore-carousel.html">Explore</a></li>
-                <li><a href="wallet.html">Wallet Connect</a></li>
               </ul>
             </div>
           </div>
@@ -526,9 +453,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="footer-widget">
               <h4>Community</h4>
               <ul class="footer-list-widget">
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="activity.html">Activity</a></li>
-                <li><a href="popular-collections-2.html">Collections</a></li>
+                <!-- <li><a href="blog.html">Blog</a></li> -->
                 <li><a href="signin.html">Signin</a></li>
                 <li><a href="signup.html">SignUp</a></li>
               </ul>
@@ -552,12 +477,6 @@ if (mysqli_num_rows($result) > 0) {
         </div>
       </div>
       <!-- End .container -->
-    </div>
-    <div class="copyright text-center">
-      <div class="container">
-        <p>Copyright © 2022 <a href="https://themeforest.net/user/ib-themes" target="_blank">ib-themes.</a> All Rights
-          Reserved.</p>
-      </div>
     </div>
   </footer>
   <!-- End Footer -->
@@ -583,17 +502,15 @@ if (mysqli_num_rows($result) > 0) {
 </html>
 
 <?php
-    if($isset($_POST['sub_cmnt_btn'])){
-    
-    $projectID = $_POST[''] ; 
-    $userID = ;    
-    $commentText = "This is a sample comment."; 
-
+    if(isset($_POST['sub_cmnt_btn'])){ 
+      $projectID = $master; 
+      $userID = $_SESSION['UserID'];
+      $commentText = $_POST['cmt_message']; 
     // SQL insert query
-    $query = "INSERT INTO ProjectComments (ProjectID, UserID, CommentText)
-    VALUES (?, ?, ?);";
+    $cmt_query = "INSERT INTO ProjectComments (ProjectID, UserID, CommentText)
+    VALUES ($projectID,$userID ,$commentText );";
 
-    $stmt = mysqli_prepare($conn, $query);
+    $stmt = mysqli_prepare($conn, $cmt_query);
     mysqli_stmt_bind_param($stmt, "iis", $projectID, $userID, $commentText);
 
     if (mysqli_stmt_execute($stmt)) {
@@ -605,5 +522,8 @@ if (mysqli_num_rows($result) > 0) {
     // Close the database connection
     mysqli_close($conn);
   }
+
+
+  
   
 ?>
