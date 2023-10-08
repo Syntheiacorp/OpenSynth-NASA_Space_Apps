@@ -119,15 +119,21 @@ if (!$_SESSION['userId'])
           <!-- End .mobile-menu-bar -->
 
           
+          <?php 
+            if(isset($_SESSION['userId'])) {
+
+          ?>
             <li class="avatar-info"> <a href="#"><img src="../../images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
                 <li><a href="#"><i class="ri-user-line"></i> Profile</a></li>
-                <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
-                <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
-                <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
+                <li><a href="../../projects/host"><i class="ri-edit-line"></i> Host New Project</a></li>
+                <li><a href="../../leaderboard"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
+                <li><a href="../../auth/signout/"><i class="ri-logout-box-r-line"></i>Sign Out</a></li>
               </ul>
             </li>
-        
+          <?php 
+            }?>
+
           <!-- End .avatar-info -->
 
           <li>
