@@ -1,6 +1,6 @@
 <php 
-session_start();
-
+  session_start();
+  $master = $_GET['project_ID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -314,30 +314,29 @@ if (mysqli_num_rows($result) > 0) {
             <h3 class="mb-1">Leave a Comment</h3>
             <p>Your email address will not be published.</p>
             <div class="form-inner">
-              <form action="#">
+              <form method="POST">
                 <div class="row">
                   <div class="col-lg-6 mb-4">
                     <div class="input-wrapper">
-                      <input type="text" name="name" id="name" placeholder="Name *">
+                      <input type="text" name="cmt_name" id="name" placeholder="Name *">
                     </div>
                   </div>
                   <!-- End .col -->
 
                   <div class="col-lg-6 mb-4">
-                    <input type="text" name="email" id="email" placeholder="Email *">
+                    <input type="text" name="cmt_email" id="email" placeholder="Email *">
                   </div>
                   <!-- End .col -->
 
                   <div class="col-lg-12 mb-4">
-                    <textarea name="message" id="message" cols="20" rows="6" placeholder="Message *"></textarea>
+                    <textarea name="cmt_message" id="message" cols="20" rows="6" placeholder="Message *"></textarea>
                   </div>
                   <!-- End .col -->
 
                   <div class="col-lg-12">
-                    <button class="btn btn-gradient btn btn-medium" type="submit"><span>Submit</span></button>
+                    <button class="btn btn-gradient btn btn-medium" name = "sub_cmnt_btn" type="submit"><span>Submit</span></button>
                   </div>
                   <!-- End .col -->
-
                 </div>
                 <!-- End .row -->
               </form>
@@ -347,6 +346,9 @@ if (mysqli_num_rows($result) > 0) {
           </div>
 
         </div>
+        <?php 
+          
+        ?>
         <?php 
         $projectID = 1;
 
@@ -369,10 +371,10 @@ if (mysqli_num_rows($result) > 0) {
         mysqli_stmt_bind_param($stmt, "i", $projectID);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
-
+        $total_comnt = mysqli_num_rows($result);
         ?>
         <div class="comment-box-wrapper styler-1">
-            <h2 class="mb-8">3 Comments</h2>
+            <h4 class="mb-8"><?php echo $total_comnt." " ?>Comments</h4>
             <ul class="comment-box-inner">
             <?php if (mysqli_num_rows($result) > 0) {
               while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -383,7 +385,7 @@ if (mysqli_num_rows($result) > 0) {
                   </a>
                   <!-- End .avatar -->
                   <div class="content">
-                    <h5 class="title"><a href="#"><?php echo '<strong>' . $row['CommenterUsername'] . '</strong>';?> <?php echo "flag"?></a><span class="date-post">Feb 8,2022</span></h5>
+                    <h5 class="title"><a href="#"><?php echo '<strong>' . $row['CommenterUsername'] . '</strong>';?></a><span class="date-post">Feb 8,2022</span></h5>
                     <p><?php echo '<p>' . $row['CommentText'] . '</p>'; ?></p>
                   </div>
                 </div>
@@ -578,7 +580,30 @@ if (mysqli_num_rows($result) > 0) {
   <!-- main JS -->
   <script src="../../js/main.js"></script>
 </body>
-
-
-<!-- Mirrored from banu.ibthemespro.com/blog-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 02 Oct 2023 06:27:49 GMT -->
 </html>
+
+<?php
+    if($isset($_POST['sub_cmnt_btn'])){
+    
+    $projectID = $_POST[''] ; 
+    $userID = ;    
+    $commentText = "This is a sample comment."; 
+
+    // SQL insert query
+    $query = "INSERT INTO ProjectComments (ProjectID, UserID, CommentText)
+    VALUES (?, ?, ?);";
+
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "iis", $projectID, $userID, $commentText);
+
+    if (mysqli_stmt_execute($stmt)) {
+        echo "Comment inserted successfully.";
+    } else {
+        echo "Error inserting comment: " . mysqli_error($conn);
+    }
+
+    // Close the database connection
+    mysqli_close($conn);
+  }
+  
+?>
