@@ -688,7 +688,7 @@
                       <?php 
                         $id = $row['CreatorUserID'];
                         $ownerQuery = "SELECT FullName FROM `UserData` WHERE UserID = '$id'";
-                        $userNameArray = mysqli_fetch_assoc(mysqli_query($conn, $ownerQuery));
+                         $userNameArray = mysqli_fetch_assoc(mysqli_query($conn, $ownerQuery));
                         // print_r($userNameArray);
                       ?>
                       <div class="product-owner py-4 d-flex-between">
