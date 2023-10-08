@@ -47,7 +47,7 @@
   <div id="preloader">
     <div id="ctn-preloader" class="ctn-preloader">
       <div class="animation-preloader">
-        <div class="icon"><img src="images/logo-preloader.png" alt="logo" class="m-auto d-block"> <span></span>
+        <div class="icon"><img src="#" alt="logo" class="m-auto d-block"> <span></span>
         </div>
       </div>
     </div>
@@ -59,8 +59,8 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a>
-          <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a>
+          <!-- <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a> -->
+          <!-- <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a> -->
         </div>
         <!-- End .logo-wrapper -->
 
@@ -80,7 +80,7 @@
                   </li>
                 </ul> -->
               </li>
-              <li><a href="hofSection">Hof</a></li>
+              <li><a href="#hofSection">HoF</a></li>
 
              
             </ul>
