@@ -263,8 +263,7 @@
                 <a href="index.html" class="logo-light"><img src="../images/logo-white.png" alt="brand"></a>
                 <a href="index.html" class="logo logo-dark"><img src="../images/logo-dark.png" alt="brand"> </a>
               </div>
-              <p class="mb-5">Banu is the best NFT Marketplace Template because the we have selected the most active and
-                Creative Research.</p>
+              <p class="mb-5">Where innovation meets collaboration, join us in shaping the future of open science—one dynamic project, one dedicated researcher, and one groundbreaking discovery at a time.</p>
               <div class="social">
                 <a class="icon-facebook" href="#"><i class="ri-facebook-line"></i></a>
                 <a class="icon-twitter" href="#"><i class="ri-twitter-line"></i></a>

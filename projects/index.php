@@ -790,8 +790,7 @@ session_start();
                   </a>
                 </div>
                 <p class="mb-5">
-                  Banu is the best NFT Marketplace Template because the we have
-                  selected the most active and Creative Research.
+                Where innovation meets collaboration, join us in shaping the future of open science—one dynamic project, one dedicated researcher, and one groundbreaking discovery at a time.
                 </p>
                 <div class="social">
                   <a class="icon-facebook" href="#"
