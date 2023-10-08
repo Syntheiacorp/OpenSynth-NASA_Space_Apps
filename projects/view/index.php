@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Icon fonts
-	======================================== -->
+  ======================================== -->
   <link rel="stylesheet" href="../../fonts/remixicon.css" />
 
 
@@ -30,25 +30,102 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon/favicon.ico" />
 
   <!-- CSS
-	======================================== -->
+  ======================================== -->
   <link rel="stylesheet" href="../../css/vendor/bootstrap.min.css" />
   <link rel="stylesheet" href="../../css/vendor/slick.css">
   <link rel="stylesheet" href="../../css/vendor/slick-theme.css">
 
   <!-- Style css -->
   <link rel="stylesheet" href="../../css/style.css" />
+  <style>
+    #chat1 .form-outline .form-control~.form-notch div {
+pointer-events: none;
+border: 1px solid;
+border-color: #eee;
+box-sizing: border-box;
+background: transparent;
+}
+
+#chat1 .form-outline .form-control~.form-notch .form-notch-leading {
+left: 0;
+top: 0;
+height: 100%;
+border-right: none;
+border-radius: .65rem 0 0 .65rem;
+}
+
+#chat1 .form-outline .form-control~.form-notch .form-notch-middle {
+flex: 0 0 auto;
+max-width: calc(100% - 1rem);
+height: 100%;
+border-right: none;
+border-left: none;
+}
+
+#chat1 .form-outline .form-control~.form-notch .form-notch-trailing {
+flex-grow: 1;
+height: 100%;
+border-left: none;
+border-radius: 0 .65rem .65rem 0;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-leading {
+border-top: 0.125rem solid #39c0ed;
+border-bottom: 0.125rem solid #39c0ed;
+border-left: 0.125rem solid #39c0ed;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-leading,
+#chat1 .form-outline .form-control.active~.form-notch .form-notch-leading {
+border-right: none;
+transition: all 0.2s linear;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-middle {
+border-bottom: 0.125rem solid;
+border-color: #39c0ed;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-middle,
+#chat1 .form-outline .form-control.active~.form-notch .form-notch-middle {
+border-top: none;
+border-right: none;
+border-left: none;
+transition: all 0.2s linear;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-trailing {
+border-top: 0.125rem solid #39c0ed;
+border-bottom: 0.125rem solid #39c0ed;
+border-right: 0.125rem solid #39c0ed;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-trailing,
+#chat1 .form-outline .form-control.active~.form-notch .form-notch-trailing {
+border-left: none;
+transition: all 0.2s linear;
+}
+
+#chat1 .form-outline .form-control:focus~.form-label {
+color: #39c0ed;
+}
+
+#chat1 .form-outline .form-control~.form-label {
+color: #bfbfbf;
+}
+  </style>
 </head>
 
 <body>
   <!-- Start Preloader -->
-  <div id="preloader">
+  <!-- <div id="preloader">
     <div id="ctn-preloader" class="ctn-preloader">
       <div class="animation-preloader">
         <div class="icon"><img src="../../images/logo-preloader.png" alt="logo" class="m-auto d-block"> <span></span>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- End Preloader -->
 
   <!-- start header area -->
@@ -98,20 +175,20 @@
           </li>
           <!-- End .mobile-menu-bar -->
 
-          <?php 
-            if(isset($_SESSION['userId'])) {
+          <?php
+          if (isset($_SESSION['userId'])) {
 
-          ?>
-            <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
-              <ul class="submenu">
-                <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
-                <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
-                <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
-                <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
-              </ul>
-            </li>
-          <?php 
-            }
+            ?>
+              <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
+                <ul class="submenu">
+                  <li><a href="author-profile.html"><i class="ri-user-line"></i> Profile</a></li>
+                  <li><a href="create.html"><i class="ri-edit-line"></i> Create Item</a></li>
+                  <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Authors</a></li>
+                  <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign in</a></li>
+                </ul>
+              </li>
+          <?php
+          }
           ?>
           <!-- End .avatar-info -->
 
@@ -168,22 +245,22 @@
   </div>
   <!-- End mobile menu area -->
   <?php
-// Include the database configuration file
-require("../../config/dbConfig.php");
+  // Include the database configuration file
+  require("../../config/dbConfig.php");
 
-
-$sql = "SELECT * FROM Projects WHERE ProjectID = 2";
+// Write your SQL query and fetch data here
+$sql = "SELECT * FROM Projects where ProjectID='".$_GET['id']."' ";
 $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-  $row = mysqli_fetch_assoc($result)
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result)
 
 ?>
   <!-- Start banner area -->
   <section style="position:static;top:1;padding-top:21px"class="inner-page-banner bg-2 bg-image">
     <div class="container">
       <div class="inner text-center">
-        <h1 class="title"><?php echo $row['Title'];?> </h1>
+        <h1 class="title"><?php echo $row['Title'];?></h1>
         <nav class="mt-4">
           <ol class="breadcrumb justify-content-center">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -197,87 +274,161 @@ if (mysqli_num_rows($result) > 0) {
   </section>
   <!-- End banner area -->
 
-  <!-- Start Blog Details area -->
-  <section class="pt-120 pb-90 blog-details-wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-8 mb-6">
-          <div class="blog-content">
+    <!-- Start Blog Details area -->
+    <section class="pt-120 pb-90 blog-details-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-8 mb-6">
+            <!-- <div class="chat-container">sdsd</div> -->
+            <div class="blog-content">
 
 
-            <img class="img-fluid" src="images/blog-details/1.jpg" alt="project-details">
-            <!-- <h2 class="mb-2">List your collection for primary sales</h2> -->
-            <h2 class="mb-2"><?php echo $row['Title'];?></h2>
+              <img class="img-fluid" src="images/blog-details/1.jpg" alt="project-details">
+              <!-- <h2 class="mb-2">List your collection for primary sales</h2> -->
+              <h2 class="mb-2"><?php echo $row['Title']; ?></h2>
             
-            <ul class="meta">
+              <ul class="meta">
               
-              <li>
-                <?php 
-                echo $row['CreatedAt'];
-                ?> 
+                <li>
+                  <?php
+                  echo $row['CreatedAt'];
+                  ?> 
               
 
-              </li>  
-              <!-- <li><a href="#">Development</a></li> -->
-              <li class="date"><i class="ri-time-line"></i><?php
-// Assuming $row['CreatedAt'] contains your timestamp from the database
+                </li>  
 
-            $timestamp = strtotime($row['CreatedAt']);
-            $current_time = time(); // Current timestamp
+                <li class="date"><i class="ri-time-line"></i><?php
+                // Assuming $row['CreatedAt'] contains your timestamp from the database
+              
+                $timestamp = strtotime($row['CreatedAt']);
+                $current_time = time(); // Current timestamp
+              
+                $time_diff = $current_time - $timestamp;
 
-            $time_diff = $current_time - $timestamp;
+                if ($time_diff < 60) {
+                  $time_ago = $time_diff . " seconds ago";
+                } elseif ($time_diff < 3600) {
+                  $minutes = floor($time_diff / 60);
+                  $time_ago = $minutes . " minutes ago";
+                } elseif ($time_diff < 86400) {
+                  $hours = floor($time_diff / 3600);
+                  $time_ago = $hours . " hours ago";
+                } else {
+                  $days = floor($time_diff / 86400);
+                  $time_ago = $days . " days ago";
+                }
 
-            if ($time_diff < 60) {
-                $time_ago = $time_diff . " seconds ago";
-            } elseif ($time_diff < 3600) {
-                $minutes = floor($time_diff / 60);
-                $time_ago = $minutes . " minutes ago";
-            } elseif ($time_diff < 86400) {
-                $hours = floor($time_diff / 3600);
-                $time_ago = $hours . " hours ago";
-            } else {
-                $days = floor($time_diff / 86400);
-                $time_ago = $days . " days ago";
-            }
-
-            echo $time_ago;
-            ?></li>
-            </ul>
-            <p><?php echo $row['Description'];?> </p>
-            </div>
+                echo $time_ago;
+                ?></li>
+              </ul>
+              <p><?php echo $row['Description']; ?> </p>
+              </div>
           </div>
-          <hr>
+            <div class="col-xl-4 mb-6" style="background-color: #20202d; border-radius: 6px; float: right">
+            <!-- Div Box Content -->
+            <!-- Add your div box content here -->
+            <section style="background-color: #eee;">
+              <div class="container py-5">
+
+                <div class="row d-flex justify-content-center">
+                  <div class="col-md-8 col-lg-6 col-xl-4">
+
+                    <div class="card" id="chat1" style="border-radius: 15px;">
+                      <div
+                        class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+                        style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <i class="fas fa-angle-left"></i>
+                        <p class="mb-0 fw-bold">Live chat</p>
+                        <i class="fas fa-times"></i>
+                      </div>
+                      <div class="card-body">
+
+                        <div class="d-flex flex-row justify-content-start mb-4">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                            alt="avatar 1" style="width: 45px; height: 100%;">
+                          <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                            <p class="small mb-0">Hello and thank you for visiting MDBootstrap. Please click the video
+                              below.</p>
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row justify-content-end mb-4">
+                          <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                            <p class="small mb-0">Thank you, I really like your product.</p>
+                          </div>
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                            alt="avatar 1" style="width: 45px; height: 100%;">
+                        </div>
+
+                        <div class="d-flex flex-row justify-content-start mb-4">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                            alt="avatar 1" style="width: 45px; height: 100%;">
+                          <div class="ms-3" style="border-radius: 15px;">
+                            <div class="bg-image">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/screenshot1.webp"
+                                style="border-radius: 15px;" alt="video">
+                              <a href="#!">
+                                <div class="mask"></div>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row justify-content-start mb-4">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                            alt="avatar 1" style="width: 45px; height: 100%;">
+                          <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                            <p class="small mb-0">...</p>
+                          </div>
+                        </div>
+
+                        <div class="form-outline">
+                          <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+                          <label class="form-label" for="textAreaExample">Type your message</label>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </section>
+<!-- End chat section -->
+            </div>
+            <!-- <hr> -->
 
         
-          <!-- End comment-box-wrapper -->
-        <div class="col-xl-4 mb-6">
-          <aside class="sidebar">
-            <div class="single-widget widget_categories" style='transform: translate(-30px, 30px);'>
-              <h3 class="title">Categories</h3>
-              <div class="inner">
-                <ul class="category-list ">
-                  <li><a href="blog-details.html"><span class="left-content">Development</span><span
-                        class="count-text">24</span></a>
-                  </li>
-                  <li><a href="blog-details.html"><span class="left-content">Company</span><span
-                        class="count-text">25</span></a></li>
-                  <li><a href="blog-details.html"><span class="left-content">Marketing</span><span
-                        class="count-text">18</span></a>
-                  </li>
-                  <li><a href="blog-details.html"><span class="left-content">UX
-                        Design</span><span class="count-text">56</span></a></li>
-                  <li><a href="blog-details.html"><span class="left-content">Business</span><span
-                        class="count-text">27</span></a></li>
-                  <li><a href="blog-details.html"><span class="left-content">App
-                        Development</span><span class="count-text">47</span></a></li>
-                  <li><a href="blog-details.html"><span class="left-content">Application</span><span
-                        class="count-text">23</span></a>
-                  </li>
-                  <li><a href="blog-details.html"><span class="left-content">Art</span><span
-                        class="count-text">35</span></a></li>
-                </ul>
+            <!-- End comment-box-wrapper -->
+          <div class="col-xl-4 mb-6">
+            <aside class="sidebar">
+              <div class="single-widget widget_categories" style='transform: translate(-30px, 30px);'>
+                <h3 class="title">Categories</h3>
+                <div class="inner">
+                  <ul class="category-list ">
+                    <li><a href="blog-details.html"><span class="left-content">Development</span><span
+                          class="count-text">24</span></a>
+                    </li>
+                    <li><a href="blog-details.html"><span class="left-content">Company</span><span
+                          class="count-text">25</span></a></li>
+                    <li><a href="blog-details.html"><span class="left-content">Marketing</span><span
+                          class="count-text">18</span></a>
+                    </li>
+                    <li><a href="blog-details.html"><span class="left-content">UX
+                          Design</span><span class="count-text">56</span></a></li>
+                    <li><a href="blog-details.html"><span class="left-content">Business</span><span
+                          class="count-text">27</span></a></li>
+                    <li><a href="blog-details.html"><span class="left-content">App
+                          Development</span><span class="count-text">47</span></a></li>
+                    <li><a href="blog-details.html"><span class="left-content">Application</span><span
+                          class="count-text">23</span></a>
+                    </li>
+                    <li><a href="blog-details.html"><span class="left-content">Art</span><span
+                          class="count-text">35</span></a></li>
+                  </ul>
+                </div>
               </div>
-            </div>
 
 
 
@@ -299,34 +450,34 @@ if (mysqli_num_rows($result) > 0) {
             </div>
           </aside>
         </div>
-        <?php if(isset($_SESSION['userId'])) { ?>
           <div class="styler-1 contact-form-wrapper" style='margin-top: -260px;'>
             <h3 class="mb-1">Leave a Comment</h3>
             <p>Your email address will not be published.</p>
             <div class="form-inner">
-              <form method="POST">
+              <form action="#">
                 <div class="row">
                   <div class="col-lg-6 mb-4">
                     <div class="input-wrapper">
-                      <input type="text" name="cmt_name" id="name" placeholder="Name *">
+                      <input type="text" name="name" id="name" placeholder="Name *">
                     </div>
                   </div>
                   <!-- End .col -->
 
                   <div class="col-lg-6 mb-4">
-                    <input type="text" name="cmt_email" id="email" placeholder="Email *">
+                    <input type="text" name="email" id="email" placeholder="Email *">
                   </div>
                   <!-- End .col -->
 
                   <div class="col-lg-12 mb-4">
-                    <textarea name="cmt_message" id="message" cols="20" rows="6" placeholder="Message *"></textarea>
+                    <textarea name="message" id="message" cols="20" rows="6" placeholder="Message *"></textarea>
                   </div>
                   <!-- End .col -->
 
                   <div class="col-lg-12">
-                    <button class="btn btn-gradient btn btn-medium" name = "sub_cmnt_btn" type="submit"><span>Submit</span></button>
+                    <button class="btn btn-gradient btn btn-medium" type="submit"><span>Submit</span></button>
                   </div>
                   <!-- End .col -->
+
                 </div>
                 <!-- End .row -->
               </form>
@@ -334,55 +485,52 @@ if (mysqli_num_rows($result) > 0) {
             </div>
             <!-- End .form-inner -->
           </div>
-          <?php } ?>
+
         </div>
         <?php 
-          $projectID = $master;
+$cmt_fetch_query = "SELECT
+    pc.CommentID,
+    pc.UserID,
+    u.Username AS CommenterUsername,
+    pc.CommentText
+FROM
+    ProjectComments pc
+INNER JOIN
+    Users u ON pc.UserID = u.UserID
+WHERE
+    pc.ProjectID = ProjectID='".$_GET['id']."'
+ORDER BY
+    pc.CommentID DESC;";
 
-          // Execute the SQL query to fetch comments
-          $query = "SELECT
-              pc.CommentID,
-              pc.UserID,
-              u.Username AS CommenterUsername,
-              pc.CommentText
-          FROM
-              ProjectComments pc
-          INNER JOIN
-              Users u ON pc.UserID = u.UserID
-          WHERE
-              pc.ProjectID = ?
-          ORDER BY
-              pc.CommentID DESC";
+$cmt_fetch_res = mysqli_query($conn, $cmt_fetch_query);
+?>
 
-          $stmt = mysqli_prepare($conn, $query);
-          mysqli_stmt_bind_param($stmt, "i", $projectID);
-          mysqli_stmt_execute($stmt);
-          $result = mysqli_stmt_get_result($stmt);
-          $total_comnt = mysqli_num_rows($result);
-        ?>
-        <div class="comment-box-wrapper styler-1">
-            <h4 class="mb-8"><?php echo $total_comnt." " ?>Comments</h4>
-            <ul class="comment-box-inner">
-            <?php if (mysqli_num_rows($result) > 0) {
-              while ($row = mysqli_fetch_assoc($result)) { ?>
-              <li class="single-comment-box d-flex-between ">
+<div class="comment-box-wrapper styler-1">
+    <h2 class="mb-8">3 Comments</h2>
+    <ul class="comment-box-inner">
+        <?php while ($row = mysqli_fetch_assoc($cmt_fetch_res)) { ?>
+            <li class="single-comment-box d-flex-between">
                 <div class="inner d-flex-start">
-                  <a href="#" class="avatar">
-                    <img src="images/blog-details/avatar/1.png" alt="author">
-                  </a>
-                  <!-- End .avatar -->
-                  <div class="content">
-                    <h5 class="title"><a href="#"><?php echo '<strong>' . $row['CommenterUsername'] . '</strong>';?></a><span class="date-post">Feb 8,2022</span></h5>
-                    <p><?php echo '<p>' . $row['CommentText'] . '</p>'; ?></p>
-                  </div>
+                    <a href="#" class="avatar">
+                        <img src="images/blog-details/avatar/1.png" alt="author">
+                    </a>
+                    <!-- End .avatar -->
+                    <div class="content">
+                        <h5 class="title">
+                            <a href="#"><?php echo $row['CommenterUsername']; ?> <?php echo "flag" ?></a>
+                            <span class="date-post">Feb 8, 2022</span>
+                        </h5>
+                        <p><?php echo $row['CommentText']; ?></p>
+                    </div>
                 </div>
                 <!-- End .inner -->
                 <div class="reply"><i class="ri-arrow-right-line"></i></div>
                 <!-- End reply -->
-              </li>
-              <?php } }else {
-              echo 'No comments available for this project.';
-            }?>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
+
               <!-- End .single-comment-box -->
             </ul>
           </div>

@@ -1,3 +1,10 @@
+<?php 
+  session_start();
+  if(isset($_SESSION['userId'])) {
+    echo "<script> window.location.href='../../'</script>";
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +101,7 @@
           <div class="col-md-6 col-sm-6 col-6 mb-2">
             <div class="field-box">
               <label class="checkbox">
-                <input class="form-check-input me-1" name="remember" type="checkbox" value="" required>
+                <input class="form-check-input me-1" name="remember" type="checkbox" value="" >
                 Remember
               </label>
             </div>
