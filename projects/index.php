@@ -1,9 +1,3 @@
-<?php 
-  session_start();
-  if(!isset($_SESSION['userId'])) {
-    echo "<script> window.location.href='../../auth/signin'</script>";
-  }
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -108,7 +102,12 @@
 
         <div class="header-right d-flex align-items-center">
           <ul class="header-right-inner">
-           
+            <!-- <li class=" d-none d-lg-block">
+            <form action="#" class="search-bar">
+              <input type="text" name="search" placeholder="Collection, item or user" id="search">
+              <button class="search-btn" type="submit"> <i class="ri-search-line"></i></button>
+            </form>
+          </li> -->
             <!-- End .search-bar -->
 
             <li class="setting-option d-block d-lg-none">
@@ -601,7 +600,26 @@
                         <h3 class="title">
                           <a href="product-details.html"><?php echo $row['Title']?></a>
                         </h3>
-                       
+                        <!-- <div class="more-dropdown">
+                          <i class="ri-more-fill" data-bs-toggle="dropdown"></i>
+                          <ul class="dropdown-menu dropdown-menu-dark">
+                            <li>
+                              <a class="dropdown-item" href="#">New bid</a>
+                            </li>
+                            <li>
+                              <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#"
+                                >Refresh Metadata</a
+                              >
+                            </li>
+                            <li><a class="dropdown-item" href="#">Share</a></li>
+                            <li>
+                              <a class="dropdown-item" href="#">Report</a>
+                            </li>
+                          </ul>
+                        </div> -->
                       </div>
                       <!-- .header -->
                       <div class="product-share-wrapper">
@@ -663,12 +681,17 @@
                             ></strong
                           ></span
                         >
-                       
+                        <!-- <span class="biding-price d-flex-center"
+                          ><i class="ri-arrow-up-line"></i>76.4 ETH</span
+                        > -->
                       </div>
                       <!-- End .product-owner -->
                       <div class="action-wrapper d-flex-between pt-4">
                         <a
-                          href="view/?projectID=<?php echo $row['ProjectID'] ?>"
+                          href="view/?projectID=<?php echo $row['ProjectID'] ?>";
+                          data-bs-toggle="modal"
+                          data-bs-target="#bid_history"
+                          class="history d-flex-center"
                           ><i class="ri-history-line"></i>View Project</a
                         >
                         <a

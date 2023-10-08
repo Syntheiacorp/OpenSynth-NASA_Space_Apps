@@ -142,9 +142,9 @@
             <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
                 <li><a href="user/profile"><i class="ri-user-line"></i> Profile</a></li>
-                <li><a href="projects/host"><i class="ri-edit-line"></i> Host New Project</a></li>
-                <li><a href="leaderboard"><i class="ri-layout-grid-line"></i>Leader board</a></li>
-                <li><a href="auth/signout/"><i class="ri-logout-box-r-line"></i>Sign Out</a></li>
+                <li><a href="create.html"><i class="ri-edit-line"></i> Host New Project</a></li>
+                <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
+                <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign Out</a></li>
               </ul>
             </li>
           <?php 
@@ -212,11 +212,12 @@
         <div class="row align-items-center">
           <div class="col-xxl-8 col-xl-7 col-lg-7">
             <div class="banner-content">
-              <h1 class="mb-6 title" data-aos="fade-up">Where Innovation <br>
-                <span>Meets Collaboration</span>
+              <h1 class="mb-6 title" data-aos="fade-up">Collect your <br>
+                <span>digital art NFTs</span>
               </h1>
-              <p data-aos="fade-up" data-aos-delay="100">Explore the future of technology  <br>
-                in our open source marketplace</p>
+              <p data-aos="fade-up" data-aos-delay="100">Marketplace for monster character
+                collections <br>
+                non fungible token NFTs.</p>
               <div class="group-btn mt-8" data-aos="fade-up" data-aos-delay="200">
                 <a href="explore-filter-sidebar.html" class="btn btn-gradient"><span><i class="ri-rocket-line"></i>
                     Explore</span></a>
@@ -228,7 +229,6 @@
               <img src="images/shape/3-light.png" alt="shape" class="shape shape-3 light rotate-360">
             </div>
             <!-- End banner-content -->
-            
 
           </div>
           <!-- End .col -->
@@ -271,7 +271,7 @@
   <section class="ptb-120 section-bg-separation-2">
     <div class="section-title text-center">
       <span class="subtitle">Exclusive Assets</span>
-      <h2>Gallery</h2>
+      <h2>NFT Gallery</h2>
     </div>
     <!-- End .section-title -->
     <div class="nft-gallery-activation slider slick-pagination-50">
@@ -435,10 +435,231 @@
                     <!-- End .content -->
                   </div>
         </div>
-        <?php }?>
-        <!-- Project listing tab end -->
-        
 
+        <!-- End .explore-style-one -->
+        <div class="grid-item cat--1 cat--4">
+          <div class="explore-style-one">
+            <div class="thumb">
+              <a href="product-details.html"> <img src="images/explore/16.jpg" alt="nft live auction thumbnail"></a>
+              <button class="reaction-btn"><i class="ri-heart-fill"></i><span>55</span></button>
+              <!-- End .reaction-count -->
+            </div>
+            <!-- End .thumb -->
+            <div class="content">
+              <div class="header d-flex-between pt-4 pb-3">
+                <h3 class="title"><a href="product-details.html">TrapMonkie - Meditation</a></h3>
+                <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">New bid</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
+                    <li><a class="dropdown-item" href="#">Share</a></li>
+                    <li><a class="dropdown-item" href="#">Report</a></li>
+
+                  </ul>
+                </div>
+              </div>
+              <!-- .header -->
+              <div class="product-share-wrapper">
+                <div class="profile-share d-flex-center">
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Banuri Bari"><img src="images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Mark Keni"><img src="images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Diago Smith"><img src="images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                  <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
+                </div>
+              </div>
+              <!-- End product-share-wrapper -->
+              <div class="product-owner py-4 d-flex-between">
+                <span class="bid-owner">Owned By <strong><a href="author-profile.html">Kartik</a></strong></span>
+                <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
+              </div>
+              <!-- End .product-owner -->
+              <div class="action-wrapper d-flex-between pt-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history" class="history d-flex-center"><i
+                    class="ri-history-line"></i>View History</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
+                  class="btn btn-outline btn-small "><span><i class="ri-shopping-bag-line"></i> Place
+                    Bid</span></a>
+              </div>
+              <!-- action-wrapper -->
+            </div>
+            <!-- End .content -->
+          </div>
+        </div>
+
+        <!-- End .explore-style-one -->
+        <div class="grid-item cat--2 cat--3">
+          <div class="explore-style-one">
+            <div class="thumb">
+              <a href="product-details.html"><img src="images/explore/20.jpg" alt="nft live auction thumbnail"></a>
+              <button class="reaction-btn"><i class="ri-heart-fill"></i><span>25</span></button>
+              <!-- End .reaction-count -->
+            </div>
+            <!-- End .thumb -->
+            <div class="content">
+              <div class="header d-flex-between pt-4 pb-3">
+                <h3 class="title"><a href="product-details.html">Illustrations</a></h3>
+                <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">New bid</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
+                    <li><a class="dropdown-item" href="#">Share</a></li>
+                    <li><a class="dropdown-item" href="#">Report</a></li>
+
+                  </ul>
+                </div>
+              </div>
+              <!-- .header -->
+              <div class="product-share-wrapper">
+                <div class="profile-share d-flex-center">
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Banuri Bari"><img src="images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Mark Keni"><img src="images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Diago Smith"><img src="images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                  <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
+                </div>
+              </div>
+              <!-- End product-share-wrapper -->
+              <div class="product-owner py-4 d-flex-between">
+                <span class="bid-owner">Owned By <strong><a href="author-profile.html">Richardson</a></strong></span>
+                <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
+              </div>
+              <!-- End .product-owner -->
+              <div class="action-wrapper d-flex-between pt-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history" class="history d-flex-center"><i
+                    class="ri-history-line"></i>View History</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
+                  class="btn btn-outline btn-small "><span><i class="ri-shopping-bag-line"></i> Place
+                    Bid</span></a>
+              </div>
+              <!-- action-wrapper -->
+            </div>
+            <!-- End .content -->
+          </div>
+         </div>
+
+        <!-- End .explore-style-one -->
+        <div class="grid-item cat--4">
+          <div class="explore-style-one">
+            <div class="thumb">
+              <a href="product-details.html"> <img src="images/explore/7.jpg" alt="nft live auction thumbnail"></a>
+              <button class="reaction-btn"><i class="ri-heart-fill"></i><span>14</span></button>
+              <!-- End .reaction-count -->
+            </div>
+            <!-- End .thumb -->
+            <div class="content">
+              <div class="header d-flex-between pt-4 pb-3">
+                <h3 class="title"><a href="product-details.html">Collectibeles</a></h3>
+                <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">New bid</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
+                    <li><a class="dropdown-item" href="#">Share</a></li>
+                    <li><a class="dropdown-item" href="#">Report</a></li>
+
+                  </ul>
+                </div>
+              </div>
+              <!-- .header -->
+              <div class="product-share-wrapper">
+                <div class="profile-share d-flex-center">
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Banuri Bari"><img src="images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Mark Keni"><img src="images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Diago Smith"><img src="images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                  <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
+                </div>
+              </div>
+              <!-- End product-share-wrapper -->
+              <div class="product-owner py-4 d-flex-between">
+                <span class="bid-owner">Owned By <strong><a href="author-profile.html">Mark Keni</a></strong></span>
+                <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
+              </div>
+              <!-- End .product-owner -->
+              <div class="action-wrapper d-flex-between pt-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history" class="history d-flex-center"><i
+                    class="ri-history-line"></i>View History</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
+                  class="btn btn-outline btn-small "><span><i class="ri-shopping-bag-line"></i> Place
+                    Bid</span></a>
+              </div>
+              <!-- action-wrapper -->
+            </div>
+            <!-- End .content -->
+          </div>
+        </div>
+
+        <!-- End .explore-style-one -->
+        <div class="grid-item cat--1 cat--3">
+          <div class="explore-style-one">
+            <div class="thumb">
+              <a href="product-details.html"><img src="images/explore/30.jpg" alt="nft live auction thumbnail"></a>
+              <button class="reaction-btn"><i class="ri-heart-fill"></i><span>32</span></button>
+              <!-- End .reaction-count -->
+            </div>
+            <!-- End .thumb -->
+            <div class="content">
+              <div class="header d-flex-between pt-4 pb-3">
+                <h3 class="title"><a href="product-details.html">Virtual Worlds</a></h3>
+                <div class="more-dropdown "><i class="ri-more-fill" data-bs-toggle="dropdown"></i>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">New bid</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Refresh Metadata</a></li>
+                    <li><a class="dropdown-item" href="#">Share</a></li>
+                    <li><a class="dropdown-item" href="#">Report</a></li>
+
+                  </ul>
+                </div>
+              </div>
+              <!-- .header -->
+              <div class="product-share-wrapper">
+                <div class="profile-share d-flex-center">
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Banuri Bari"><img src="images/explore/avatar/1.png" alt="Nft_Profile"></a>
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Mark Keni"><img src="images/explore/avatar/2.png" alt="Nft_Profile"></a>
+                  <a href="authors.html" class="avatar" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Diago Smith"><img src="images/explore/avatar/3.png" alt="Nft_Profile"></a>
+                  <a class="more-author-text" href="#" tabindex="0">20+ People Place Bit</a>
+                </div>
+              </div>
+              <!-- End product-share-wrapper -->
+              <div class="product-owner py-4 d-flex-between">
+                <span class="bid-owner">Owned By <strong><a href="author-profile.html">Banuri</a></strong></span>
+                <span class="biding-price d-flex-center"><i class="ri-arrow-up-line"></i>76.4 ETH</span>
+              </div>
+              <!-- End .product-owner -->
+              <div class="action-wrapper d-flex-between pt-4">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#bid_history" class="history d-flex-center"><i
+                    class="ri-history-line"></i>View History</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
+                  class="btn btn-outline btn-small "><span><i class="ri-shopping-bag-line"></i> Place
+                    Bid</span></a>
+              </div>
+              <!-- action-wrapper -->
+            </div>
+            <!-- End .content -->
+          </div>
+        </div>
+        <!-- End .explore-style-one -->
       </div>
       <!-- End .grid-filter-wrapper -->
     </div>
@@ -490,48 +711,41 @@
     <div class="container">
       <div class="section-title">
         <span class="subtitle">HOW IT WORKS</span>
-        <h2>Explore,Contribute,Transform</h2>
+        <h2>Create & sell your NFTs</h2>
       </div>
       <!-- End .section-title -->
       <div class=" slider wallet-activation slick-arrow-between slick-gutter-15">
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/1.png" alt="wallet">
-          <h3 class="title mb-3">Start Your Journey</h3>
-          <p>Begin by signing up on our open source marketplace website. Create your open source project, 
-            define its goals, and set the stage for collaboration. Utilize our user-friendly project creation tools to make your vision a reality. 
-            Join the vibrant community of developers, designers, and enthusiasts to shape the future of your project.</p>
+          <h3 class="title mb-3">set up your wallet</h3>
+          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
+            personalized banner. To upload yours, press the pencil icon in the top right.</p>
         </div>
         <!-- End .card-block-style-one -->
 
 
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/2.png" alt="wallet">
-          <h3 class="title mb-3">Embrace Teamwork</h3>
-          <p>Invite collaborators to your project with ease and foster a diverse and inclusive team. 
-            Utilize version control and issue tracking to streamline development and maintain transparency
-             Leverage pull requests and code reviews for high-quality contributions. Experience the power of collective innovation as your project evolves and grows
-
-          </p>
+          <h3 class="title mb-3">Create your collection</h3>
+          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
+            personalized banner. To upload yours, press the pencil icon in the top right.</p>
         </div>
         <!-- End .card-block-style-one -->
 
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/3.png" alt="wallet">
-          <h3 class="title mb-3">Join the Conversation</h3>
-          <p>Explore our lively forum where members discuss projects, share insights, and seek help. 
-            Find solutions to challenges, get feedback on your work, and connect with like-minded individuals.
-             Contribute your expertise to discussions or initiate new topics to spark valuable conversations.
-             The forum is your space to learn, grow, and collaborate beyond project boundaries</p>
+          <h3 class="title mb-3">List them for sale</h3>
+          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
+            personalized banner. To upload yours, press the pencil icon in the top right.</p>
         </div>
 
         <!-- End .card-block-style-one -->
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/3.png" alt="wallet">
-          <h3 class="title mb-3">Achieve Recognition</h3>
-          <p>Stand out in the community by actively participating in projects, discussions, and contributions. 
-        Earn reputation points and badges as you consistently contribute to open source projects. Climb the leaderboard and gain recognition as a top contributor in your area of expertise.
-         Showcase your skills and dedication, fostering collaboration and mentorship opportunities</p>
-      </div>
+          <h3 class="title mb-3">List them for sale</h3>
+          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
+            personalized banner. To upload yours, press the pencil icon in the top right.</p>
+        </div>
         <!-- End .card-block-style-one -->
       </div>
       <!-- End .row -->
