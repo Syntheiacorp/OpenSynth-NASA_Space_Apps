@@ -69,10 +69,10 @@
       >
         <div class="header-left d-flex align-items-center">
           <div class="logo-wrapper">
-            <a href="" class="logo logo-light"
+            <a href="../" class="logo logo-light"
               ><img src="../images/logo-white.png" alt="brand" />
             </a>
-            <a href="" class="logo logo-dark"
+            <a href="../" class="logo logo-dark"
               ><img src="../images/logo-dark.png" alt="brand" />
             </a>
           </div>
