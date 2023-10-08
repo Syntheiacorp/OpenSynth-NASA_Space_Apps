@@ -1,6 +1,6 @@
-<?php
-session_start();
-?>
+<?php 
+  session_start();
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -135,22 +135,22 @@ session_start();
             </li>
             <!-- End .search-mobile-icon -->
             <?php
-            if (!isset($_SESSION['userId'])) {
+          if (!isset($_SESSION['userId'])) {
 
-              ?>
-              <li class="wallet-button">
-                <a href="auth/signin" class="btn btn-gradient btn-small">
-                  <span><i class="ri-wallet-3-line"></i>Login</span>
-                </a>
-              </li>
-              <li class="wallet-button">
-                <a href="auth/signup" class="btn btn-gradient btn-small">
-                  <span><i class="ri-wallet-3-line"></i>Signup</span>
-                </a>
-              </li>
-              <?php
-            }
             ?>
+            <li class="wallet-button">
+              <a href="auth/signin" class="btn btn-gradient btn-small">
+                <span><i class="ri-wallet-3-line"></i>Login</span>
+              </a>
+            </li>
+            <li class="wallet-button">
+              <a href="auth/signup" class="btn btn-gradient btn-small">
+                <span><i class="ri-wallet-3-line"></i>Signup</span>
+              </a>
+            </li>
+            <?php
+          }
+          ?>
             <!-- End .wallet-button -->
 
             <li class="setting-option mobile-menu-bar d-block d-xl-none">
@@ -160,40 +160,20 @@ session_start();
             </li>
             <!-- End .mobile-menu-bar -->
 
-            <?php
-            if (isset($_SESSION['userId'])) {
+            <?php 
+            if(isset($_SESSION['userId'])) {
 
-              ?>
-              <li class="avatar-info">
-                <a href="#"
-                  ><img src="../images/avatar/user.png" alt="user avatar"
-                /></a>
-                <ul class="submenu">
-                  <li>
-                    <a href="author-profile.html"
-                      ><i class="ri-user-line"></i> Profile</a
-                    >
-                  </li>
-                  <li>
-                    <a href="create.html"
-                      ><i class="ri-edit-line"></i> Create Item</a
-                    >
-                  </li>
-                  <li>
-                    <a href="authors.html"
-                      ><i class="ri-layout-grid-line"></i>Authors</a
-                    >
-                  </li>
-                  <li>
-                    <a href="auth/signin/"
-                      ><i class="ri-logout-box-r-line"></i>Sign in</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <?php
-            }
-            ?>
+          ?>
+            <li class="avatar-info"> <a href="#"><img src="../images/avatar/user.png" alt="user avatar"></a>
+              <ul class="submenu">
+                <li><a href="../user/profile"><i class="ri-user-line"></i> Profile</a></li>
+                <li><a href="../projects/host"><i class="ri-edit-line"></i> Host New Project</a></li>
+                <li><a href="../leaderboard"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
+                <li><a href="../auth/signout/"><i class="ri-logout-box-r-line"></i>Sign Out</a></li>
+              </ul>
+            </li>
+          <?php 
+            }?>
             <!-- End .avatar-info -->
 
             <li>
@@ -590,36 +570,36 @@ session_start();
               <div class="row">
 
               <!-- Project preview tab -->
-              <?php
-              include_once('../config/dbConfig.php');
-              $query = "SELECT * FROM `Projects`";
-
-              $data = mysqli_query($conn, $query);
-              while ($row = mysqli_fetch_assoc($data)) {
-
-                ?>
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
-                    <div class="explore-style-one">
-                      <div class="thumb">
-                        <a href="product-details.html"
-                          ><img
-                            height="270"
-                            width="270"
-                            src="<?php echo $row['DisplayPicture'] ?>"
-                            alt="nft live auction thumbnail"
-                        /></a>
-                        <button class="reaction-btn">
-                          <i class="ri-heart-fill"></i><span><?php echo $row['UpVotes'] ?></span>
-                        </button>
-                        <!-- End .reaction-count -->
-                      </div>
-                      <!-- End .thumb -->
-                      <div class="content">
-                        <div class="header d-flex-between pt-4 pb-3">
-                          <h3 class="title">
-                            <a href="product-details.html"><?php echo $row['Title'] ?></a>
-                          </h3>
-                          <!-- <div class="more-dropdown">
+              <?php 
+                include_once('../config/dbConfig.php');
+                $query = "SELECT * FROM `Projects`";
+                
+                $data = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($data)) {
+              
+              ?>
+                <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 mb-6">
+                  <div class="explore-style-one">
+                    <div class="thumb">
+                      <a href="product-details.html"
+                        ><img
+                          height="270"
+                          width="270"
+                          src="<?php echo $row['DisplayPicture']?>"
+                          alt="nft live auction thumbnail"
+                      /></a>
+                      <button class="reaction-btn">
+                        <i class="ri-heart-fill"></i><span><?php echo $row['UpVotes']?></span>
+                      </button>
+                      <!-- End .reaction-count -->
+                    </div>
+                    <!-- End .thumb -->
+                    <div class="content">
+                      <div class="header d-flex-between pt-4 pb-3">
+                        <h3 class="title">
+                          <a href="product-details.html"><?php echo $row['Title']?></a>
+                        </h3>
+                        <!-- <div class="more-dropdown">
                           <i class="ri-more-fill" data-bs-toggle="dropdown"></i>
                           <ul class="dropdown-menu dropdown-menu-dark">
                             <li>
@@ -639,144 +619,93 @@ session_start();
                             </li>
                           </ul>
                         </div> -->
-                        </div>
-                        <!-- .header -->
-                        <div class="product-share-wrapper">
-                          <div class="profile-share d-flex-center">
-                            <a
-                              href="authors.html"
-                              class="avatar"
-                              data-bs-toggle="tooltip"
-                              data-bs-placement="top"
-                              title="Banuri Bari"
-                              ><img
-                                src="../images/explore/avatar/1.png"
-                                alt="Nft_Profile"
-                            /></a>
-                            <a
-                              href="authors.html"
-                              class="avatar"
-                              data-bs-toggle="tooltip"
-                              data-bs-placement="top"
-                              title="Mark Keni"
-                              ><img
-                                src="../images/explore/avatar/2.png"
-                                alt="Nft_Profile"
-                            /></a>
-                            <a
-                              href="authors.html"
-                              class="avatar"
-                              data-bs-toggle="tooltip"
-                              data-bs-placement="top"
-                              title="Diago Smith"
-                              ><img
-                                src="../images/explore/avatar/3.png"
-                                alt="Nft_Profile"
-                            /></a>
-                            <?php
+                      </div>
+                      <!-- .header -->
+                      <div class="product-share-wrapper">
+                        <div class="profile-share d-flex-center">
+                          <a
+                            href="authors.html"
+                            class="avatar"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Banuri Bari"
+                            ><img
+                              src="../images/explore/avatar/1.png"
+                              alt="Nft_Profile"
+                          /></a>
+                          <a
+                            href="authors.html"
+                            class="avatar"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Mark Keni"
+                            ><img
+                              src="../images/explore/avatar/2.png"
+                              alt="Nft_Profile"
+                          /></a>
+                          <a
+                            href="authors.html"
+                            class="avatar"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Diago Smith"
+                            ><img
+                              src="../images/explore/avatar/3.png"
+                              alt="Nft_Profile"
+                          /></a>
+                          <?php 
                             $projectID = $row['ProjectID'];
                             $projectParticipantsQuery = "SELECT * FROM `ProjectParticipants` WHERE ProjectID = '$projectID'";
                             $participantsList = mysqli_query($conn, $projectParticipantsQuery);
 
-                            ?>
-                            <a class="more-author-text" href="#" tabindex="0"
-                              ><?php echo mysqli_num_rows($participantsList) ?>+ People are contributing</a
-                            >
-                          </div>
+                          ?>
+                          <a class="more-author-text" href="#" tabindex="0"
+                            ><?php echo mysqli_num_rows($participantsList)?>+ People are contributing</a
+                          >
                         </div>
-                        <!-- End product-share-wrapper -->
-                        <?php
+                      </div>
+                      <!-- End product-share-wrapper -->
+                      <?php 
                         $id = $row['CreatorUserID'];
                         $ownerQuery = "SELECT FullName FROM `UserData` WHERE UserID = '$id'";
-                        $userNameArray = mysqli_fetch_assoc(mysqli_query($conn, $ownerQuery));
+                         $userNameArray = mysqli_fetch_assoc(mysqli_query($conn, $ownerQuery));
                         // print_r($userNameArray);
-                        ?>
-                        <div class="product-owner py-4 d-flex-between">
-                          <span class="bid-owner"
-                            >Owned By
-                            <strong
-                              ><a href="../user/view/?userId=<?php echo $id ?>"
-                                ><?php echo $userNameArray['FullName'] ?></a
-                              ></strong
-                            ></span
-                          >
-                          <!-- <span class="biding-price d-flex-center"
+                      ?>
+                      <div class="product-owner py-4 d-flex-between">
+                        <span class="bid-owner"
+                          >Owned By
+                          <strong
+                            ><a href="../user/view/?userId=<?php echo $id ?>"
+                              ><?php echo $userNameArray['FullName'] ?></a
+                            ></strong
+                          ></span
+                        >
+                        <!-- <span class="biding-price d-flex-center"
                           ><i class="ri-arrow-up-line"></i>76.4 ETH</span
                         > -->
-                        </div>
-                        <!-- End .product-owner -->
-                        <style>
-                          /* Define custom class for the button */
-  .btn-custom {
-      border-color: green; /* Set the outline color to green */
-      color: green; /* Set the text color to green */
-  }
-
-  .btn-custom:hover {
-      background-color: green; /* Change the background color to green on hover */
-      color: white; /* Change the text color to white on hover */
-  }
-  .btn-custom:disabled {
-      cursor: not-allowed; /* Change cursor to "not-allowed" for disabled button */
-      opacity: 0.7; /* Reduce opacity for disabled button */
-  }
-
-                        </style>
-                        <div class="action-wrapper d-flex-between pt-4">
-                          <a
-                            href="view/?projectID=<?php echo $row['ProjectID'] ?>"
-                          
-                            ><i class="ri-history-line"></i>View Project</a
-                          >
-                          <?php
-                          $participantId = $_SESSION['userId'];
-                          $pId = $row['ProjectID'];
-                          $participantsQuery = "SELECT * FROM `ProjectParticipants` WHERE UserID ='$participantId' AND ProjectID = '$pId'";
-                          $participantsDetails = mysqli_query($conn, $participantsQuery);
-                          // print_r(mysqli_num_rows($participantsDetails));
-                          if (mysqli_num_rows($participantsDetails) == 0) {
-                            ?>
-                            <a
-                              href="joinProject.php?projectId=<?php echo $pId ?>&userId=<?php echo $participantId ?>"
-                              data-projectID="<?php echo $row['ProjectID'] ?>"
-                              class="btn btn-outline btn-small btn-JoinProject"
-                              ><span
-                                ><i class="ri-add-line"></i> Join Project</span
-                              ></a>
-                            <?php
-                          } else {
-
-                            ?>
-                              <a href="#"  class="btn btn-custom btn-small" disabled>
-                                <span><i class="ri-add-line"></i> Joined</span>
-                            </a>
-                          <?php } ?>
-                        </div>
-                        <script>
-                          // Get all the <a> tags with the class "btn-JoinProject"
-                          // Get all the <a> tags with the class "btn-JoinProject"
-                          // const joinProjectButtons = document.querySelectorAll('a.btn-JoinProject');
-
-                          // // Loop through the buttons and add event listeners
-                          // for (let i = 0; i < joinProjectButtons.length; i++) {
-                          //   joinProjectButtons[i].addEventListener('click', function(event) {
-                          //     // Prevent the default behavior of the link
-                          //     event.preventDefault();
-
-                          //     // Get the value of the "data-projectID" attribute
-                          //     const projectID = this.getAttribute('data-projectID');
-
-                          //     // Print the projectID to the console
-                          //     console.log(`ProjectID: ${projectID}`);
-                          //   });
-                          // }
-
-                        </script>
-                        <!-- action-wrapper -->
                       </div>
-                      <!-- End .content -->
+                      <!-- End .product-owner -->
+                      <div class="action-wrapper d-flex-between pt-4">
+                        <a
+                          href="view/?projectID=<?php echo $row['ProjectID'] ?>"
+                          
+                          ><i class="ri-history-line"></i>View Project</a
+                        >
+                        <a
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#placeBit"
+                          class="btn btn-outline btn-small"
+                          ><span
+                            ><i class="ri-add-line"></i> Join Project</span
+                          ></a
+                        >
+                      </div>
+                      <!-- action-wrapper -->
                     </div>
+                    <!-- End .content -->
                   </div>
+                </div>
                 <?php } ?>
                 <!-- End project preview tab  -->
 
