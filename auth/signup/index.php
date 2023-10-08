@@ -3,10 +3,6 @@ session_start();
 require_once(__DIR__ . '/../../config/dbConfig.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-  if(isset($_SESSION['userId'])) {
-    echo "<script> window.location.href='../../'</script>";
-  }
 ?>
 
 <!DOCTYPE html>

@@ -255,7 +255,7 @@ if (!$_SESSION['userId'])
         <!-- End .col -->
         <div class="col-xxl-9 col-xl-8 col-lg-8">
           <div class="author-profile-wrapper">
-            <!-- <ul class="nav custom-tabs author-tabs mb-5">
+            <ul class="nav custom-tabs author-tabs mb-5">
               <li>
                 <a class="active btn btn-small btn-outline" data-bs-toggle="tab" href="#on-sale">On Sale</a>
               </li>
@@ -268,7 +268,7 @@ if (!$_SESSION['userId'])
               <li>
                 <a class="btn btn-small btn-outline" data-bs-toggle="tab" href="#liked">Liked</a>
               </li>
-            </ul> -->
+            </ul>
             <!-- End .author-tabs -->
 
             <div class="tab-content author-tabs-content">

@@ -80,7 +80,12 @@
 
       <div class="header-right d-flex align-items-center">
         <ul class="header-right-inner">
-         
+          <!-- <li class=" d-none d-lg-block">
+            <form action="#" class="search-bar">
+              <input type="text" name="search" placeholder="Collection, item or user" id="search">
+              <button class="search-btn" type="submit"> <i class="ri-search-line"></i></button>
+            </form>
+          </li> -->
           <!-- End .search-bar -->
 
           <li class="setting-option d-block  d-lg-none ">
