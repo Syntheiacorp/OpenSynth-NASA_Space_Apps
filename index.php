@@ -59,8 +59,8 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <!-- <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a> -->
-          <!-- <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a> -->
+           <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a> 
+          <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a> 
         </div>
         <!-- End .logo-wrapper -->
 
@@ -72,7 +72,7 @@
                 <a class="active" href="#">Home</a>
               </li>
               <li><a href="#hofSection">Hall of Fame</a></li>
-              <li><a href="leaderboard"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
+              <li><a href="leaderboard">Leaderboard</a></li>
               <li class=" has-menu-child-item">
                 <a href="#explore-section">Explore</a>
                 <!-- <ul class="submenu">
