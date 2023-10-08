@@ -205,9 +205,9 @@
         <h1 class="title">Create Item</h1>
         <nav class="mt-4">
           <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Create</li>
+            <li class="breadcrumb-item"><a href="../../">Home</a></li>
+            <li class="breadcrumb-item"><a href="../">Project</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Host</li>
           </ol>
         </nav>
       </div>
