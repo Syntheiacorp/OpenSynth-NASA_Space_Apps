@@ -59,8 +59,8 @@
     <div class="header-inner d-flex align-items-center justify-content-between">
       <div class="header-left d-flex align-items-center">
         <div class="logo-wrapper">
-          <!-- <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a> -->
-          <!-- <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a> -->
+           <a href="" class="logo logo-light"><img src="images/logo-white.png" alt="brand"> </a> 
+          <a href="" class="logo logo-dark"><img src="images/logo-dark.png" alt="brand"> </a> 
         </div>
         <!-- End .logo-wrapper -->
 
