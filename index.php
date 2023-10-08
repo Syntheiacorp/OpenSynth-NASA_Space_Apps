@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include_once('config/dbConfig.php');
   
   // The following is the session used to display and hide login/register & user profile accordingly if the user is signed in
   // $_SESSION['userId'] = 100; 
@@ -79,7 +80,7 @@
                   </li>
                 </ul> -->
               </li>
-              <li><a href="activity.html">Activity</a></li>
+              <li><a href="hofSection">Hof</a></li>
 
               <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -142,9 +143,9 @@
             <li class="avatar-info"> <a href="#"><img src="images/avatar/user.png" alt="user avatar"></a>
               <ul class="submenu">
                 <li><a href="user/profile"><i class="ri-user-line"></i> Profile</a></li>
-                <li><a href="create.html"><i class="ri-edit-line"></i> Host New Project</a></li>
-                <li><a href="authors.html"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
-                <li><a href="auth/signin/"><i class="ri-logout-box-r-line"></i>Sign Out</a></li>
+                <li><a href="projects/host"><i class="ri-edit-line"></i> Host New Project</a></li>
+                <li><a href="leaderboard"><i class="ri-layout-grid-line"></i>Leaderboard</a></li>
+                <li><a href="auth/signout/"><i class="ri-logout-box-r-line"></i>Sign Out</a></li>
               </ul>
             </li>
           <?php 
@@ -195,7 +196,7 @@
             <a href="#">Explore</a>
           </li>
 
-          <li><a href="activity.html">Activity</a></li>
+          <li><a href="hofSection">HoF</a></li>
 
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -212,16 +213,15 @@
         <div class="row align-items-center">
           <div class="col-xxl-8 col-xl-7 col-lg-7">
             <div class="banner-content">
-              <h1 class="mb-6 title" data-aos="fade-up">Collect your <br>
-                <span>digital art NFTs</span>
+            <h1 class="mb-6 title" data-aos="fade-up">Where Innovation <br>
+                <span>Meets Collaboration</span>
               </h1>
-              <p data-aos="fade-up" data-aos-delay="100">Marketplace for monster character
-                collections <br>
-                non fungible token NFTs.</p>
+              <p data-aos="fade-up" data-aos-delay="100">Explore the future of technology  <br>
+                in our open source marketplace</p>
               <div class="group-btn mt-8" data-aos="fade-up" data-aos-delay="200">
-                <a href="explore-filter-sidebar.html" class="btn btn-gradient"><span><i class="ri-rocket-line"></i>
+                <a href="projects" class="btn btn-gradient"><span><i class="ri-rocket-line"></i>
                     Explore</span></a>
-                <a href="projects/host" class="btn btn-outline"><span><i class="ri-edit-line"></i> Host</span></a>
+                <a href="projects/host" class="btn btn-outline"><span><i class="ri-add-circle-line"></i> Host</span></a>
               </div>
               <img src="images/shape/2.png" alt="shape" class="shape shape-2 dark rotate-360">
               <img src="images/shape/3.png" alt="shape" class="shape shape-3 dark rotate-360">
@@ -246,16 +246,8 @@
                 </a>
               </div>
               <!-- End .slider -->
-              <span class="sticker">Featured Art</span>
-              <div class="explore-content ">
-                <!-- <div class="price">
-                  <span>Rederve Price</span>
-                  <h6><img src="images/explore/hero/reward.png" alt="reward"> 68.4 ETH</h6>
-                </div> -->
-                <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#placeBit"
-                  class="btn btn-gradient btn-small rounded-3 "><span><i class="ri-shopping-bag-line"></i> Place a
-                    bid</span></a> -->
-              </div>
+              <span class="sticker">Featured Projects</span>
+              
               <!-- End .explore-content -->
             </div>
           </div>
@@ -268,32 +260,46 @@
   <!-- End banner area -->
 
   <!-- Start nft gallery area -->
-  <section class="ptb-120 section-bg-separation-2">
-    <div class="section-title text-center">
-      <span class="subtitle">Exclusive Assets</span>
-      <h2>NFT Gallery</h2>
-    </div>
-    <!-- End .section-title -->
-    <div class="nft-gallery-activation slider slick-pagination-50">
-      <?php for($i=0;$i<=8;$i++){?>
-      <div class="gallery-thumb">
-        <a href="popular-collections.html" class="thumb d-block">
-          <div class="inner">
-            <img src="images/gallery/1.jpg" alt="nft gallery">
-          </div>
-        </a>
-        <!-- End .thumb  -->
-        <a href="popular-collections.html" class="thumb d-block">
-          <div class="inner">
-            <img src="images/gallery/2.jpg" alt="nft gallery">
-          </div>
-        </a>
-        <!-- End .thumb  -->
+   <!-- Start Hall of fame -->
+   <section id="hofSection" class="section-bg-separation-2 ptb-120">
+    <div class="container">
+      <div class="d-flex-between">
+        <div class="section-title">
+          <span class="subtitle">Collaborators</span>
+          <h2>Hall of fame</h2>
+        </div>
+        <!-- End .section-title -->
+        <div class="text-large">
+          <a href="all-sellers-2.html">See Leader board</a>
+        </div>
       </div>
-      <!-- End Gallery-thumb -->
-<?php } ?>
+      <!-- End .d-flex-between -->
+
+      <div class="slider top-seller-activation-1 slick-gutter-15 slick-arrow-between ">
+        <?php
+          $query = "SELECT * FROM `UserData` ORDER BY Karma LIMIT 10";          ;
+          $hofUsers = mysqli_query($conn, $query);
+          // print_r(mysqli_fetch_assoc($hofUsers));
+            while ($row = mysqli_fetch_assoc($hofUsers)){  
+          ?> 
+          <div class="top-seller-style-one">
+            <a href="user/visit/?userID=<?php echo $row['UserID']?>" class="thumb mb-2">
+              <img src="images/avatar/user.png" alt="Hall of fame">
+              <i class="ri-check-line"></i>
+            </a>
+            <h4 class="title pb-1"><a href="author-profile.html"><?php echo $row['FullName']?></a></h4>
+            <span class="price"><?php echo $row['Karma']?> Karma</span>
+          </div>
+          <?php
+        }
+        ?>
+        <!-- End .col -->  
+
+      </div>
     </div>
+    <!-- End .container -->
   </section>
+  <!-- End Hall of fame -->
   <!-- End nft gallery area -->
 
   <!-- Start Explore -->
@@ -322,7 +328,7 @@
 
         <!-- Project Listing tab start -->
         <?php 
-                include_once('config/dbConfig.php');
+                
                 $query = "SELECT * FROM `Projects`";
                 
                 $data = mysqli_query($conn, $query);
@@ -437,18 +443,6 @@
         </div>
         <?php }?> 
 
-        <!-- End .explore-style-one -->
-      
-
-        <!-- End .explore-style-one -->
-      
-
-        <!-- End .explore-style-one -->
-      
-
-        <!-- End .explore-style-one -->
-        
-        <!-- End .explore-style-one -->
       </div>
       <!-- End .grid-filter-wrapper -->
     </div>
@@ -456,84 +450,55 @@
   </section>
   <!-- End Explore -->
 
-  <!-- Start Top Seller -->
-  <section class="section-bg-separation-2 ptb-120">
-    <div class="container">
-      <div class="d-flex-between">
-        <div class="section-title">
-          <span class="subtitle">Creators</span>
-          <h2>Top Sellers</h2>
-        </div>
-        <!-- End .section-title -->
-        <div class="text-large">
-          <a href="all-sellers-2.html">Sell All Sellers</a>
-        </div>
-      </div>
-      <!-- End .d-flex-between -->
 
-      <div class="slider top-seller-activation-1 slick-gutter-15 slick-arrow-between ">
-        <?php
-        for ($i=1;$i<=10;$i++){  
-          ?> 
-          <div class="top-seller-style-one">
-            <a href="author-profile.html" class="thumb mb-2">
-              <img src="images/top-seller/1.png" alt="top sellter">
-              <i class="ri-check-line"></i>
-            </a>
-            <h4 class="title pb-1"><a href="author-profile.html">Oliver</a></h4>
-            <span class="price">214.6 ETH</span>
-          </div>
-          <?php
-        }
-        ?>
-        <!-- End .col -->  
-
-      </div>
-    </div>
-    <!-- End .container -->
-  </section>
-  <!-- End Top Seller -->
 
 
   <!-- Start Setup Wallet -->
-  <section class="wallet-setup ptb-120">
+  <section class="section-bg-separation wallet-setup ptb-120">
     <div class="container">
       <div class="section-title">
         <span class="subtitle">HOW IT WORKS</span>
-        <h2>Create & sell your NFTs</h2>
+        <h2>Explore, &nbsp;Contribute, &nbsp;Transform</h2>
       </div>
       <!-- End .section-title -->
       <div class=" slider wallet-activation slick-arrow-between slick-gutter-15">
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/1.png" alt="wallet">
-          <h3 class="title mb-3">set up your wallet</h3>
-          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
-            personalized banner. To upload yours, press the pencil icon in the top right.</p>
+          <h3 class="title mb-3">Start Your Journey</h3>
+          <p>Begin by signing up on our open source marketplace website. Create your open source project, 
+            define its goals, and set the stage for collaboration. Utilize our user-friendly project creation tools to make your vision a reality. 
+            Join the vibrant community of developers, designers, and enthusiasts to shape the future of your project.</p>
         </div>
         <!-- End .card-block-style-one -->
 
 
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/2.png" alt="wallet">
-          <h3 class="title mb-3">Create your collection</h3>
-          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
-            personalized banner. To upload yours, press the pencil icon in the top right.</p>
+          <h3 class="title mb-3">Embrace Teamwork</h3>
+          <p>Invite collaborators to your project with ease and foster a diverse and inclusive team. 
+            Utilize version control and issue tracking to streamline development and maintain transparency
+             Leverage pull requests and code reviews for high-quality contributions. Experience the power of collective innovation as your project evolves and grows
+
+          </p>
         </div>
         <!-- End .card-block-style-one -->
 
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/3.png" alt="wallet">
-          <h3 class="title mb-3">List them for sale</h3>
-          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
-            personalized banner. To upload yours, press the pencil icon in the top right.</p>
+          <h3 class="title mb-3">Join the Conversation</h3>
+          <p>Explore our lively forum where members discuss projects, share insights, and seek help. 
+            Find solutions to challenges, get feedback on your work, and connect with like-minded individuals.
+             Contribute your expertise to discussions or initiate valuable conversations.
+             The forum is your space to learn, grow, and collaborate beyond project boundaries</p>
         </div>
 
         <!-- End .card-block-style-one -->
         <div class="card-block-style-one">
           <img class="thumb mb-5" src="images/icon/3.png" alt="wallet">
-          <h3 class="title mb-3">List them for sale</h3>
-          <p>There are a few things worth doing before creating your first NFTs. In the image above, you’ll not
-            personalized banner. To upload yours, press the pencil icon in the top right.</p>
+          <h3 class="title mb-3">Achieve Recognition</h3>
+          <p>Stand out in the community by actively participating in projects, discussions, and contributions. 
+        Earn reputation points and badges as you consistently contribute to open source projects. Climb the leaderboard and gain recognition as a top contributor in your area of expertise.
+         Showcase your skills and dedication, fostering collaboration and mentorship opportunities</p>
         </div>
         <!-- End .card-block-style-one -->
       </div>
